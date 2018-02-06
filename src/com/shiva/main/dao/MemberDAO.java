@@ -32,11 +32,12 @@ public class MemberDAO {
 		Connection conn = null;
 		try {
 			// DB접속정보는 XML처리(META-INF/context.xml)
-			Context init = new InitialContext();
-			ds=	(DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+			//Context init = new InitialContext();
+			//ds=	(DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
 			
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
-			//conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "SCOTT", "TIGER");
+			// xml로 하는 방식 어떻게 함??
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "SCOTT", "TIGER");
 		} catch(Exception ex) {
 			System.out.println("DB 연결 실패 : " + ex);
 		}
