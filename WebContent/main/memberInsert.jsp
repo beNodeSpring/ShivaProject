@@ -11,7 +11,6 @@
 ${ error } <!-- request.getAttribute("error") -->
 
 <div class="container">
-	<h3>회원가입</h3>
 	<form action="../memberInsert.shiva" method="get" >
 		<div class="form-group">
 		    <label for="id">ID</label>
