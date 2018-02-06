@@ -1,11 +1,23 @@
 @charset "UTF-8";
+/* 메인 */
+.menu-container:nth-of-type(2) i{margin-bottom: 20px;}
+.menu-container:nth-of-type(2) a{font-weight: bold;}
 
+.ul_weather{margin-top: 50px;}
+.ul_weather li{list-style: none;}
+.ul_weather li:nth-child(1){margin-top: 20px; font-size: 30px;}
+.ul_weather li:nth-child(2){margin: 30px; font-size: 20px;}
+.ul_weather li:nth-child(3){font-size: 20px;}
+
+.carousel-inner{background-color: #bc1c48; height: 124px;}
+.item {}
+/* 메인 기본 css */
 a:hover, a:focus { text-decoration: none; }
 a:hover {
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
-.margin-b-30 { margin-bottom: 30px; }
+.margin-b-30 { margin-bottom: 30px !important; }
 
 /*
  * 
@@ -20,14 +32,14 @@ body {
 	margin: 0;
 	padding: 0;
 	/*background-color: #161E2C;*/
-	font-family: 'Open Sans', sans-serif;
+	font-family: arial, sans-serif;
 	overflow-x: hidden;
 }
 
 .main-body {
 	float: left;
 	width: 100%;
-	background: url(../images/page-bg.jpg) no-repeat top center;
+	background: url(../images/bg_main-body1.jpg) no-repeat top center;
 	background-size: 100% auto;
 	background-attachment: fixed;
 }
@@ -145,14 +157,44 @@ body {
 .main-menu-link:focus {	color: #fff; }
 
 .home {
-	background-color: rgba(16, 165, 205, 0.8);
-	background-image: url(../images/menu-bg-home.png);
+	background-color: rgba(87, 55, 178, 0.8);
+	background-image: url(../images/);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
 
-.about-main { padding-left: 0; }
-.about { background-color: rgba(193,61,18,0.8);	}
+
+.license_box{padding-left: 0; margin-bottom: 10px;}
+.license_box .license{
+background: #01819c; /* Old browsers */
+background: -moz-linear-gradient(left, #01819c 0%, #00a2ae 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #01819c 0%,#00a2ae 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #01819c 0%,#00a2ae 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+.resume_box{margin-bottom: 10px;}
+.resume_box .resume{
+background: #2773ed; /* Old browsers */
+background: -moz-linear-gradient(left, #2773ed 1%, #2e8cf0 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #2773ed 1%,#2e8cf0 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #2773ed 1%,#2e8cf0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+.used_box{padding-left: 0;}
+.used_box .used{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d24726+0,db582c+100 */
+background: #d24726; /* Old browsers */
+background: -moz-linear-gradient(left, #d24726 0%, #db582c 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #d24726 0%,#db582c 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #d24726 0%,#db582c 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */	
+}
+.car_box{}
+.car_box .car{
+background: #008a00; /* Old browsers */
+background: -moz-linear-gradient(left, #008a00 0%, #008a00 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, #008a00 0%,#008a00 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, #008a00 0%,#008a00 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */	
+}
+
 
 .cards {
 	display: -webkit-box;
@@ -174,16 +216,15 @@ body {
 	margin-bottom: 30px;
 }
 
-.contact { background-color: rgba(107,181,34,0.8);	}
-
 .about i, .contact i {
 	float: left;
 	width: 100%;
 	text-align: center;
 	margin-bottom: 10px;
 }
-.gallery {
-	background-image: url(../images/menu-bg-gallery.png);
+.weather_bax {
+	background-color: rgba(87, 55, 178, 0.8);
+	background-image: url(../images/bg_weather.jpg);
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 }
@@ -253,20 +294,13 @@ body {
 	text-shadow: none;
 }
 .menu-caption {
-	float: left;
 	width: 100%;
-	background-color: #cfb011;
+	background-color: #bc1c48;
 	text-align: center;
 	left: 0px;
 	bottom: 0px;
 	position: absolute;
-	top: 67%;
-	opacity: 0.7;
-	padding-top: 15px;
-	padding-bottom: 0px;
-	padding-left: 0px;
-	padding-right: 0px;
-	text-transform: uppercase;
+	top: 33px;
 }
 .heading, .heading2 {
 	float: left;
@@ -333,7 +367,9 @@ body {
 .paris { border-top: 7px solid #df9801; }
 .box-icon {
 	width: 100%;
+	height: 294px;
 	position: relative;
+	overflow: hidden;
 }
 
 .info-nav-container {
@@ -685,7 +721,7 @@ body {
 .form-group { margin-bottom: 25px; }
 .form-control {
 	border-radius: 0;
-	height:43px;
+	height:auto;
 }
 .form-control:focus {
     border-color: rgb(25, 192, 200);
