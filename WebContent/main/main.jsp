@@ -36,15 +36,11 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 
                             <div class="menu-container">
                                 <div class="block-keep-ratio block-keep-ratio-2-1 block-width-full home">                                    
-                                    <a href="#" data-target="#layerpop" data-toggle="modal" class="">
-                                        <span>Login /</span>                                        
-                                    </a>
-                                    <a href="#" class="">
-                                    	<span>Join /</span>
-                                    </a>
-                                    <a href="#" class="">
-                                    	<span>Mypage</span>
-                                    </a>
+                                    <ul class="home_menu cf">
+                                    	<li><a href="#" data-target="#layerpop" data-toggle="modal" class="">Login</a></li>
+                                    	<li><a href="#" class="">Join</a></li>
+                                    	<li><a href="#" class="">Mypage</a></li>
+                                    </ul>                             
                                 </div>                                
                             </div>
 

@@ -1,5 +1,7 @@
 @charset "UTF-8";
 /* 메인 */
+li{list-style:none;}
+.cf:after{display:block; content:''; clear:both;}
 .menu-container:nth-of-type(2) i{margin-bottom: 20px;}
 .menu-container:nth-of-type(2) a{font-weight: bold;}
 
@@ -8,6 +10,11 @@
 .ul_weather li:nth-child(1){margin-top: 20px; font-size: 30px;}
 .ul_weather li:nth-child(2){margin: 30px; font-size: 20px;}
 .ul_weather li:nth-child(3){font-size: 20px;}
+
+.home_menu{position:absolute; bottom:0; right:0;}
+.home_menu li{float:left; margin-right:20px;	}
+.home_menu li a{color:#fff;}
+.home_menu li a:hover{}
 
 .carousel-inner{background-color: #bc1c48; height: 124px;}
 .item {}
