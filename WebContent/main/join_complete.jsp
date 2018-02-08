@@ -22,9 +22,13 @@
 		<div class="row">               
 			<h2 class="sub_tit">회원가입완료</h2>
 			<div class="sub_page join_page modal-content">
-				회원가입이 완료되었습니다
-				<a href="#" data-target="#layerpop" data-toggle="modal" class="">로그인</a>
-				<a href="./main/main.jsp">홈</a>
+				<h3>회원가입이 완료되었습니다</h3>
+				<div class="join_bg">
+					<div class="btn_wrap">
+						<a href="#" data-target="#layerpop" data-toggle="modal" class="btn btn-primary">Login</a>
+						<a href="./" class="btn btn-info">Home</a>
+					</div>
+				</div>
 			</div>
 			
 			<!-- 로그인 모달창 -->

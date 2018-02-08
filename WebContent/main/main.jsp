@@ -37,9 +37,13 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                             <div class="menu-container">
                                 <div class="block-keep-ratio block-keep-ratio-2-1 block-width-full home">                                    
                                     <a href="#" data-target="#layerpop" data-toggle="modal" class="block-keep-ratio__content  main-menu-link">
-                                        <span class="main-menu-link-text">
-                                            Login / Join    
-                                        </span>                                        
+                                        <span class="main-menu-link-text">Login /</span>                                        
+                                    </a>
+                                    <a>
+                                    	<span>Join /</span>
+                                    </a>
+                                    <a>
+                                    	<span>Mypage</span>
                                     </a>
                                 </div>                                
                             </div>

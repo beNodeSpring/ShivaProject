@@ -17,6 +17,7 @@ public class MemberDAO {
 	DataSource ds;           // context.xml에서 주소를 찾기위한 데이터타입
 	PreparedStatement pstmt; // ? 사용위해 필요
 	ResultSet rs;            // 쿼리문 결과를 담음	
+	Connection conn;
 	
 	private static MemberDAO dao = new MemberDAO();
 	private MemberDAO() { }
@@ -29,15 +30,15 @@ public class MemberDAO {
 	
 	// DB에 접속해서 Connection객체를 얻어옴
 	public Connection connect() {
-		Connection conn = null;
 		try {
 			// DB접속정보는 XML처리(META-INF/context.xml)
-			//Context init = new InitialContext();
-			//ds=	(DataSource) init.lookup("java:comp/env/jdbc/OracleDB");
+			Context initCon = new InitialContext();
+			ds=	(DataSource) initCon.lookup("java:comp/env/jdbc/OracleDB");
+			conn = ds.getConnection();
 			
-			// xml로 하는 방식 어떻게 함??
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "SCOTT", "TIGER");
+			// connection 가져오는 예전 방식
+//			Class.forName("oracle.jdbc.driver.OracleDriver");
+//			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "SCOTT", "TIGER");
 		} catch(Exception ex) {
 			System.out.println("DB 연결 실패 : " + ex);
 		}
