@@ -26,7 +26,7 @@
 				<div class="join_bg">
 					<div class="btn_wrap">
 						<a href="#" data-target="#layerpop" data-toggle="modal" class="btn btn-primary">Login</a>
-						<a href="./" class="btn btn-info">Home</a>
+						<a href="/ShivaProject" class="btn btn-info">Home</a>
 					</div>
 				</div>
 			</div>
@@ -57,7 +57,8 @@
 						</div>
 		
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary" data-dismiss="modal">로그인</button>
+							<a href="/ShivaProject" class="btn btn-primary">로그인</a>
+<!-- 							<button type="submit" class="btn btn-primary" data-dismiss="modal">로그인</button> -->
 						</div>
 					</div>
 				</div>

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원 생성</title>
+<title>개발의 시발점</title>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link href="/ShivaProject/css/style.css" rel="stylesheet">
 <link href="/ShivaProject/css/sub.css" rel="stylesheet">
@@ -21,7 +21,7 @@ ${ error } <!-- request.getAttribute("error") -->
 <div class="main-body">	
 	<div class="container">
 		<div class="row">               
-			<h2 class="sub_tit">회원가입</h2>
+			<h2 class="sub_tit">회원정보 수정</h2>
 			<div class="sub_page join_page modal-content">
 				<form action="../memberInsert.shiva" method="get" >
 					<div class="form-group">
@@ -39,7 +39,7 @@ ${ error } <!-- request.getAttribute("error") -->
 					<div class="form-group">
 					    <label for="id">gender</label>
 					    <div>
-							남 <input type="radio" class="" size="10" name="group" id="gM">
+							남 <input type="radio" class="" size="10" name="group" id="gM" checked>
 						        여 <input type="radio" class="" size="10" name="group" id="gW">
 					    </div>
 					</div>
@@ -52,8 +52,7 @@ ${ error } <!-- request.getAttribute("error") -->
 					    <input type="text" class="form-control" size="10" name="phone" id="phone">
 					</div>
 					<div class="text-right">
-<!-- 					<input type=submit value="회원가입" class="btn btn-primary"> -->
-						<a href="./join_complete.jsp" class="btn btn-primary">회원가입</a>
+						<input type=submit value="수정" class="btn btn-primary">
 						<a href="javascript:history.back()" class="btn btn-warning">취소</a>
 					</div>
 				</form>

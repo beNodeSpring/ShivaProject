@@ -35,11 +35,11 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                         <div class="main-menu">
 
                             <div class="menu-container">
-                                <div class="block-keep-ratio block-keep-ratio-2-1 block-width-full home">                                    
+                                <div class="block-keep-ratio block-keep-ratio-2-1 block-width-full home">
+                                	<h1 class="logo_h1"><img src="/ShivaProject/images/logo_h1.png" alt="개발이 시발점 로고" /><span>개발의 시발점</span></h1>                                    
                                     <ul class="home_menu cf">
-                                    	<li><a href="#" data-target="#layerpop" data-toggle="modal" class="">Login</a></li>
-                                    	<li><a href="#" class="">Join</a></li>
-                                    	<li><a href="#" class="">Mypage</a></li>
+                                    	<li><a href="#" data-target="#layerpop" data-toggle="modal" class="">Login / Join</a></li>
+                                    	<li><a href="./main/mypage.jsp" class="">Mypage</a></li>
                                     </ul>                             
                                 </div>                                
                             </div>
@@ -122,7 +122,6 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 
 <script>
 (function(){
-	// xml 정보로 테이블 생성
 	var rssAjax = function(json) {
 		var data = JSON.parse(json.response);
 		var li;
@@ -131,9 +130,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 			 "<li>"+data.DailyWeatherStation.row[0].SAWS_OBS_TM + "</li>" +
 			 "<li>"+data.DailyWeatherStation.row[0].SAWS_TA_MAX + "˚/" + data.DailyWeatherStation.row[0].SAWS_TA_MIN + "˚</li>";
 		document.getElementById("ulWeather").innerHTML = li;
-	}	
-	
-	// 기상청 RSS로 Ajax 
+	}
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
@@ -191,7 +188,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                     
                                     <div class="box about_box_line card">
                                         <div class="box-icon">
-                                            <img src="/ShivaProject/images/about-img-2.jpg" alt="Image" class="img-responsive">
+                                            <img src="/ShivaProject/images/about-img-6.jpg" alt="Image" class="img-responsive">
                                             <div class="inner_search">
                                                 <div class="search_icon text-center Absolute-Center" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i></div>
                                             </div> <!-- .inner_search -->
@@ -208,7 +205,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                 
                                     <div class="box about_box_line card">
                                         <div class="box-icon">
-                                            <img src="/ShivaProject/images/about-img-3.jpg" alt="Image" class="img-responsive">
+                                            <img src="/ShivaProject/images/about-img-7.jpg" alt="Image" class="img-responsive">
                                             <div class="inner_search">
                                                 <div class="search_icon text-center Absolute-Center" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search"></i></div>
                                             </div>
@@ -225,7 +222,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 
                                     <div class="box about_box_line card">
                                         <div class="box-icon">
-                                            <img src="/ShivaProject/images/about-img-4.jpg" alt="Image" class="img-responsive">
+                                            <img src="/ShivaProject/images/about-img-8.jpg" alt="Image" class="img-responsive">
                                             <div class="inner_search">
                                                 <div class="search_icon text-center Absolute-Center" data-toggle="modal" data-target="#myModal3"><i class="fa fa-search"></i></div>
                                             </div> <!-- .inner_search -->
