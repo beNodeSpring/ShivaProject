@@ -41,7 +41,7 @@ public class MemberInsertController implements Controller {
 		
 		// Output view 페이지로 이동
 		request.setAttribute("id", id);
-		HttpUtil.forward(request, response, "/result/memberInsertOutput.jsp");
+		HttpUtil.forward(request, response, "/main/join_complete.jsp");
 	}
 
 }

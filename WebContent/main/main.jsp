@@ -5,20 +5,21 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accord - Free Bootstrap Template</title>   
+<title>개발의 시발점</title>   
 <!-- 
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css">    
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+<link rel="stylesheet" type="text/css" href="/ShivaProject/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/ShivaProject/css/font-awesome.min.css">    
+<link rel="stylesheet" type="text/css" href="/ShivaProject/css/style.css">
  --> 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-<link href="../css/style.css" rel="stylesheet">
+<link href="/ShivaProject/css/style.css" rel="stylesheet">
+<link href="/ShivaProject/css/sub.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    
 <!-- JavaScript -->
-<script src="../js/jquery-3.3.1.min.js"></script> 
+<script src="/ShivaProject/js/jquery-3.3.1.min.js"></script> 
 <!--<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/main.js"></script>
+<script src="/ShivaProject/js/bootstrap.min.js"></script>
+<script src="/ShivaProject/js/main.js"></script>
 </head>
 <%--
 response.addHeader("Access-Control-Allow-Origin", "*");
@@ -35,13 +36,47 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 
                             <div class="menu-container">
                                 <div class="block-keep-ratio block-keep-ratio-2-1 block-width-full home">                                    
-                                    <a href="index.html" class="block-keep-ratio__content  main-menu-link">
+                                    <a href="#" data-target="#layerpop" data-toggle="modal" class="block-keep-ratio__content  main-menu-link">
                                         <span class="main-menu-link-text">
-                                            Login / Logout    
+                                            Login / Join    
                                         </span>                                        
                                     </a>
                                 </div>                                
                             </div>
+
+							<!-- 로그인 모달창 -->
+							<div class="modal fade" id="layerpop" >
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<!-- 닫기(x) 버튼 -->
+											<button type="button" class="close" data-dismiss="modal">×</button>
+											<!-- header title -->
+											<h4 class="modal-title">로그인</h4>
+										</div>
+										
+										<div class="modal-body">
+											<!-- 로그인 폼 -->
+											<form action="../memberInsert.shiva" method="get" >
+												<div class="form-group">
+												    <label for="id">ID</label>
+												    <input type="text" class="form-control" size="10" name="id" id="id">
+												</div>
+												<div class="form-group">
+												    <label for="pass">비밀번호</label>
+												    <input type="password" class="form-control" size="10" name="passwd" id="passwd">
+												</div>
+											</form>
+										</div>
+						
+										<div class="modal-footer">
+											<a href="./main/memberInsert.jsp" class="btn btn-warning">회원가입</a>
+											<button type="submit" class="btn btn-primary" data-dismiss="modal">로그인</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--// 로그인 모달창 -->
 
                             <div class="menu-container margin-b-30">                                
                                 <div class="block-keep-ratio  block-keep-ratio-1-1  block-width-half  pull-left license_box">                                    
@@ -117,13 +152,13 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                         <!-- Wrapper for slides -->
                                         <div class="carousel-inner" role="listbox">
                                             <div class="item active">
-                                                <!-- <img src="../images/slider-img-1.png" alt="slider"> -->
+                                                <!-- <img src="/ShivaProject/images/slider-img-1.png" alt="slider"> -->
                                                 <div class="carousel-caption menu-caption">
                                                     	가상 화폐 몰락
                                                 </div>
                                             </div>
                                             <div class="item">
-                                                <!-- <img src="../images/slider-img-1.png" alt="slider"> -->
+                                                <!-- <img src="/ShivaProject/images/slider-img-1.png" alt="slider"> -->
                                                 <div class="carousel-caption menu-caption">
                                                     	국내 모바일 웹에도 SPA가 대세가 될 것인가?
                                                 </div>
@@ -156,7 +191,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                     
                                     <div class="box about_box_line card">
                                         <div class="box-icon">
-                                            <img src="../images/about-img-2.jpg" alt="Image" class="img-responsive">
+                                            <img src="/ShivaProject/images/about-img-2.jpg" alt="Image" class="img-responsive">
                                             <div class="inner_search">
                                                 <div class="search_icon text-center Absolute-Center" data-toggle="modal" data-target="#myModal"><i class="fa fa-search"></i></div>
                                             </div> <!-- .inner_search -->
@@ -173,7 +208,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                 
                                     <div class="box about_box_line card">
                                         <div class="box-icon">
-                                            <img src="../images/about-img-3.jpg" alt="Image" class="img-responsive">
+                                            <img src="/ShivaProject/images/about-img-3.jpg" alt="Image" class="img-responsive">
                                             <div class="inner_search">
                                                 <div class="search_icon text-center Absolute-Center" data-toggle="modal" data-target="#myModal2"><i class="fa fa-search"></i></div>
                                             </div>
@@ -190,7 +225,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 
                                     <div class="box about_box_line card">
                                         <div class="box-icon">
-                                            <img src="../images/about-img-4.jpg" alt="Image" class="img-responsive">
+                                            <img src="/ShivaProject/images/about-img-4.jpg" alt="Image" class="img-responsive">
                                             <div class="inner_search">
                                                 <div class="search_icon text-center Absolute-Center" data-toggle="modal" data-target="#myModal3"><i class="fa fa-search"></i></div>
                                             </div> <!-- .inner_search -->
@@ -245,7 +280,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                                 <h3>공지사항</h3>
                                                 <h4></h4>
                                             </div>                                       
-                                            <img src="../images/about-img-5.png" alt="Image" class="img-responsive">
+                                            <img src="/ShivaProject/images/about-img-5.png" alt="Image" class="img-responsive">
                                             <p class="proin-right-text">만들어야 될꺼 같은데 시간이 부족해서 만들수 있을려나 모르겠습니다. 시바!</p>
                                         </div> <!-- .info -->
                                     </div>
