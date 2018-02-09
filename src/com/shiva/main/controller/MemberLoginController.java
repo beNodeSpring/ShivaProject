@@ -12,6 +12,7 @@ import com.shiva.main.dao.MemberDAO;
 
 public class MemberLoginController implements Controller {
 
+	// 로그인한 id로 세션을 생성
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");

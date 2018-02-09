@@ -23,6 +23,8 @@ public class MainFrontController extends HttpServlet {
 		list.put("/memberDelete.shiva", new MemberDeleteController());
 		list.put("/memberLogin.shiva", new MemberLoginController());
 		list.put("/memberLogout.shiva", new MemberLogoutController());
+		list.put("/mypageController.shiva", new MypageController());
+
 	}
 	
 	// 클라이언트로 요청이 들어올 때마다 실행하는 로직

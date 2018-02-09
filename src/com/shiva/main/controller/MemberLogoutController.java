@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 public class MemberLogoutController implements Controller {
 	
+	// id로 로그인한 세션을 제거(로그아웃)
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		

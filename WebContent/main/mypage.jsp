@@ -35,8 +35,9 @@ ${ error } <!-- request.getAttribute("error") -->
 					</ul>
 
 					<div class="text-right">
-						<a href="./memberModify.jsp" class="btn btn-primary">회원정보수정</a>
-						<a href="javascript:history.back()" class="btn btn-warning">메인페이지</a>
+						<a href="javascript:history.back()" class="btn btn-primary">메인페이지</a>
+						<a href="./memberModify.jsp" class="btn  btn-warning">회원정보수정</a>
+						<a href="../memberDelete.shiva" class="btn btn-danger">회원탈퇴</a>
 					</div>
 				</form>
 
