@@ -82,23 +82,36 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 							</div>
 							<!--// 로그인 모달창 -->
 
+							<!-- Windows8 스타일 메뉴 버튼 -->
                             <div class="menu-container margin-b-30">                                
                                 <div class="block-keep-ratio  block-keep-ratio-1-1  block-width-half  pull-left license_box">                                    
-                                    <a href="about.html" class="main-menu-link block-keep-ratio__content flexbox-center license">
-                                        <i class="fa fa-drivers-license fa-4x main-menu-link-icon"></i>
-                                        IT 자격증
-                                    </a>                                    
+   
+                                  	<c:choose>
+										<c:when test="${userId == null}">
+											<%-- a태그 눌렀을때 이동 막고 alert창 띄우기 --%>
+										</c:when>
+	                                   	<c:otherwise>
+											<%-- a태그 눌렀을때 페이지 이동 --%>
+	                                   	</c:otherwise>
+                                  	</c:choose>   
+   
+   
+	                                    <a href="" class="main-menu-link block-keep-ratio__content flexbox-center license">
+	                                        <i class="fa fa-drivers-license fa-4x main-menu-link-icon"></i>
+	                                        IT 자격증
+	                                    </a>                                    
+
                                 </div>
 
                                 <div class="block-keep-ratio  block-keep-ratio-1-1  block-width-half  pull-right resume_box">
-                                    <a href="contact.html" class="main-menu-link block-keep-ratio__content flexbox-center resume">
+                                    <a href="" class="main-menu-link block-keep-ratio__content flexbox-center resume">
                                         <i class="fa fa-file-text-o fa-4x main-menu-link-icon"></i>
                                         IT 이력서
                                     </a>                                
                                 </div>  
  
                                 <div class="block-keep-ratio  block-keep-ratio-1-1  block-width-half  pull-left used_box">                                    
-                                    <a href="about.html" class="main-menu-link block-keep-ratio__content flexbox-center used">
+                                    <a href="" class="main-menu-link block-keep-ratio__content flexbox-center used">
                                         <i class="fa fa-handshake-o fa-4x main-menu-link-icon"></i>
 										IT 중고
                                     </a>                                    
@@ -111,6 +124,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                     </a>                                
                                 </div>    
                             </div>   
+							<!--// Windows8 스타일 메뉴 버튼 -->
 
                             <div class="menu-container">
                                 <div class="block-keep-ratio block-keep-ratio-1-1 block-keep-ratio-md-2-1 block-width-full weather_bax">                                    
