@@ -97,19 +97,22 @@ public class MemberDAO {
 		}
 	}// memberInsert()
 	
-	public String hasId(String[] idPw) {
+	public String returnId(String[] idPw) {
 		Connection conn = null;
 		ResultSet rs = null;
 		String sessionId = null;
+		System.out.println(idPw[0]);
+		System.out.println(idPw[1]);
 		try {
 			conn = connect();
-			System.out.println("connection의 주소값"+conn);
+			System.out.println("returnId() : connection의 주소값"+conn);
 			pstmt = conn.prepareStatement("select id from member where id=? and passwd=? ");
 			pstmt.setString(1, idPw[0]);
 			pstmt.setString(2, idPw[1]);
 			rs = pstmt.executeQuery(); // executeQuery() : select 실행
 			if (rs.next()) {
 				sessionId = rs.getString("id");
+				System.out.println("sessionId : " + sessionId );
 				return sessionId;
 			} else {	
 				return null;
@@ -119,7 +122,7 @@ public class MemberDAO {
 		} finally {
 			close(conn, pstmt);
 		}
-		return null;
+		return sessionId;
 	}
 	
 	

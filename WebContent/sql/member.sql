@@ -9,7 +9,7 @@ CREATE TABLE MEMBER(
 	PRIMARY KEY(ID)
 );
 SELECT * FROM MEMBER;
-
+select id from member where id='kjk' and passwd='123';
 
 DROP TABLE BOARD
 CREATE TABLE BOARD(

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -33,8 +34,16 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                 <div class="block-keep-ratio block-keep-ratio-2-1 block-width-full home">
                                 	<h1 class="logo_h1"><img src="/ShivaProject/images/logo_h1.png" alt="개발이 시발점 로고" /><span>개발의 시발점</span></h1>                                    
                                     <ul class="home_menu cf">
-                                    	<li><a href="#" data-target="#layerpop" data-toggle="modal" class="">Login / Join</a></li>
-                                    	<li><a href="./main/mypage.jsp" class="">Mypage</a></li>
+                                    	<c:set var="userId" value="${sessionScope.id}" />
+                                    	<c:choose>
+											<c:when test="${userId == null}">
+	                                    		<li><a href="#" data-target="#layerpop" data-toggle="modal" class="">Login / Join</a></li>
+											</c:when>
+	                                    	<c:otherwise>
+		                                    	<li><span class="ss_user_id"><c:out value='${sessionScope.id}'/>님</span></li>
+		                                    	<li><a href="./main/mypage.jsp" class="">Mypage</a></li>
+	                                    	</c:otherwise>
+                                    	</c:choose>
                                     </ul>                             
                                 </div>                                
                             </div>

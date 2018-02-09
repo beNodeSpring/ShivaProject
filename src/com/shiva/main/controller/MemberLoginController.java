@@ -17,15 +17,16 @@ public class MemberLoginController implements Controller {
 		request.setCharacterEncoding("UTF-8");
 		
 		String id = request.getParameter("id");
-		String pwd = request.getParameter("pwd");
+		String pwd = request.getParameter("passwd");
 		String[] idPw = {id, pwd};
 		MemberDAO dao = MemberDAO.getInstance();
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		
 		// 아이디&비밀번호 맞나 확인
-		String idCheck = dao.hasId(idPw);
-		if (idCheck!=null) { // 아이디& 비밀번호 일치 
+		String idCheck = dao.returnId(idPw);
+		System.out.println(idCheck);
+		if (id.equals(idCheck)) { // 아이디& 비밀번호 일치 
 			session.setAttribute("id", idCheck); // 세션 생성
 			
 			System.out.println("MemberLoginController : 로그인 업무 완료");
@@ -49,7 +50,7 @@ public class MemberLoginController implements Controller {
 
 		
 		// 로그인 되었을 때
-		
+/*		
 		if (session.isNew() || session.getAttribute("id") == null) {
 
 			
@@ -60,8 +61,8 @@ public class MemberLoginController implements Controller {
 			out.print("location.href='/ShivaProject';");
 			out.print("</script>");			
 		}
+ */	
 	}
-	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("MemberLoginController.execute()");

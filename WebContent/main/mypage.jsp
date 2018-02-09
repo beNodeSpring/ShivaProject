@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,7 @@ ${ error } <!-- request.getAttribute("error") -->
 					</div>
 					
 					<ul>
-						<li><strong>ID : siba</strong></li>
+						<li><strong>ID : <c:out value='${sessionScope.id}'/></strong></li>
 						<li><strong></strong></li>
 						<li><strong></strong></li>
 					</ul>

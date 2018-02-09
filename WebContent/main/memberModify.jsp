@@ -26,7 +26,7 @@ ${ error } <!-- request.getAttribute("error") -->
 				<form action="../memberInsert.shiva" method="get" >
 					<div class="form-group">
 					    <label for="id">ID</label>
-					    <input type="text" class="form-control" size="10" name="id" id="id">
+					    <input type="text" class="form-control" size="10" name="id" id="id" value="${sessionScope.id}" readonly>
 					</div>
 					<div class="form-group">
 					    <label for="pass">비밀번호</label>

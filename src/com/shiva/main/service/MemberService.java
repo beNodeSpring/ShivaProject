@@ -25,4 +25,5 @@ public class MemberService {
 	
 	
 	// 3. 회원정보 삭제(회원 탈퇴)
+	
 }
