@@ -12,7 +12,7 @@ public class HttpUtil {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 			dispatcher.forward(request, response);
 		} catch (Exception e) {
-			System.out.println("forward 오류 "+e);
+			System.out.println("HttpUtil.forward 오류 "+e);
 		} 
 	}
 	

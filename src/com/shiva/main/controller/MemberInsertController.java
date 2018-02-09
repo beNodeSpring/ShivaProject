@@ -36,8 +36,8 @@ public class MemberInsertController implements Controller {
 		
 		// Service 객체를 추출한뒤 의 회원정보 생성 서비스처리 담당 MemberInsert()를 호출
 		MemberService service = MemberService.getInstance();
-		System.out.println("서비스담김"+service);
 		service.MemberInsert(member);
+		System.out.println("service.MemberInsert() 완료 => MemberService 인스턴스 주소값: "+service);
 		
 		// Output view 페이지로 이동
 		request.setAttribute("id", id);

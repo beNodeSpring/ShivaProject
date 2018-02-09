@@ -52,8 +52,7 @@ ${ error } <!-- request.getAttribute("error") -->
 					    <input type="text" class="form-control" size="10" name="phone" id="phone">
 					</div>
 					<div class="text-right">
-<!-- 					<input type=submit value="회원가입" class="btn btn-primary"> -->
-						<a href="./join_complete.jsp" class="btn btn-primary">회원가입</a>
+	 					<input type=submit value="회원가입" class="btn btn-primary">
 						<a href="javascript:history.back()" class="btn btn-warning">취소</a>
 					</div>
 				</form>

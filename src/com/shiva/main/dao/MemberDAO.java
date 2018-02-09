@@ -40,7 +40,7 @@ public class MemberDAO {
 //			Class.forName("oracle.jdbc.driver.OracleDriver");
 //			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "SCOTT", "TIGER");
 		} catch(Exception ex) {
-			System.out.println("DB 연결 실패 : " + ex);
+			System.out.println("connect() 오류 발생 => DB 연결 실패 : " + ex);
 		}
 		return conn;
 	}
@@ -51,7 +51,7 @@ public class MemberDAO {
 			try {
 				rs.close();
 			} catch(Exception e) {
-				System.out.println("오류 발생 : " + e);
+				System.out.println("rs.close() 오류 발생 : " + e);
 			}
 		}
 		close(conn, ps);
@@ -63,14 +63,14 @@ public class MemberDAO {
 			try {
 				ps.close();
 			} catch(Exception e) {
-				System.out.println("오류 발생 : " + e);
+				System.out.println("ps.close() 오류 발생 : " + e);
 			}
 		}
 		if (conn != null) {
 			try {
 				conn.close();
 			} catch(Exception e) {
-				System.out.println("오류 발생 : " + e);
+				System.out.println("conn.close() 오류 발생 : " + e);
 			}
 		}
 	}
@@ -81,7 +81,7 @@ public class MemberDAO {
 		try {
 			conn = connect();
 			//conn = ds.getConnection();
-			System.out.println("con의 값"+conn);
+			System.out.println("connection의 주소값"+conn);
 			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?)");
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPasswd());
@@ -89,12 +89,40 @@ public class MemberDAO {
 			pstmt.setString(4, member.getGender());
 			pstmt.setString(5, member.getMail());
 			pstmt.setString(6, member.getPhone());
-			pstmt.executeUpdate(); // executeUpdate : DML실행(select 제외)
+			pstmt.executeUpdate(); // executeUpdate() : DML실행(select 제외)
 		} catch (SQLException e) {
-			System.out.println("오류발생" + e);
+			System.out.println("memberInsert() 오류발생" + e);
 		} finally {
 			close(conn, pstmt);
 		}
-		
+	}// memberInsert()
+	
+	public String hasId(String[] idPw) {
+		Connection conn = null;
+		ResultSet rs = null;
+		String sessionId = null;
+		try {
+			conn = connect();
+			System.out.println("connection의 주소값"+conn);
+			pstmt = conn.prepareStatement("select id from member where id=? and passwd=? ");
+			pstmt.setString(1, idPw[0]);
+			pstmt.setString(2, idPw[1]);
+			rs = pstmt.executeQuery(); // executeQuery() : select 실행
+			if (rs.next()) {
+				sessionId = rs.getString("id");
+				return sessionId;
+			} else {	
+				return null;
+			}
+		} catch (SQLException e) {
+			System.out.println("memberInsert() 오류발생" + e);
+		} finally {
+			close(conn, pstmt);
+		}
+		return null;
 	}
+	
+	
+	
+	
 }

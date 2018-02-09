@@ -20,4 +20,9 @@ public class MemberService {
 	public void MemberInsert(MemberVO member) {
 		dao.memberInsert(member);
 	}
+	
+	// 2. 회원정보 수정
+	
+	
+	// 3. 회원정보 삭제(회원 탈퇴)
 }

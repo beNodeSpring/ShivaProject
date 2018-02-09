@@ -21,21 +21,22 @@ public class MainFrontController extends HttpServlet {
 		list.put("/memberSearch.shiva", new MemberSearchController());
 		list.put("/memberUpdate.shiva", new MemberUpdateController());
 		list.put("/memberDelete.shiva", new MemberDeleteController());
-		list.put("/memberList.shiva", new MemberListController());
+		list.put("/memberLogin.shiva", new MemberLoginController());
+		list.put("/memberLogout.shiva", new MemberLogoutController());
 	}
 	
 	// 클라이언트로 요청이 들어올 때마다 실행하는 로직
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("프론트컨트롤러 service");
+		System.out.println("프론트컨트롤러 service");//★ 완성후 지우기
 		request.setCharacterEncoding(charset);             //  post로 전달된 쿼리 문자열을 한글 인코딩 처리
 		String url=request.getRequestURI();                //  /ShivaProject/업무.shiva
 		String contextPath = request.getContextPath();     //  /ShivaProject
 		String path = url.substring(contextPath.length()); //  /업무.shiva
-		System.out.println(path);
+		System.out.println(path);//★ 완성후 지우기
 		Controller subController = list.get(path);         //  해당 업무의 컨트롤러의 주소값을 가져와 저장
 		subController.execute(request, response);          //  controll 인터페이스때문에 execute() 실행
-		System.out.println("service 완료");
+		System.out.println("service 완료");//★ 완성후 지우기
 	}
 		
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
