@@ -42,24 +42,25 @@
 							<h4 class="modal-title">로그인</h4>
 						</div>
 						
-						<div class="modal-body">
-							<!-- 로그인 폼 -->
-							<form action="../memberInsert.shiva" method="get" >
-								<div class="form-group">
-								    <label for="id">ID</label>
-								    <input type="text" class="form-control" size="10" name="id" id="id">
-								</div>
-								<div class="form-group">
-								    <label for="pass">비밀번호</label>
-								    <input type="password" class="form-control" size="10" name="passwd" id="passwd">
-								</div>
-							</form>
-						</div>
-		
-						<div class="modal-footer">
-							<a href="/ShivaProject" class="btn btn-primary">로그인</a>
-<!-- 							<button type="submit" class="btn btn-primary" data-dismiss="modal">로그인</button> -->
-						</div>
+						<!-- 로그인 폼 -->
+						<form action="./memberLogin.shiva" method="post" >
+							<div class="modal-body">
+								<!-- 로그인 폼 -->
+									<div class="form-group">
+									    <label for="id">ID</label>
+									    <input type="text" class="form-control" size="10" name="id" id="id">
+									</div>
+									<div class="form-group">
+									    <label for="pass">비밀번호</label>
+									    <input type="password" class="form-control" size="10" name="passwd" id="passwd">
+									</div>
+							</div>
+			
+							<div class="modal-footer">
+								<a href="./main/memberInsert.jsp" class="btn btn-warning">회원가입</a>
+								<button type="submit" class="btn btn-primary">로그인</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

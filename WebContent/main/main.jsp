@@ -15,7 +15,6 @@
 <script src="/ShivaProject/js/jquery-3.3.1.min.js"></script> 
 <!--<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
 <script src="/ShivaProject/js/bootstrap.min.js"></script>
-<script src="/ShivaProject/js/main.js"></script>
 </head>
 <%--
 response.addHeader("Access-Control-Allow-Origin", "*");
@@ -41,6 +40,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 											</c:when>
 	                                    	<c:otherwise>
 		                                    	<li><span class="ss_user_id"><c:out value='${sessionScope.id}'/>님</span></li>
+		                                    	<li><a href="./memberLogout.shiva" class="">Logout</a></li>
 		                                    	<li><a href="./main/mypage.jsp" class="">Mypage</a></li>
 	                                    	</c:otherwise>
                                     	</c:choose>
@@ -83,46 +83,55 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 							<!--// 로그인 모달창 -->
 
 							<!-- Windows8 스타일 메뉴 버튼 -->
-                            <div class="menu-container margin-b-30">                                
+                            <div class="menu-container margin-b-30 win8_btn_box">                                
                                 <div class="block-keep-ratio  block-keep-ratio-1-1  block-width-half  pull-left license_box">                                    
-   
-                                  	<c:choose>
-										<c:when test="${userId == null}">
-											<%-- a태그 눌렀을때 이동 막고 alert창 띄우기 --%>
-										</c:when>
-	                                   	<c:otherwise>
-											<%-- a태그 눌렀을때 페이지 이동 --%>
-	                                   	</c:otherwise>
-                                  	</c:choose>   
-   
-   
-	                                    <a href="" class="main-menu-link block-keep-ratio__content flexbox-center license">
+   	                                    <a href="#" class="main-menu-link block-keep-ratio__content flexbox-center license">
 	                                        <i class="fa fa-drivers-license fa-4x main-menu-link-icon"></i>
 	                                        IT 자격증
 	                                    </a>                                    
-
                                 </div>
 
                                 <div class="block-keep-ratio  block-keep-ratio-1-1  block-width-half  pull-right resume_box">
-                                    <a href="" class="main-menu-link block-keep-ratio__content flexbox-center resume">
+                                    <a href="#" class="main-menu-link block-keep-ratio__content flexbox-center resume">
                                         <i class="fa fa-file-text-o fa-4x main-menu-link-icon"></i>
                                         IT 이력서
                                     </a>                                
                                 </div>  
  
                                 <div class="block-keep-ratio  block-keep-ratio-1-1  block-width-half  pull-left used_box">                                    
-                                    <a href="" class="main-menu-link block-keep-ratio__content flexbox-center used">
+                                    <a href="#" class="main-menu-link block-keep-ratio__content flexbox-center used">
                                         <i class="fa fa-handshake-o fa-4x main-menu-link-icon"></i>
 										IT 중고
                                     </a>                                    
                                 </div>
                                   
                                 <div class="block-keep-ratio  block-keep-ratio-1-1  block-width-half  pull-right car_box">
-                                    <a href="contact.html" class="main-menu-link block-keep-ratio__content flexbox-center car">
+                                    <a href="#" class="main-menu-link block-keep-ratio__content flexbox-center car">
                                         <i class="fa fa-automobile fa-4x main-menu-link-icon"></i>
                                         IT 렌트카
                                     </a>                                
-                                </div>    
+                                </div> 
+                                
+                                <c:choose>
+									<c:when test="${userId == null}">
+										<%-- 비로그인 상태 a태그 클릭시 alert창 띄우기 --%>
+										<script>
+										$('.win8_btn_box a').on('click', function(e){
+											alert("로그인 후 이용이 가능합니다");
+										});
+										</script>
+									</c:when>
+                                   	<c:otherwise>
+										<%-- 비로그인 상태 a태그 클릭시 페이지 이동 --%>
+                                   		<script>
+                               			$('.license_box a').attr('href', 'https://www.naver.com/');	
+                               			$('.resume_box a').attr('href', 'https://www.daum.net/');	
+                               			$('.used_box a').attr('href', 'https://www.daum.net/');	
+                               			$('.car_box a').attr('href', 'https://www.naver.com/');	
+                                   		</script>
+                                   	</c:otherwise>
+                               	</c:choose>                                
+                                   
                             </div>   
 							<!--// Windows8 스타일 메뉴 버튼 -->
 
@@ -137,28 +146,6 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                     </a>                                    
                                 </div>                                
                             </div>
-
-<script>
-(function(){
-	var rssAjax = function(json) {
-		var data = JSON.parse(json.response);
-		var li;
-
-		li = "<li>"+data.DailyWeatherStation.row[0].STN_NM + "</li>" +
-			 "<li>"+data.DailyWeatherStation.row[0].SAWS_OBS_TM + "</li>" +
-			 "<li>"+data.DailyWeatherStation.row[0].SAWS_TA_MAX + "˚/" + data.DailyWeatherStation.row[0].SAWS_TA_MIN + "˚</li>";
-		document.getElementById("ulWeather").innerHTML = li;
-	}
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function() {
-		if (this.readyState == 4 && this.status == 200) {
-			rssAjax(this);
-		}
-	}
-	xhttp.open("GET", "http://openapi.seoul.go.kr:8088/77545161716d73683132374955416741/json/DailyWeatherStation/2/7/2018/강남", true);
-	xhttp.send();
-})();
-</script>
 
                             <!-- sidebar carousel -->
                             <div class="menu-container">
@@ -307,13 +294,11 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
             </div>
             <footer class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 footer">
-                    <p class="copyright">Copyright © 2016 Company Name
-                    
-                    | More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+                    <p class="copyright">Copyright © 2018 Team shiva</p>
                 </div>    
             </footer>            
         </div>
     </div>
-
+<script src="/ShivaProject/js/main.js"></script>
 </body>
 </html>
