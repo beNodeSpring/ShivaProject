@@ -41,7 +41,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 	                                    	<c:otherwise>
 		                                    	<li><span class="ss_user_id"><c:out value='${sessionScope.id}'/>님</span></li>
 		                                    	<li><a href="./memberLogout.shiva" class="">Logout</a></li>
-		                                    	<li><a href="./main/mypage.jsp" class="">Mypage</a></li>
+		                                    	<li><a href="./mypage.shiva" class="">Mypage</a></li>
 	                                    	</c:otherwise>
                                     	</c:choose>
                                     </ul>                             
@@ -73,7 +73,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 											</div>
 							
 											<div class="modal-footer">
-												<a href="./main/memberInsert.jsp" class="btn btn-warning">회원가입</a>
+												<a href="./memberjoin.shiva" class="btn btn-warning">회원가입</a>
 												<button type="submit" class="btn btn-primary">로그인</button>
 											</div>
 										</form>

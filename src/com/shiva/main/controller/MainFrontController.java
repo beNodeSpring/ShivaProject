@@ -17,13 +17,15 @@ public class MainFrontController extends HttpServlet {
 		
 		// 클라이언트 요청에 대하여 실제로 처리하는 서브 컨트롤러를 실행
 		list = new HashMap<String, Controller>();
+		list.put("/memberjoin.shiva", new MemberJoinController());
 		list.put("/memberInsert.shiva", new MemberInsertController());
+		list.put("/memberLogin.shiva", new MemberLoginController());
+		list.put("/memberLogout.shiva", new MemberLogoutController());
+		list.put("/mypage.shiva", new MypageController());
+		list.put("/memberModify.shiva", new MemberModifyController());
 		list.put("/memberSearch.shiva", new MemberSearchController());
 		list.put("/memberUpdate.shiva", new MemberUpdateController());
 		list.put("/memberDelete.shiva", new MemberDeleteController());
-		list.put("/memberLogin.shiva", new MemberLoginController());
-		list.put("/memberLogout.shiva", new MemberLogoutController());
-		list.put("/mypageController.shiva", new MypageController());
 
 	}
 	
@@ -32,6 +34,8 @@ public class MainFrontController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//System.out.println("프론트컨트롤러 service");
 		request.setCharacterEncoding(charset);             //  post로 전달된 쿼리 문자열을 한글 인코딩 처리
+		response.setContentType("text/html; charset="+charset);		
+		
 		String url=request.getRequestURI();                //  /ShivaProject/업무.shiva
 		String contextPath = request.getContextPath();     //  /ShivaProject
 		String path = url.substring(contextPath.length()); //  /업무.shiva

@@ -5,11 +5,14 @@ CREATE TABLE MEMBER(
 	NAME        VARCHAR2(15),
 	GENDER      VARCHAR2(6),
 	MAIL        VARCHAR2(30),
-	PHONE       VARCHAR2(30),
+	PHONE       VARCHAR2(15),
 	PRIMARY KEY(ID)
 );
 SELECT * FROM MEMBER;
+SELECT * FROM MEMBER where id='kjk';
 select id from member where id='kjk' and passwd='123';
+
+update member set passwd='123' where id='kjk'
 
 DROP TABLE BOARD
 CREATE TABLE BOARD(
