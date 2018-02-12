@@ -23,9 +23,9 @@ ${ error } <!-- request.getAttribute("error") -->
 		<div class="row">               
 			<h2 class="sub_tit">마이페이지</h2>
 			<div class="sub_page join_page modal-content">
-				<form action="../memberInsert.shiva" method="get" >
+				<form action="" method="post" id="frmMypage" >
 					<div class="text-center">
-						<img src="../images/img_siba197.png" alt="사진" />
+						<img src="/ShivaProject/images/img_siba197.png" alt="사진" />
 					</div>
 					
 					<ul>
@@ -36,15 +36,16 @@ ${ error } <!-- request.getAttribute("error") -->
 
 					<div class="text-right">
 						<a href="javascript:history.back()" class="btn btn-primary">메인페이지</a>
-						<a href="./memberModify.jsp" class="btn  btn-warning">회원정보수정</a>
-						<a href="../memberDelete.shiva" class="btn btn-danger">회원탈퇴</a>
+						<input type="button" id="btnMod" class="btn  btn-warning" value="회원정보수정" />
+						<input type="button" id="btnDel" class="btn btn-danger" value="회원탈퇴" />
+<!-- 						<a href="./memberModify.jsp" class="btn  btn-warning">회원정보수정</a>
+						<a href="../memberDelete.shiva" class="btn btn-danger">회원탈퇴</a> -->
 					</div>
 				</form>
-
 			</div>
 		</div>
 	</div>
 </div>
-
+<script src="/ShivaProject/js/main.js"></script>
 </body>
 </html>

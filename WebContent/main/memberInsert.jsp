@@ -26,30 +26,30 @@ ${ error } <!-- request.getAttribute("error") -->
 				<form action="../memberInsert.shiva" method="get" >
 					<div class="form-group">
 					    <label for="id">ID</label>
-					    <input type="text" class="form-control" size="10" name="id" id="id">
+					    <input type="text" class="form-control" maxlength="15" name="id" id="id">
 					</div>
 					<div class="form-group">
 					    <label for="pass">비밀번호</label>
-					    <input type="password" class="form-control" size="10" name="passwd" id="passwd">
+					    <input type="password" class="form-control" maxlength="15" name="passwd" id="passwd">
 					</div>
 					<div class="form-group">
 					    <label for="id">name</label>
-					    <input type="text" class="form-control" size="10" name="name" id="name">
+					    <input type="text" class="form-control" maxlength="15" name="name" id="name">
 					</div>
 					<div class="form-group">
 					    <label for="id">gender</label>
 					    <div>
-							남 <input type="radio" class="" size="10" name="group" id="gM">
-						        여 <input type="radio" class="" size="10" name="group" id="gW">
+							남 <input type="radio" class="" name="gender" value="남">
+						        여 <input type="radio" class="" name="gender" value="여">
 					    </div>
 					</div>
 					<div class="form-group">
 					    <label for="id">mail</label>
-					    <input type="text" class="form-control" size="10" name="mail" id="mail">
+					    <input type="text" class="form-control" maxlength="30" name="mail" id="mail">
 					</div>
 					<div class="form-group">
 					    <label for="id">phone</label>
-					    <input type="text" class="form-control" size="10" name="phone" id="phone">
+					    <input type="text" class="form-control" maxlength="15" name="phone" id="phone">
 					</div>
 					<div class="text-right">
 	 					<input type=submit value="회원가입" class="btn btn-primary">

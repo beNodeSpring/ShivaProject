@@ -52,7 +52,7 @@
 		<url-pattern>*.lo</url-pattern>
 	</servlet-mapping>
   
-	<welcom-file-list>
+<!-- 	<welcom-file-list>
 		<welcom-file>index.jsp</welcom-file>
-	</welcom-file-list>
+	</welcom-file-list> -->
 </web-app>

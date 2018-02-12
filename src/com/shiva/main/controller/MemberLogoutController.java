@@ -32,7 +32,6 @@ public class MemberLogoutController implements Controller {
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberLogoutControllerr.execute()");
 		doPost(request, response);		
 	}
 

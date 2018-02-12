@@ -66,7 +66,6 @@ public class MemberLoginController implements Controller {
 	}
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("MemberLoginController.execute()");
 		doPost(request, response);
 	}
 

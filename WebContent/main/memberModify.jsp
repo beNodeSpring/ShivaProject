@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,40 +24,58 @@ ${ error } <!-- request.getAttribute("error") -->
 		<div class="row">               
 			<h2 class="sub_tit">회원정보 수정</h2>
 			<div class="sub_page join_page modal-content">
-				<form action="../memberInsert.shiva" method="get" >
+				<form action="./memberUpdate.shiva" method="post" >
 					<div class="form-group">
 					    <label for="id">ID</label>
-					    <input type="text" class="form-control" size="10" name="id" id="id" value="${sessionScope.id}" readonly>
+					    <input type="text" class="form-control" maxlength="15" name="id" id="id" value="${sessionScope.id}" readonly>
 					</div>
 					<div class="form-group">
-					    <label for="pass">비밀번호</label>
-					    <input type="password" class="form-control" size="10" name="passwd" id="passwd">
+					    <label for="pass">변경할 비밀번호</label>
+					    <input type="password" class="form-control" maxlength="15" name="passwd" id="beforePass" value="${memberVO.getPasswd()}">
+					</div>
+					<div class="form-group">
+					    <label for="pass">비밀번호 확인</label>
+					    <input type="password" class="form-control" maxlength="15" id="afterPass">
 					</div>
 					<div class="form-group">
 					    <label for="id">name</label>
-					    <input type="text" class="form-control" size="10" name="name" id="name">
+					    <input type="text" class="form-control" maxlength="15" name="name" id="name" value="${memberVO.getName()}">
 					</div>
 					<div class="form-group">
 					    <label for="id">gender</label>
 					    <div>
-							남 <input type="radio" class="" size="10" name="group" id="gM" checked>
-						        여 <input type="radio" class="" size="10" name="group" id="gW">
+                            <c:set var="userGender" value="${memberVO.getGender()}" />
+                            <c:choose>
+								<c:when test="${userGender == '남'}">
+									남 <input type="radio" class="" name="gender" value="남" checked>
+								        여 <input type="radio" class="" name="gender" value="여">
+								</c:when>
+								<c:when test="${userGender == '여'}">
+									남 <input type="radio" class="" name="gender" value="남">
+								        여 <input type="radio" class="" name="gender" value="여" checked>
+								</c:when>								
+                                <c:otherwise>
+									남 <input type="radio" class="" name="gender" value="남">
+								        여 <input type="radio" class="" name="gender" value="여">
+                                </c:otherwise>
+                            </c:choose>				    	
+					    	
 					    </div>
 					</div>
 					<div class="form-group">
 					    <label for="id">mail</label>
-					    <input type="text" class="form-control" size="10" name="mail" id="mail">
+					    <input type="text" class="form-control" maxlength="30" name="mail" id="mail" value="${memberVO.getMail()}">
 					</div>
 					<div class="form-group">
 					    <label for="id">phone</label>
-					    <input type="text" class="form-control" size="10" name="phone" id="phone">
+					    <input type="text" class="form-control" maxlength="15" name="phone" id="phone" value="${memberVO.getPhone()}">
 					</div>
 					<div class="text-right">
-						<input type=submit value="수정" class="btn btn-primary">
-						<a href="javascript:history.back()" class="btn btn-warning">취소</a>
+						<input type=submit value="회원정보수정" class="btn btn-warning">
+						<a href="/ShivaProject/" class="btn btn-primary">메인페이지</a>
 					</div>
 				</form>
-
+				
 			</div>
 		</div>
 	</div>

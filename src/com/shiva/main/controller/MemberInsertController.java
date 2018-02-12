@@ -21,9 +21,8 @@ public class MemberInsertController implements Controller {
 		String gender = request.getParameter("gender");
 		String mail = request.getParameter("mail");
 		String phone = request.getParameter("phone");
-		
+
 		// 유효성 체크 - 스크립트단에서 처리할꺼임
-		
 		
 		// VO객체 member에 데이터 바인딩
 		MemberVO member = new MemberVO();
@@ -36,11 +35,11 @@ public class MemberInsertController implements Controller {
 		
 		// Service 객체를 추출한뒤 의 회원정보 생성 서비스처리 담당 MemberInsert()를 호출
 		MemberService service = MemberService.getInstance();
-		service.MemberInsert(member);
+		service.memberInsert(member);
 		System.out.println("service.MemberInsert() 완료 => MemberService 인스턴스 주소값: "+service);
 		
-		// Output view 페이지로 이동
-		request.setAttribute("id", id);
+		// view 페이지로 이동
+		//request.setAttribute("id", id);
 		HttpUtil.forward(request, response, "/main/join_complete.jsp");
 	}
 
