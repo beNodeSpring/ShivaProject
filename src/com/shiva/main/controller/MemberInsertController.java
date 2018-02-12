@@ -41,6 +41,7 @@ public class MemberInsertController implements Controller {
 		// view 페이지로 이동
 		//request.setAttribute("id", id);
 		HttpUtil.forward(request, response, "/main/join_complete.jsp");
+		//HttpUtil.redirect(response, "/ShivaProject/main/join_complete.jsp");
 	}
 
 }

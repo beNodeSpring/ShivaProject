@@ -73,7 +73,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 											</div>
 							
 											<div class="modal-footer">
-												<a href="./main/memberInsert.jsp" class="btn btn-warning">회원가입</a>
+												<a href="./memberjoin.shiva" class="btn btn-warning">회원가입</a>
 												<button type="submit" class="btn btn-primary">로그인</button>
 											</div>
 										</form>

@@ -23,7 +23,7 @@ ${ error } <!-- request.getAttribute("error") -->
 		<div class="row">               
 			<h2 class="sub_tit">회원가입</h2>
 			<div class="sub_page join_page modal-content">
-				<form action="../memberInsert.shiva" method="get" >
+				<form action="./memberInsert.shiva" method="post" >
 					<div class="form-group">
 					    <label for="id">ID</label>
 					    <input type="text" class="form-control" maxlength="15" name="id" id="id">

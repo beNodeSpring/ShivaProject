@@ -17,6 +17,7 @@ public class MainFrontController extends HttpServlet {
 		
 		// 클라이언트 요청에 대하여 실제로 처리하는 서브 컨트롤러를 실행
 		list = new HashMap<String, Controller>();
+		list.put("/memberjoin.shiva", new MemberJoinController());
 		list.put("/memberInsert.shiva", new MemberInsertController());
 		list.put("/memberSearch.shiva", new MemberSearchController());
 		list.put("/memberUpdate.shiva", new MemberUpdateController());
