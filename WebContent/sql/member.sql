@@ -8,10 +8,15 @@ CREATE TABLE MEMBER(
 	PHONE       VARCHAR2(15),
 	PRIMARY KEY(ID)
 );
-SELECT * FROM MEMBER;
-SELECT * FROM MEMBER where id='kjk';
-select id from member where id='kjk' and passwd='123';
+--삽입
+INSERT INTO member values('kjk', '123', '김재겸', '남자', 'kjk@naver.com', '01012341234');
+INSERT INTO member values('admin', '123', '김종민', '남자', 'kjk@naver.com', '01098765432');
 
+--선택
+SELECT * FROM member;
+SELECT id FROM member WHERE id='kjk' AND passwd='123';
+
+--수정
 update member set passwd='123' where id='kjk'
 
 DROP TABLE BOARD

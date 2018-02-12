@@ -40,8 +40,8 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 											</c:when>
 	                                    	<c:otherwise>
 		                                    	<li><span class="ss_user_id"><c:out value='${sessionScope.id}'/>님</span></li>
-		                                    	<li><a href="./memberLogout.shiva" class="">Logout</a></li>
 		                                    	<li><a href="./mypage.shiva" class="">Mypage</a></li>
+		                                    	<li><a href="./memberLogout.shiva" class="">Logout</a></li>
 	                                    	</c:otherwise>
                                     	</c:choose>
                                     </ul>                             

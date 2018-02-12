@@ -202,10 +202,12 @@ public class MemberDAO {
 		System.out.println("memberDelete의 세션 아이디"+sessionId);		
 		String sql =  "DELETE FROM member WHERE id = '";
 	           sql += sessionId+"' ";
+	    System.out.println(sql);
 	    try {       
 		    conn = connect();
 		    pstmt = conn.prepareStatement(sql);
 		    pstmt.executeUpdate(); // memberDelete() : DML실행(select 제외)
+		    return true;
 		} catch (SQLException e) {
 			System.out.println("memberUpdate() 오류발생" + e);
 		} finally {

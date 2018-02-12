@@ -42,8 +42,10 @@ var myPageClass = {
 	deleteMember : function() {
 		var that = this;
 		$('#btnDel').on('click', function(){
-			that.frmMypage.attr('action','./memberDelete.shiva');
-			that.frmMypage.submit();
+			if(confirm('정말 탈퇴하시겠습니까?')){
+				that.frmMypage.attr('action','./memberDelete.shiva');
+				that.frmMypage.submit();				
+			}
 		});		
 	}
 };
