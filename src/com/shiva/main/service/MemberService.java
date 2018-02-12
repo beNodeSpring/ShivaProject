@@ -23,13 +23,18 @@ public class MemberService {
 		dao.memberInsert(member);
 	}
 	
-	// 2. 회원정보 수정
+	// 2. 회원아이디 중복검사
+	public boolean memberIdCheck(String desiredId) {
+		return dao.memberIdCheck(desiredId);
+	}
+	
+	// 3. 회원정보 수정
 	public boolean memberUpdate(MemberVO member, HttpServletRequest request) {
 		return dao.memberUpdate(member, request);
 	}
 	
 	
-	// 3. 회원정보 삭제(회원 탈퇴)
+	// 4. 회원정보 삭제(회원 탈퇴)
 	public boolean memberDelete(MemberVO member, HttpServletRequest request) {
 		return dao.memberDelete(member, request);
 	}	

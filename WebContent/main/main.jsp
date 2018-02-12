@@ -59,22 +59,22 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 											<h4 class="modal-title">로그인</h4>
 										</div>
 										
-										<form action="./memberLogin.shiva" method="post" >
+										<form action="./memberLogin.shiva" method="post" id="frmLoginModal" name="frmLoginModal">
 											<div class="modal-body">
 												<!-- 로그인 폼 -->
-													<div class="form-group">
-													    <label for="id">ID</label>
-													    <input type="text" class="form-control" size="10" name="id" id="id">
-													</div>
-													<div class="form-group">
-													    <label for="pass">비밀번호</label>
-													    <input type="password" class="form-control" size="10" name="passwd" id="passwd">
-													</div>
+												<div class="form-group">
+												    <label for="id">ID</label>
+												    <input type="text" class="form-control" size="10" name="id" id="id">
+												</div>
+												<div class="form-group">
+												    <label for="pass">비밀번호</label>
+												    <input type="password" class="form-control" size="10" name="passwd" id="passwd">
+												</div>
 											</div>
 							
 											<div class="modal-footer">
 												<a href="./memberjoin.shiva" class="btn btn-warning">회원가입</a>
-												<button type="submit" class="btn btn-primary">로그인</button>
+												<button type="submit" id="btnLogin" class="btn btn-primary">로그인</button>
 											</div>
 										</form>
 									</div>

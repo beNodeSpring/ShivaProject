@@ -19,6 +19,7 @@ public class MainFrontController extends HttpServlet {
 		list = new HashMap<String, Controller>();
 		list.put("/memberjoin.shiva", new MemberJoinController());
 		list.put("/memberInsert.shiva", new MemberInsertController());
+		list.put("/memberCheck.shiva", new MemberCheckController());
 		list.put("/memberLogin.shiva", new MemberLoginController());
 		list.put("/memberLogout.shiva", new MemberLogoutController());
 		list.put("/mypage.shiva", new MypageController());

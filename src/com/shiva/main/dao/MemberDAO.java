@@ -79,7 +79,7 @@ public class MemberDAO {
 		}
 	}
 	
-	// [삽입] member테이블에 회원정보 삽입
+	// [삽입] 회원정보 추가
 	public void memberInsert(MemberVO member) {
 		Connection conn = null;
 		
@@ -101,14 +101,13 @@ public class MemberDAO {
 		}
 	}// memberInsert()
 	
-	// [추출] DB에서 아이디,비번을 매칭해서 세션 아이디를 추출
+	// [추출] DB에서 아이디,비번을 매칭해서 세션 아이디를 꺼냄
 	public String returnId(String[] idPw) {
 		Connection conn = null;
 		ResultSet rs = null;
 		String sessionId = null;
 		String sql = "SELECT id FROM member WHERE id=? AND passwd=? ";
-		System.out.println(idPw[0]);
-		System.out.println(idPw[1]);
+		System.out.println(idPw[0] + ", " + idPw[1]);
 		
 		try {
 			conn = connect();
@@ -131,11 +130,10 @@ public class MemberDAO {
 		return sessionId;
 	}
 
-	// [검색] member테이블에 회원정보 검색
+	// [검색] 회원정보 검색
 	public MemberVO memberSearch(HttpServletRequest request) {
 		Connection conn = null;
 		ResultSet rs = null;
-		MemberVO member = null;
 		HttpSession session = request.getSession();
 		String sessionId = (String) session.getAttribute("id");
 		String sql = "SELECT * FROM member WHERE id='"+ sessionId +"'";
@@ -156,15 +154,39 @@ public class MemberDAO {
 			}
 			
 		} catch (SQLException e) {
-			System.out.println("memberInsert() 오류발생" + e);
+			System.out.println("memberSearch() 오류발생" + e);
 		} finally {
 			close(conn, pstmt, rs);
 		}
 		return null;		
 	}
 	
+	// 짜는중 : [검사] 회원아이디 중복 검사 
+	public boolean memberIdCheck(String desiredId) {
+		Connection conn = null;
+		ResultSet rs = null;
+		String sql = "SELECT id FROM member WHERE id=? ";
+		System.out.println("ajax로 넘어온 파라미터 : "+desiredId);
+		try {
+			conn = connect();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, desiredId);	
+			rs = pstmt.executeQuery(); // executeQuery() : select 실행
+			if (rs.next()) {
+				return true; // 중복아이디 존재
+			} else {
+				return false; // 중복 아이디 없음
+			}
+
+		} catch (SQLException e) {
+			System.out.println("memberSearch() 오류발생" + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}		
+		return false;
+	}
 	
-	// member테이블에 회원정보 수정
+	// [수정] 회원정보 변경
 	public boolean memberUpdate(MemberVO member, HttpServletRequest request) {
 		Connection conn = null;
 		HttpSession session = request.getSession();
@@ -195,6 +217,7 @@ public class MemberDAO {
 		return false;
 	}// memberUpdate()	
 	
+	// [삭제] 회원탈퇴
 	public boolean memberDelete(MemberVO member, HttpServletRequest request) {
 		Connection conn = null;
 		HttpSession session = request.getSession();
@@ -215,6 +238,5 @@ public class MemberDAO {
 		}
 		return false;
 	}// memberDelete()
-	
 	
 }

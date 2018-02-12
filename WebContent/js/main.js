@@ -2,7 +2,9 @@
  *  coding by jomin Kim of Team Shiva
  *  last update : 18/02/12
 */
-// mainpage
+
+/** mainpage **/
+// API Ajax
 var nowUrl = location.href;
 var mainPath = nowUrl.substr(nowUrl.length - 14, 14);
 if (mainPath === "/ShivaProject/"){
@@ -27,9 +29,83 @@ if (mainPath === "/ShivaProject/"){
 	})();	
 }
 
+// 로그인 유효성 검사
+var modalValidator = {
+	id : $('#frmLoginModal #id'),
+	pw : $('#frmLoginModal #passwd'),
+	excute : function() {
+		var that = this;
+		$('#btnLogin').on('click', function(){
+			if(that.id.val()==''){
+				alert('아이디를 입력해주세요');
+				that.id.focus();
+				return false;
+			} else if (that.pw.val()=='') {
+				alert('비밀번호를 입력해주세요');
+				that.pw.focus();
+				return false;
+			} else{
+				$(that.frm).submit();	
+				return true;
+			}				
+		});
+	}
+};
+modalValidator.excute();
 
 
-// mypage.shiva
+/** memberjoin.shiva **/
+// 정규표현식 써서 형식(이메일,전화번호) 맞는지도 체크하기
+var joinValidator = {
+	frm : '#frmMemberJoin',
+	excute : function() {
+		var that = this;
+		$('#selectMail').on('change', function() {
+			$('#mailDomain').val($(this).val());
+		});
+		$('#btnJoin').on('click', function() {
+			if($(that.frm+' #id').val()=='') {
+				alert('아이디를 입력해주세요');
+				$(that.frm+' #id').focus();
+				return false;
+			} else if ($(that.frm+' #passwd').val()=='') {
+				alert('비밀번호를 입력해주세요');
+				$(that.frm+' #passwd').focus();
+				return false;
+			} else if ($(that.frm+' #passwdChk').val()=='') {
+				alert('비밀번호 확인을 입력해주세요');
+				$(that.frm+' #passwdChk').focus();
+				return false;
+			} else if ($(that.frm+' #name').val()=='') {
+				alert('이름을 입력해주세요');
+				$(that.frm+' #name').focus();
+				return false;
+			} else if ($(that.frm+' #genM').is(":checked")==false && $(that.frm+' #genW').is(":checked")==false) {
+				alert('성별을 체크해주세요');
+				$(that.frm+' #genM').focus();
+				return false;
+			} else if ($(that.frm+' #mail').val()=='') {
+				alert('이메일을 입력해주세요');
+				$(that.frm+' #mail').focus();
+				return false;
+			} else if ($(that.frm+' #mailDomain').val()=='') {
+				alert('이메일 도메인을 입력 혹은 선택해주세요');
+				$(that.frm+' #mailDomain').focus();
+				return false;
+			} else if ($(that.frm+' #phone').val()=='') {
+				alert('전화번호를 입력해주세요');
+				$(that.frm+' #phone').focus();
+				return false;
+			} else{
+				$(that.frm).submit();	
+				return true;
+			}				
+		});
+	}
+};
+joinValidator.excute();
+
+/** mypage.shiva **/
 var myPageClass = {
 	frmMypage : $('#frmMypage'),
 	modifyMember : function() {
@@ -52,4 +128,4 @@ var myPageClass = {
 myPageClass.modifyMember();
 myPageClass.deleteMember();
 
-//
+/**  **/
