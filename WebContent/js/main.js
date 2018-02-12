@@ -35,7 +35,7 @@ var myPageClass = {
 	modifyMember : function() {
 		var that = this;
 		$('#btnMod').on('click', function(){
-			that.frmMypage.attr('action','./modify.shiva');
+			that.frmMypage.attr('action','./memberModify.shiva');
 			that.frmMypage.submit();
 		});		
 	},

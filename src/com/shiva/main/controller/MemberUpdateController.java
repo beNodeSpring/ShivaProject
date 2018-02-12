@@ -44,7 +44,7 @@ public class MemberUpdateController implements Controller {
 			System.out.println("회원정보 수정완료");
 			out.print("<script>");
 			out.print("alert('회원정보 수정이 완료되었습니다');");
-			out.print("location.href='/ShivaProject/modify.shiva'");
+			out.print("location.href='/ShivaProject/memberModify.shiva'");
 			out.print("</script>");
 		} else {
 			System.out.println("회원정보 수정실패");

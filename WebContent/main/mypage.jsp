@@ -23,6 +23,7 @@ ${ error } <!-- request.getAttribute("error") -->
 		<div class="row">               
 			<h2 class="sub_tit">마이페이지</h2>
 			<div class="sub_page join_page modal-content">
+				<!-- action의 값은  main.js에서 분기처리 -->
 				<form action="" method="post" id="frmMypage" >
 					<div class="text-center">
 						<img src="/ShivaProject/images/img_siba197.png" alt="사진" />

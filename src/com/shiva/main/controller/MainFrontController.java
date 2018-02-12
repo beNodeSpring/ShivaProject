@@ -19,13 +19,13 @@ public class MainFrontController extends HttpServlet {
 		list = new HashMap<String, Controller>();
 		list.put("/memberjoin.shiva", new MemberJoinController());
 		list.put("/memberInsert.shiva", new MemberInsertController());
-		list.put("/memberSearch.shiva", new MemberSearchController());
-		list.put("/memberUpdate.shiva", new MemberUpdateController());
-		list.put("/memberDelete.shiva", new MemberDeleteController());
 		list.put("/memberLogin.shiva", new MemberLoginController());
 		list.put("/memberLogout.shiva", new MemberLogoutController());
 		list.put("/mypage.shiva", new MypageController());
-		list.put("/modify.shiva", new MemberModifyController());
+		list.put("/memberModify.shiva", new MemberModifyController());
+		list.put("/memberSearch.shiva", new MemberSearchController());
+		list.put("/memberUpdate.shiva", new MemberUpdateController());
+		list.put("/memberDelete.shiva", new MemberDeleteController());
 
 	}
 	
