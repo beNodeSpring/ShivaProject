@@ -32,7 +32,7 @@ public class MemberLoginController implements Controller {
 			
 			System.out.println("MemberLoginController : 로그인 업무 완료");
 			out.print("<script>");
-			out.print("alert('로그인이 완료되었습니다');");
+			//out.print("alert('로그인이 완료되었습니다');");
 			out.print("location.href='/ShivaProject';");
 			out.print("</script>");			
 		} else { // 아이디& 비밀번호 불일치 
