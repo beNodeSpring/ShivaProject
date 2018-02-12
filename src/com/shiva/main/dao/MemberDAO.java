@@ -82,6 +82,7 @@ public class MemberDAO {
 	// [삽입] member테이블에 회원정보 삽입
 	public void memberInsert(MemberVO member) {
 		Connection conn = null;
+		
 		try {
 			conn = connect();
 			//conn = ds.getConnection();
@@ -108,6 +109,7 @@ public class MemberDAO {
 		String sql = "SELECT id FROM member WHERE id=? AND passwd=? ";
 		System.out.println(idPw[0]);
 		System.out.println(idPw[1]);
+		
 		try {
 			conn = connect();
 			pstmt = conn.prepareStatement(sql);
@@ -124,7 +126,7 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			System.out.println("memberInsert() 오류발생" + e);
 		} finally {
-			close(conn, pstmt);
+			close(conn, pstmt, rs);
 		}
 		return sessionId;
 	}
@@ -137,6 +139,7 @@ public class MemberDAO {
 		HttpSession session = request.getSession();
 		String sessionId = (String) session.getAttribute("id");
 		String sql = "SELECT * FROM member WHERE id='"+ sessionId +"'";
+		
 		try {
 			conn = connect();
 			pstmt = conn.prepareStatement(sql);
@@ -155,7 +158,7 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			System.out.println("memberInsert() 오류발생" + e);
 		} finally {
-			close(conn, pstmt);
+			close(conn, pstmt, rs);
 		}
 		return null;		
 	}
@@ -167,9 +170,11 @@ public class MemberDAO {
 		HttpSession session = request.getSession();
 		String sessionId = (String) session.getAttribute("id");
 		System.out.println("memberUpdate의 세션 아이디"+sessionId);
+		
 		String sql =  " UPDATE member SET passwd=?, name=?, gender=?, mail=?, phone=?";
 		       sql += " where id = '";
 		       sql += sessionId+"' ";
+		       
 		try {
 			conn = connect();
 			//conn = ds.getConnection();
@@ -189,6 +194,25 @@ public class MemberDAO {
 		}
 		return false;
 	}// memberUpdate()	
+	
+	public boolean memberDelete(MemberVO member, HttpServletRequest request) {
+		Connection conn = null;
+		HttpSession session = request.getSession();
+		String sessionId = (String) session.getAttribute("id");
+		System.out.println("memberDelete의 세션 아이디"+sessionId);		
+		String sql =  "DELETE FROM member WHERE id = '";
+	           sql += sessionId+"' ";
+	    try {       
+		    conn = connect();
+		    pstmt = conn.prepareStatement(sql);
+		    pstmt.executeUpdate(); // memberDelete() : DML실행(select 제외)
+		} catch (SQLException e) {
+			System.out.println("memberUpdate() 오류발생" + e);
+		} finally {
+			close(conn, pstmt);
+		}
+		return false;
+	}// memberDelete()
 	
 	
 }

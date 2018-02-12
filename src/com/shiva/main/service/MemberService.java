@@ -30,5 +30,7 @@ public class MemberService {
 	
 	
 	// 3. 회원정보 삭제(회원 탈퇴)
-	
+	public boolean memberDelete(MemberVO member, HttpServletRequest request) {
+		return dao.memberDelete(member, request);
+	}	
 }
