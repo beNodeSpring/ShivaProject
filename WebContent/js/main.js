@@ -1,10 +1,11 @@
 /**
  *  coding by jomin Kim of Team Shiva
  *  last update : 18/02/12
+ *  
 */
 
-/** mainpage **/
-// API Ajax
+/** Controller : / => mainpage **/
+// json API Ajax처리
 var nowUrl = location.href;
 var mainPath = nowUrl.substr(nowUrl.length - 14, 14);
 if (mainPath === "/ShivaProject/"){
@@ -54,9 +55,77 @@ var modalValidator = {
 modalValidator.excute();
 
 
-/** memberjoin.shiva **/
-// 정규표현식 써서 형식(이메일,전화번호) 맞는지도 체크하기
-var joinValidator = {
+/** Controller : memberjoin.shiva 
+ *  literal Class : asyncValidator, pwValidator, nullValidator
+ * **/
+// Global Variable : 회원가입의 모든 유효성 검사를 통과여부 
+var joinValiState = false;
+
+// asyncValidator : 비동기로 아이디 중복 검사
+var asyncValidator = {
+	id : $('#frmMemberJoin #id'),
+	excute : function() {
+		var that = this;
+		that.id.on('keyup', function(){	
+			var desiredId = that.id.val();
+			var msgCheckId = $('#msgCheckId');
+			if(desiredId==='') {
+				msgCheckId.text('아이디 입력해주세요');
+				msgCheckId.attr("class","check_txt_check");
+			} else {
+				$.ajax({
+					type: 'POST',
+					url: './memberCheck.shiva',
+					data: {'desiredId':desiredId},
+					success: function(data) {
+						// alert(data);
+						if(data) {
+							msgCheckId.text(data+'는 사용 가능한 아이디 입니다.');
+							msgCheckId.attr("class","check_txt_basic");
+							joinValiState=true;
+						} else {
+							msgCheckId.text('중복된 아이디가 존재합니다. 다른 아이디를 입력해주세요');
+							msgCheckId.attr("class","check_txt_check");
+							joinValiState=false;
+						}
+					}
+				});		
+			}// if
+		});				
+	} // excute()
+};
+asyncValidator.excute();
+
+// pwValidator : 비밀번호와 비번확인 일치여부 체크
+var pwValidator = {
+	excute : function() {
+		var passCheck = function() {
+			var msgCheckPw = $('#msgCheckPw');
+			var pw1 = $('#passwd').val();
+			var pw2 = $('#passwdChk').val();
+			if(pw1 =='' && pw2 =='') {
+				msgCheckPw.text('비밀번호를 입력해주세요');
+				msgCheckPw.attr("class","check_txt_check");
+				joinValiState=false;
+			} else if(pw1 != pw2) {
+				msgCheckPw.text('비밀번호가 일치하지 않습니다');
+				msgCheckPw.attr("class","check_txt_check");
+				joinValiState=false;
+			} else if(pw1 == pw2) {
+				msgCheckPw.text('비밀번호가 일치합니다');	
+				msgCheckPw.attr("class","check_txt_basic");
+				joinValiState=true;
+			}
+		}// passCheck()
+		$('#passwd').on('keyup', passCheck);
+		$('#passwdChk').on('keyup', passCheck);
+	}
+};
+pwValidator.excute();
+
+
+// nullValidator : 정규표현식 써서 형식(이메일,전화번호) 맞는지도 체크하기
+var nullValidator = {
 	frm : '#frmMemberJoin',
 	excute : function() {
 		var that = this;
@@ -96,17 +165,20 @@ var joinValidator = {
 				alert('전화번호를 입력해주세요');
 				$(that.frm+' #phone').focus();
 				return false;
-			} else{
+			} else if(joinValiState===true){
 				$(that.frm).submit();	
 				return true;
 			}				
 		});
 	}
 };
-joinValidator.excute();
+nullValidator.excute();
 
-/** mypage.shiva **/
-var myPageClass = {
+
+
+/** Controller : mypage.shiva **/
+// myPageClass : 회원정보 수정/삭제 클래스
+var myPageClass = { 
 	frmMypage : $('#frmMypage'),
 	modifyMember : function() {
 		var that = this;
@@ -128,4 +200,4 @@ var myPageClass = {
 myPageClass.modifyMember();
 myPageClass.deleteMember();
 
-/**  **/
+/** Controller :   **/
