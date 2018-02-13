@@ -25,13 +25,16 @@ ${ error } <!-- request.getAttribute("error") -->
 				<form action="./memberInsert.shiva" method="post" id="frmMemberJoin" name="frmMemberJoin">
 					<div class="form-group">
 						<label for="id">아이디</label>
-						<div class="input-group">
+						<input type="text" class="form-control" maxlength="15" name="id" id="id">
+						<p id="msgCheckId" class="check_txt_check">아이디를 입력 해주세요</p>
+<!-- 						<div class="input-group">
 						    <input type="text" class="form-control" maxlength="15" name="id" id="id">
 						    <div class="input-group-btn">
 							    <input type="button" id="btnIdCheck" class="btn btn-danger" value="아이디 중복체크"/>
 						    </div>
-						</div>
+						</div> 
 						<p id="msgCheckId" class="check_txt_check">아이디 중복체크를 해주세요</p>
+						-->
 					</div>
 					<div class="form-group">
 					    <label for="pass">비밀번호</label>
@@ -42,51 +45,6 @@ ${ error } <!-- request.getAttribute("error") -->
 					    <input type="password" class="form-control" maxlength="15" name="passwdChk" id="passwdChk">
 						<p id="msgCheckPw" class="check_txt_check">비밀번호를 입력해주세요</p>
 					</div>
-<script>
-$('#btnIdCheck').on('click', function(){
-	var desiredId = $('#frmMemberJoin #id').val();
-	var msgCheckId = $('#msgCheckId');
-	if(desiredId==='') {
-		msgCheckId.text('아이디 입력해주세요');
-		msgCheckId.attr("class","check_txt_check");
-	} else {
-		$.ajax({
-			type: 'POST',
-			url: './memberCheck.shiva',
-			data: {'desiredId':desiredId},
-			success: function(data) {
-				// alert(data);
-				if(data) {
-					msgCheckId.text(data+'는 사용 가능한 아이디 입니다.');
-					msgCheckId.attr("class","check_txt_basic");
-				} else {
-					msgCheckId.text('중복된 아이디가 존재합니다. 다른 아이디를 입력해주세요');
-					msgCheckId.attr("class","check_txt_check");
-				}
-			}
-		});		
-	}
-
-});
-var passCheck = function(){
-	var msgCheckPw = $('#msgCheckPw');
-	var pw1 = $('#passwd').val();
-	var pw2 = $('#passwdChk').val();
-	if(pw1 =='' && pw2 =='') {
-		msgCheckPw.text('비밀번호를 입력해주세요');
-		msgCheckPw.attr("class","check_txt_check");
-	} else if(pw1 != pw2) {
-		msgCheckPw.text('비밀번호가 일치하지 않습니다');
-		msgCheckPw.attr("class","check_txt_check");
-	} else if(pw1 == pw2) {
-		msgCheckPw.text('비밀번호가 일치합니다');	
-		msgCheckPw.attr("class","check_txt_basic");
-	}
-}
-$('#passwd').on('keyup', passCheck);
-$('#passwdChk').on('keyup', passCheck);
-</script>					
-					
 					<div class="form-group">
 					    <label for="id">이름</label>
 					    <input type="text" class="form-control" maxlength="15" name="name" id="name">
@@ -120,7 +78,7 @@ $('#passwdChk').on('keyup', passCheck);
 					    <input type="text" class="form-control" maxlength="15" name="phone" id="phone" placeholder="-없이 입력해주세요">
 					</div>
 					<div class="text-right">
-						<button type=submit id="btnJoin" class="btn btn-primary">회원가입</button>
+						<button type=button id="btnJoin" class="btn btn-primary">회원가입</button>
 						<a href="javascript:history.back()" class="btn btn-warning">메인화면</a>
 					</div>
 				</form>

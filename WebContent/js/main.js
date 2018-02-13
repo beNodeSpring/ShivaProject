@@ -121,7 +121,7 @@ var pwValidator = {
 		$('#passwdChk').on('keyup', passCheck);
 	}
 };
-pwValidator.excute();
+pwValidator.excute(); // 매개변수 받아서 하는걸로 변경
 
 
 // nullValidator : 정규표현식 써서 형식(이메일,전화번호) 맞는지도 체크하기
@@ -199,5 +199,6 @@ var myPageClass = {
 };
 myPageClass.modifyMember();
 myPageClass.deleteMember();
+//frmMemberModi
 
 /** Controller :   **/

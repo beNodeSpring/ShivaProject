@@ -24,19 +24,21 @@ ${ error } <!-- request.getAttribute("error") -->
 		<div class="row">               
 			<h2 class="sub_tit">회원정보 수정</h2>
 			<div class="sub_page join_page modal-content">
-				<form action="./memberUpdate.shiva" method="post" >
+				<form action="./memberUpdate.shiva" method="post" id="frmMemberModi" name="frmMemberModi">
 					<div class="form-group">
 					    <label for="id">ID</label>
 					    <input type="text" class="form-control" maxlength="15" name="id" id="id" value="${sessionScope.id}" readonly>
 					</div>
 					<div class="form-group">
-					    <label for="pass">변경할 비밀번호</label>
-					    <input type="password" class="form-control" maxlength="15" name="passwd" id="beforePass" value="${memberVO.getPasswd()}">
+					    <label for="pass">변경할  비밀번호</label>
+					    <input type="password" class="form-control" maxlength="15" name="passwd" id="passwd"  value="${memberVO.getPasswd()}">
 					</div>
 					<div class="form-group">
 					    <label for="pass">비밀번호 확인</label>
-					    <input type="password" class="form-control" maxlength="15" id="afterPass">
-					</div>
+					    <input type="password" class="form-control" maxlength="15" name="passwdChk" id="passwdChk">
+						<p id="msgCheckPw" class="check_txt_check">비밀번호를 입력해주세요</p>
+					</div>					
+					
 					<div class="form-group">
 					    <label for="id">name</label>
 					    <input type="text" class="form-control" maxlength="15" name="name" id="name" value="${memberVO.getName()}">
