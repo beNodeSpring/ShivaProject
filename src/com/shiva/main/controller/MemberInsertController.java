@@ -20,6 +20,7 @@ public class MemberInsertController implements Controller {
 		String name = request.getParameter("name");
 		String gender = request.getParameter("gender");
 		String mail = request.getParameter("mail");
+		String mailDomain = request.getParameter("mailDomain");
 		String phone = request.getParameter("phone");
 
 		// 유효성 체크 - 스크립트단에서 처리할꺼임
@@ -31,6 +32,7 @@ public class MemberInsertController implements Controller {
 		member.setPasswd(passwd);
 		member.setGender(gender);
 		member.setMail(mail);
+		member.setMailDomain(mailDomain);
 		member.setPhone(phone);
 		
 		// Service 객체를 추출한뒤 의 회원정보 생성 서비스처리 담당 MemberInsert()를 호출

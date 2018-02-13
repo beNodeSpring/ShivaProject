@@ -86,13 +86,14 @@ public class MemberDAO {
 		try {
 			conn = connect();
 			//conn = ds.getConnection();
-			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into member values(?,?,?,?,?,?,?)");
 			pstmt.setString(1, member.getId());
 			pstmt.setString(2, member.getPasswd());
 			pstmt.setString(3, member.getName());
 			pstmt.setString(4, member.getGender());
 			pstmt.setString(5, member.getMail());
-			pstmt.setString(6, member.getPhone());
+			pstmt.setString(6, member.getMailDomain());
+			pstmt.setString(7, member.getPhone());
 			pstmt.executeUpdate(); // executeUpdate() : DML실행(select 제외)
 		} catch (SQLException e) {
 			System.out.println("memberInsert() 오류발생" + e);
@@ -149,7 +150,8 @@ public class MemberDAO {
 				memberVO.setName(rs.getString(3));
 				memberVO.setGender(rs.getString(4));
 				memberVO.setMail(rs.getString(5));
-				memberVO.setPhone(rs.getString(6));
+				memberVO.setMailDomain(rs.getString(6));
+				memberVO.setPhone(rs.getString(7));
 				return memberVO;
 			}
 			
@@ -193,7 +195,7 @@ public class MemberDAO {
 		String sessionId = (String) session.getAttribute("id");
 		System.out.println("memberUpdate의 세션 아이디"+sessionId);
 		
-		String sql =  " UPDATE member SET passwd=?, name=?, gender=?, mail=?, phone=?";
+		String sql =  " UPDATE member SET passwd=?, name=?, gender=?, mail=?, mailDomain=?, phone=?";
 		       sql += " where id = '";
 		       sql += sessionId+"' ";
 		       
@@ -206,7 +208,8 @@ public class MemberDAO {
 			pstmt.setString(2, member.getName());
 			pstmt.setString(3, member.getGender());
 			pstmt.setString(4, member.getMail());
-			pstmt.setString(5, member.getPhone());
+			pstmt.setString(5, member.getMailDomain());
+			pstmt.setString(6, member.getPhone());
 			pstmt.executeUpdate(); // executeUpdate() : DML실행(select 제외)
 			return true;
 		} catch (SQLException e) {

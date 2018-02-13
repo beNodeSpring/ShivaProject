@@ -4,13 +4,15 @@ CREATE TABLE MEMBER(
 	PASSWD      VARCHAR2(15),
 	NAME        VARCHAR2(15),
 	GENDER      VARCHAR2(6),
-	MAIL        VARCHAR2(30),
+	MAIL        VARCHAR2(20),
+	MAILDomain  VARCHAR2(10),
 	PHONE       VARCHAR2(15),
 	PRIMARY KEY(ID)
 );
 --삽입
-INSERT INTO member values('kjk', '123', '김재겸', '남자', 'kjk@naver.com', '01012341234');
-INSERT INTO member values('admin', '123', '김종민', '남자', 'kjk@naver.com', '01098765432');
+INSERT INTO member values('kjk', '123', '김재겸', '남자', 'kjk', 'naver.com', '01012341234');
+INSERT INTO member values('kjm', '123', '김종민', '남자', 'kjm', 'google.com', '01012341234');
+INSERT INTO member values('admin', '123', '김종민', '남자', 'admin', 'nate.com', '01098765432');
 
 --선택
 SELECT * FROM member;

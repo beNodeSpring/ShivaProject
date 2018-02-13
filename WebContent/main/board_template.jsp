@@ -96,5 +96,6 @@
 		</div>
 	</form>
 </div>
+<script src="/ShivaProject/js/main.js"></script>
 </body>
 </html>

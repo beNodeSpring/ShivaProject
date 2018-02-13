@@ -58,7 +58,7 @@ modalValidator.excute();
 /** Controller : memberjoin.shiva 
  *  literal Class : asyncValidator, pwValidator, nullValidator
  * **/
-// Global Variable : 회원가입의 모든 유효성 검사를 통과여부 
+// Global Variable : 회원가입/수정의 유효성 검사들 통과여부 
 var joinValiState = false;
 
 // asyncValidator : 비동기로 아이디 중복 검사
@@ -126,9 +126,11 @@ pwValidator.excute(); // 매개변수 받아서 하는걸로 변경
 
 // nullValidator : 정규표현식 써서 형식(이메일,전화번호) 맞는지도 체크하기
 var nullValidator = {
-	frm : '#frmMemberJoin',
-	excute : function() {
+	//frm : '#frmMemberJoin',
+	frm : '',
+	excute : function(frm) {
 		var that = this;
+		this.frm = frm;
 		$('#selectMail').on('change', function() {
 			$('#mailDomain').val($(this).val());
 		});
@@ -165,6 +167,10 @@ var nullValidator = {
 				alert('전화번호를 입력해주세요');
 				$(that.frm+' #phone').focus();
 				return false;
+			} else if (/^[0-9]*$/.exec($(that.frm+' #phone').val())==null) {	
+				alert('전화번호는 숫자만 입력해주세요');
+				$(that.frm+' #phone').focus();
+				return false;
 			} else if(joinValiState===true){
 				$(that.frm).submit();	
 				return true;
@@ -172,7 +178,12 @@ var nullValidator = {
 		});
 	}
 };
-nullValidator.excute();
+// 정규표현식으로 현재 컨트롤러 구분해서 nullValidator의 메서드 실행
+if (/memberModify.shiva/.exec(nowUrl) != null){
+	nullValidator.excute('#frmMemberModi');
+} else if (/memberjoin.shiva/.exec(nowUrl) != null){
+	nullValidator.excute('#frmMemberJoin');
+}
 
 
 

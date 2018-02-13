@@ -7,6 +7,7 @@ public class MemberVO {
 	private String name;
 	private String gender;
 	private String mail;
+	private String mailDomain;
 	private String phone;
 	private String group;
 	
@@ -40,6 +41,12 @@ public class MemberVO {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+	public String getMailDomain() {
+		return mailDomain;
+	}
+	public void setMailDomain(String mailDomain) {
+		this.mailDomain = mailDomain;
+	}	
 	public String getPhone() {
 		return phone;
 	}
@@ -52,6 +59,5 @@ public class MemberVO {
 	public void setGroup(String group) {
 		this.group = group;
 	}
-	
 	
 }

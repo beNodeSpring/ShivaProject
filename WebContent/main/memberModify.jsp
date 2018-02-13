@@ -49,16 +49,16 @@ ${ error } <!-- request.getAttribute("error") -->
                             <c:set var="userGender" value="${memberVO.getGender()}" />
                             <c:choose>
 								<c:when test="${userGender == '남'}">
-									남 <input type="radio" class="" name="gender" value="남" checked>
-								        여 <input type="radio" class="" name="gender" value="여">
+									남 <input type="radio" id="genM" name="gender" value="남" checked>
+								        여 <input type="radio" id="genW" name="gender" value="여">
 								</c:when>
 								<c:when test="${userGender == '여'}">
-									남 <input type="radio" class="" name="gender" value="남">
-								        여 <input type="radio" class="" name="gender" value="여" checked>
+									남 <input type="radio" id="genM" name="gender" value="남">
+								        여 <input type="radio" id="genW" name="gender" value="여" checked>
 								</c:when>								
                                 <c:otherwise>
-									남 <input type="radio" class="" name="gender" value="남">
-								        여 <input type="radio" class="" name="gender" value="여">
+									남 <input type="radio" id="genM" name="gender" value="남">
+								        여 <input type="radio" id="genW" name="gender" value="여">
                                 </c:otherwise>
                             </c:choose>				    	
 					    	
@@ -66,14 +66,31 @@ ${ error } <!-- request.getAttribute("error") -->
 					</div>
 					<div class="form-group">
 					    <label for="id">mail</label>
-					    <input type="text" class="form-control" maxlength="30" name="mail" id="mail" value="${memberVO.getMail()}">
+					    <script>
+					    var mailAdress = ${memberVO.getMail()};
+					    
+					    </script>
+					    <ul class="li_mail cf">
+					    	<li><input type="text" class="form-control" maxlength="30" name="mail" id="mail" value="${memberVO.getMail()}"></li>
+					    	<li>@</li>
+					    	<li><input type="text" class="form-control" maxlength="30" name="mailDomain" id="mailDomain" value="${memberVO.getMailDomain()}"></li>
+					    	<li>
+							    <select name="selectMail" id="selectMail" class="select_mail">
+							    	<option value="">선택</option>
+							    	<option value="google.com">google.com</option>
+							    	<option value="naver.com">naver.com</option>
+							    	<option value="hanmail.net">hanmail.net</option>
+							    	<option value="hotmail.com">hotmail.com</option>
+							    </select>					    	
+					    	</li>
+					    </ul>
 					</div>
 					<div class="form-group">
 					    <label for="id">phone</label>
-					    <input type="text" class="form-control" maxlength="15" name="phone" id="phone" value="${memberVO.getPhone()}">
+					    <input type="text" class="form-control" maxlength="15" name="phone" id="phone" value="${memberVO.getPhone()}" placeholder="-없이 입력해주세요">
 					</div>
 					<div class="text-right">
-						<input type=submit value="회원정보수정" class="btn btn-warning">
+						<input type=button id="btnJoin" class="btn btn-warning" value="회원정보수정">
 						<a href="/ShivaProject/" class="btn btn-primary">메인페이지</a>
 					</div>
 				</form>
@@ -82,6 +99,6 @@ ${ error } <!-- request.getAttribute("error") -->
 		</div>
 	</div>
 </div>
-
+<script src="/ShivaProject/js/main.js"></script>
 </body>
 </html>
