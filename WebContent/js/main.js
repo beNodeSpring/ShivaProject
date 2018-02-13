@@ -1,11 +1,11 @@
 /**
- *  coding by jomin Kim of Team Shiva
- *  last update : 18/02/12
- *  
+ *  coding by    : jomin Kim of Team Shiva
+ *  last update  : 18/02/13
+ *  coding style : Object Oriented Programming Javascript 
 */
 
 /** Controller : / => mainpage **/
-// json API Ajax처리
+// json API Ajax처리 (by only Javascript)
 var nowUrl = location.href;
 var mainPath = nowUrl.substr(nowUrl.length - 14, 14);
 if (mainPath === "/ShivaProject/"){
@@ -61,7 +61,7 @@ modalValidator.excute();
 // Global Variable : 회원가입/수정의 유효성 검사들 통과여부 
 var joinValiState = false;
 
-// asyncValidator : 비동기로 아이디 중복 검사
+// asyncValidator : 비동기로 아이디 중복 검사 (by jQuery)
 var asyncValidator = {
 	id : $('#frmMemberJoin #id'),
 	excute : function() {
@@ -210,6 +210,5 @@ var myPageClass = {
 };
 myPageClass.modifyMember();
 myPageClass.deleteMember();
-//frmMemberModi
 
 /** Controller :   **/
