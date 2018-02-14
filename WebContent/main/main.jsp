@@ -244,7 +244,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                 <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> -->
                                    <div class="box bottom-main info-nav-container">
                                         <ul class="info info-ul">
-                                            <li><a href="#" class="about_proin current">추천 게시물</a></li>
+                                            <li><a href="#" class="about_proin current">인기 게시물</a></li>
                                             <li><a href="#" class="about_proin">개발 잘하는 법</a></li>
                                             <li><a href="#" class="about_proin">많이 하면 됨</a></li>
                                             <li><a href="#" class="about_proin">디자인 잘하는 법</a></li>
