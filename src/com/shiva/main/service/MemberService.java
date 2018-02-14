@@ -32,10 +32,14 @@ public class MemberService {
 	public boolean memberUpdate(MemberVO member, HttpServletRequest request) {
 		return dao.memberUpdate(member, request);
 	}
-	
-	
+		
 	// 4. 회원정보 삭제(회원 탈퇴)
 	public boolean memberDelete(MemberVO member, HttpServletRequest request) {
 		return dao.memberDelete(member, request);
+	}
+	
+	// 5. 최근 게시물 비동기로 불러오기
+	public String[] viewRecentPost() {
+		return dao.viewRecentPost();
 	}	
 }
