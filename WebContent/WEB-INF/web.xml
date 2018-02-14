@@ -31,7 +31,7 @@
 
 	<servlet>
      	<servlet-name>UsedFrontController</servlet-name>
-    	<servlet-class>com.shiva.used.controller.UsedFrontController</servlet-class>
+    	<servlet-class>com.shiva.used.controller.UoFrontController</servlet-class>
 	</servlet>
 	<servlet-mapping>
     	<servlet-name>UsedFrontController</servlet-name>

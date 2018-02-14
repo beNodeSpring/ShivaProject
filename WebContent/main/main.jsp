@@ -124,10 +124,10 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                    	<c:otherwise>
 										<%-- 비로그인 상태 a태그 클릭시 페이지 이동 --%>
                                    		<script>
-                               			$('.license_box a').attr('href', 'https://www.naver.com/');	
-                               			$('.resume_box a').attr('href', 'https://www.daum.net/');	
-                               			$('.used_box a').attr('href', 'https://www.daum.net/');	
-                               			$('.car_box a').attr('href', 'https://www.naver.com/');	
+                               			$('.license_box a').attr('href', '#');	
+                               			$('.resume_box a').attr('href', '#');	
+                               			$('.used_box a').attr('href', './ListSaleController.uo');	
+                               			$('.car_box a').attr('href', '#');	
                                    		</script>
                                    	</c:otherwise>
                                	</c:choose>                                
