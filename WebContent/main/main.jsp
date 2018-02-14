@@ -111,27 +111,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                         IT 렌트카
                                     </a>                                
                                 </div> 
-                                
-                                <c:choose>
-									<c:when test="${userId == null}">
-										<%-- 비로그인 상태 a태그 클릭시 alert창 띄우기 --%>
-										<script>
-										$('.win8_btn_box a').on('click', function(e){
-											alert("로그인 후 이용이 가능합니다");
-										});
-										</script>
-									</c:when>
-                                   	<c:otherwise>
-										<%-- 비로그인 상태 a태그 클릭시 페이지 이동 --%>
-                                   		<script>
-                               			$('.license_box a').attr('href', '#');	
-                               			$('.resume_box a').attr('href', '#');	
-                               			$('.used_box a').attr('href', './ListSaleController.uo');	
-                               			$('.car_box a').attr('href', '#');	
-                                   		</script>
-                                   	</c:otherwise>
-                               	</c:choose>                                
-                                   
+                
                             </div>   
 							<!--// Windows8 스타일 메뉴 버튼 -->
 
@@ -201,11 +181,11 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                         <div class="info">
                                             <div class="about_box_title">
                                                 <h3>IT 자격증</h3>
-                                                <h4>정보처리기사 시험일정</h4>
+                                                <h4 id="usedPostCon1"></h4>
                                             </div>
                                         </div> <!-- .info -->
                                         <div class="line"></div>
-                                        <p class="about_box_text">자세히 보기</p>
+                                        <p class="about_box_text"><a id="linkDetail1" href="#">자세히 보기</a></p>
                                     </div>
                                 
                                     <div class="box about_box_line card">
@@ -218,11 +198,11 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                         <div class="info">
                                             <div class="about_box_title">
                                                 <h3>IT 이력서</h3>
-                                                <h4>삼성SDS 공채용 이력서</h4>
+                                                <h4 id="usedPostCon2"></h4>
                                             </div>
                                         </div>
                                         <div class="line"></div>
-                                        <p class="about_box_text">자세히보기</p>
+                                        <p class="about_box_text"><a id="linkDetail2" href="#">자세히보기</a></p>
                                     </div>
 
                                     <div class="box about_box_line card">
@@ -235,11 +215,11 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                         <div class="info">
                                             <div class="about_box_title">
                                                 <h3>IT 중고</h3>
-                                                <h4>LG그램 2017 S급 판매</h4>
+                                                <h4 id="usedPostCon3"></h4>
                                             </div>
                                         </div>
                                         <div class="line"></div>
-                                        <p class="about_box_text">자세히보기</p>
+                                        <p class="about_box_text"><a id="linkDetail3" href="#">자세히보기</a></p>
                                     </div>
                                       
                                 </div>
@@ -299,6 +279,21 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
             </footer>            
         </div>
     </div>
+
 <script src="/ShivaProject/js/main.js"></script>
+<c:choose>
+	<c:when test="${userId == null}">
+		<%-- 비로그인 상태에서 실행 메서드 --%>
+		<script>
+		hasUserId.excuteFalse();
+		</script>
+	</c:when>
+	<c:otherwise>
+		<%-- 로그인 상태에서 실행 메서드 --%>
+   		<script>
+   		hasUserId.excuteTrue();
+   		</script>
+   	</c:otherwise>
+</c:choose>       
 </body>
 </html>

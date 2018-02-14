@@ -4,7 +4,7 @@
  *  coding style : Object Oriented Programming Javascript 
 */
 
-/** Controller : / => mainpage **/
+/** Controller : /    =>    mainpage **/
 // json API Ajax처리 (by only Javascript)
 var nowUrl = location.href;
 var mainPath = nowUrl.substr(nowUrl.length - 14, 14);
@@ -29,6 +29,59 @@ if (mainPath === "/ShivaProject/"){
 		xhttp.send();
 	})();	
 }
+
+
+// 로그인 여부에 따른 스크립트 실행
+var hasUserId = {
+	excuteFalse : function() {
+		$('.win8_btn_box a').on('click', function(e){
+			alert("로그인 후 이용이 가능합니다");
+		});
+		$('.about_box_line a').on('click', function(e){
+			alert("로그인 후 이용이 가능합니다");
+		});		
+	},
+	excuteTrue : function() {
+		$('.license_box a').attr('href', '#');	
+		$('.resume_box a').attr('href', '#');	
+		$('.used_box a').attr('href', './ListSaleController.uo');	
+		$('.car_box a').attr('href', '#');
+		
+		$('#linkDetail1').attr('href', '#');
+		$('#linkDetail2').attr('href', '#');
+		$('#linkDetail3').attr('href', './ListSaleController.uo');		
+	}
+}
+
+
+/** Controller : recentPost.shiva **/
+// asyncValidator : 비동기로 게시판의 최신 게시물 불러오기 (by jQuery)
+var recentPostView = {
+	excute : function() {
+		
+		$.ajax({
+			type: 'POST',
+			url: './recentPost.shiva',
+			data: {},
+			success: function(data) {
+				//alert("돌아온 데이터"+data);
+				var textArr = data.split('/');
+				$('#usedPostCon1').text(textArr[0]);
+				$('#usedPostCon2').text(textArr[1]+'님의 이력서');
+				$('#usedPostCon3').text(textArr[2]);		
+			
+				for (var i = 0; i < textArr.length; i++) {
+					if(textArr[i] == 'null' ) {
+						$('#usedPostCon'+(i+1)).text('게시글이 없습니다');					
+					}
+				}
+
+			}
+		});	// ajax	
+		
+	} // excute()
+};
+recentPostView.excute();
 
 // 로그인 유효성 검사
 var modalValidator = {

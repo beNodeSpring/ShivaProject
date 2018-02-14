@@ -163,7 +163,7 @@ public class MemberDAO {
 		return null;		
 	}
 	
-	// 짜는중 : [검사] 회원아이디 중복 검사 
+	// [검사] 회원아이디 중복 검사 
 	public boolean memberIdCheck(String desiredId) {
 		Connection conn = null;
 		ResultSet rs = null;
@@ -241,5 +241,54 @@ public class MemberDAO {
 		}
 		return false;
 	}// memberDelete()
+
+	// [검사] 메인 상단 최신글 불러오기 
+	public String[] viewRecentPost() {
+		Connection conn = null;
+		PreparedStatement pstmt1;
+		PreparedStatement pstmt2;
+		PreparedStatement pstmt3;
+		ResultSet rs1 = null;
+		ResultSet rs2 = null;
+		ResultSet rs3 = null;
+		
+		String bd1Sql = " select BOARD_SUBJECT from (select rownum rnum, BOARD_SUBJECT "
+				+ "from (SELECT * FROM IT_NOTICE_BOARD ORDER BY BOARD_NUM DESC)) "
+				+ "where rnum = 1";
+		String bd2Sql = " select RESUME_ID from (select rownum rnum, RESUME_ID "
+				+ "from (SELECT * FROM resume ORDER BY RESUME_DATE DESC)) "
+				+ "where rnum = 1";
+		String bd3Sql = " select SUBJECT_S from (select rownum rnum,NUM_S,NAME_S,SUBJECT_S "
+				+ "from (SELECT * FROM USED_SALE ORDER BY NUM_S DESC)) "
+				+ "where rnum = 1";
+		String[] resultText = new String[3];
+		try {
+			conn = connect();
+			pstmt1 = conn.prepareStatement(bd1Sql);
+			pstmt2 = conn.prepareStatement(bd2Sql);
+			pstmt3 = conn.prepareStatement(bd3Sql);
+			rs1 = pstmt1.executeQuery(); // executeQuery() : select 실행
+			rs2 = pstmt2.executeQuery(); // executeQuery() : select 실행
+			rs3 = pstmt3.executeQuery(); // executeQuery() : select 실행
+			if (rs1.next() && rs2.next() && rs3.next()) {
+				System.out.println(rs1.getString("BOARD_SUBJECT"));
+				System.out.println(rs2.getString("RESUME_ID"));
+				System.out.println(rs3.getString("SUBJECT_S"));
+				resultText[0] = rs1.getString("BOARD_SUBJECT");
+				resultText[1] = rs2.getString("RESUME_ID");
+				resultText[2] = rs3.getString("SUBJECT_S");
+				return resultText;
+			} else {
+				System.out.println("viewRecentPost()의 쿼리문 실행 에러");
+				return null;
+			}
+
+		} catch (SQLException e) {
+			System.out.println("viewRecentPost() 오류발생" + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}		
+		return null;
+	}	
 	
 }

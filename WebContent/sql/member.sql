@@ -47,20 +47,12 @@ create table IT_NOTICE_BOARD
    BOARD_DATE DATE,
    PRIMARY KEY(BOARD_NUM)
 );
-drop table IT_NOTICE_REPLY;
-create table IT_NOTICE_REPLY
-(
-REPLY_NUM NUMBER,
-REPLY_LEVEL NUMBER,
-REPLY_NAME VARCHAR2(200),
-REPLY_CONTENT VARCHAR2(600)
-);
-insert into IT_NOTICE_BOARD values(1,'관리자','it자격증1','뀨',0,sysdate);
-insert into IT_NOTICE_BOARD values(2,'관리자','정보처리기사','뀨',0,sysdate);
-insert into IT_NOTICE_BOARD values(3,'관리자','SQLD','뀨',0,sysdate);
-insert into IT_NOTICE_BOARD values(4,'관리자','SQLP','뀨',0,sysdate);
-insert into IT_NOTICE_BOARD values(5,'관리자2호','SQLP2','뀨',0,sysdate);
 
+insert into IT_NOTICE_BOARD values(1,'관리자','게시물제목1','게시물내용1입니다',0,sysdate);
+insert into IT_NOTICE_BOARD values(2,'관리자','게시물제목2','게시물내용2입니다',0,sysdate);
+insert into IT_NOTICE_BOARD values(3,'관리자','게시물제목3','게시물내용3입니다',0,sysdate);
+
+select * from IT_NOTICE_BOARD;
 
 -- 중고판매
 drop table used_sale;
@@ -83,3 +75,80 @@ insert into USED_SALE values(4,'kcy','중고 마우스 판매합니다','중고�
 insert into USED_SALE values(5,'kjk','중고 노트북 판매합니다','중고노트북 판매 본문','',0,sysdate);
 
 
+--영렬이 게시판
+drop table resume;
+
+create table resume(
+   RESUME_ID         VARCHAR2(30),
+   RESUME_DATE         DATE,
+   TODAYFEELING      VARCHAR2(100),
+   PROJECT1         VARCHAR2(200),
+   PROJECT2         VARCHAR2(200),
+   PROJECT3         VARCHAR2(200),
+   PROJECT4         VARCHAR2(200),
+   PROJECT5         VARCHAR2(200),
+   PROJECT6         VARCHAR2(200),
+   PROJECT7         VARCHAR2(200),
+   PROJECT8         VARCHAR2(200),
+   PROJECT9         VARCHAR2(200),
+   DURATION1         VARCHAR2(200),
+   DURATION2         VARCHAR2(200),
+   DURATION3         VARCHAR2(200),
+   DURATION4         VARCHAR2(200),
+   DURATION5         VARCHAR2(200),
+   DURATION6         VARCHAR2(200),
+   DURATION7         VARCHAR2(200),
+   DURATION8         VARCHAR2(200),
+   DURATION9         VARCHAR2(200),
+   TEXT1            VARCHAR2(4000),
+   TEXT2            VARCHAR2(4000),
+   TEXT3            VARCHAR2(4000),
+   TEXT4            VARCHAR2(4000),
+   TEXT5            VARCHAR2(4000),
+   TEXT6            VARCHAR2(4000),
+   TEXT7            VARCHAR2(4000),
+   TEXT8            VARCHAR2(4000),
+   TEXT9            VARCHAR2(4000),
+   JAVAVAL            VARCHAR2(10),
+   PYTHONVAL         VARCHAR2(10),
+   CVAL            VARCHAR2(10),
+   RUBYVAL            VARCHAR2(10),
+   JAVASCRIPTVAL      VARCHAR2(10),
+   CSHAPVAL         VARCHAR2(10),
+   PHPVAL            VARCHAR2(10),
+   OBJECTIVECVAL      VARCHAR2(10),
+   SQLVAL            VARCHAR2(10),
+   CPLUSVAL         VARCHAR2(10),
+   PRIMARY KEY(RESUME_ID)
+);         
+
+select * from resume;
+insert into resume (RESUME_ID, RESUME_DATE, TODAYFEELING, PROJECT1, PROJECT2, PROJECT3, 
+PROJECT4, PROJECT5, PROJECT6, PROJECT7, PROJECT8, PROJECT9, DURATION1, DURATION2, DURATION3, 
+DURATION4, DURATION5, DURATION6, DURATION7, DURATION8, DURATION9, TEXT1, TEXT2, TEXT3, TEXT4, 
+TEXT5, TEXT6, TEXT7, TEXT8, TEXT9, JAVAVAL, PYTHONVAL, CVAL, RUBYVAL, JAVASCRIPTVAL, CSHAPVAL, 
+PHPVAL, OBJECTIVECVAL, SQLVAL, CPLUSVAL)
+values('kjm1',sysdate, '저는 유능한 웹 개발자입니다.', '미니프로젝트', '세미프로젝트', '파이널프로젝트', '파이썬프로젝트', '', '', '', '', '', '171023-171102', '171102-171130', 
+'171201-171231', '180101-180131', '', '', '', '', '', '엄청 열시미했어요', '대충한 프로젝트 입니다.', '이거하느라 힘들었습니다', '파이썬은 좋은 언어입니다.', '', '',
+'', '', '', 'true', 'true', 'true', 'false', 'true', 'false', 'false', 'false', 'false', 'false');
+
+insert into resume (RESUME_ID, RESUME_DATE, TODAYFEELING, PROJECT1, PROJECT2, PROJECT3, 
+PROJECT4, PROJECT5, PROJECT6, PROJECT7, PROJECT8, PROJECT9, DURATION1, DURATION2, DURATION3, 
+DURATION4, DURATION5, DURATION6, DURATION7, DURATION8, DURATION9, TEXT1, TEXT2, TEXT3, TEXT4, 
+TEXT5, TEXT6, TEXT7, TEXT8, TEXT9, JAVAVAL, PYTHONVAL, CVAL, RUBYVAL, JAVASCRIPTVAL, CSHAPVAL, 
+PHPVAL, OBJECTIVECVAL, SQLVAL, CPLUSVAL)
+values('kjm2',sysdate, '저는 유능한 웹 개발자입니다.', '미니프로젝트', '세미프로젝트', '파이널프로젝트', '파이썬프로젝트', '', '', '', '', '', '171023-171102', '171102-171130', 
+'171201-171231', '180101-180131', '', '', '', '', '', '엄청 열시미했어요', '대충한 프로젝트 입니다.', '이거하느라 힘들었습니다', '파이썬은 좋은 언어입니다.', '', '',
+'', '', '', 'true', 'true', 'true', 'false', 'true', 'false', 'false', 'false', 'false', 'false');
+
+insert into resume (RESUME_ID, RESUME_DATE, TODAYFEELING, PROJECT1, PROJECT2, PROJECT3, 
+PROJECT4, PROJECT5, PROJECT6, PROJECT7, PROJECT8, PROJECT9, DURATION1, DURATION2, DURATION3, 
+DURATION4, DURATION5, DURATION6, DURATION7, DURATION8, DURATION9, TEXT1, TEXT2, TEXT3, TEXT4, 
+TEXT5, TEXT6, TEXT7, TEXT8, TEXT9, JAVAVAL, PYTHONVAL, CVAL, RUBYVAL, JAVASCRIPTVAL, CSHAPVAL, 
+PHPVAL, OBJECTIVECVAL, SQLVAL, CPLUSVAL)
+values('kjm3',sysdate, '저는 유능한 웹 개발자입니다.', '미니프로젝트', '세미프로젝트', '파이널프로젝트', '파이썬프로젝트', '', '', '', '', '', '171023-171102', '171102-171130', 
+'171201-171231', '180101-180131', '', '', '', '', '', '엄청 열시미했어요', '대충한 프로젝트 입니다.', '이거하느라 힘들었습니다', '파이썬은 좋은 언어입니다.', '', '',
+'', '', '', 'true', 'true', 'true', 'false', 'true', 'false', 'false', 'false', 'false', 'false');
+
+
+select RESUME_ID from (select rownum rnum, RESUME_ID from (SELECT * FROM resume ORDER BY RESUME_DATE DESC)) where rnum = 1;
