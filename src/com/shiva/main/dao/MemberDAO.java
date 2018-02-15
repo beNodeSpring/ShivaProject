@@ -352,12 +352,8 @@ public class MemberDAO {
 			conn = connect();
 			for (int i = 0; i < postLen; i++) {
 				pstmtArr[i] = conn.prepareStatement(SqlArr[i]);
-			}
-			for (int i = 0; i < postLen; i++) {
 				rsArr[i] = pstmtArr[i].executeQuery();
 			}
-
-			System.out.println("aaaa");
 
 			if(rsArr[0].next()&&rsArr[1].next()&&rsArr[2].next()&&rsArr[3].next()&&rsArr[4].next()&&rsArr[5].next()){
 				resultText[0] = rsArr[0].getString("BOARD_SUBJECT");
@@ -367,11 +363,9 @@ public class MemberDAO {
 				resultText[4] = rsArr[4].getString("SUBJECT_S");				
 				resultText[5] = rsArr[5].getString("SUBJECT_S");						
 			} else {
-				System.out.println("쿼리문 없는게 있음");
+				System.out.println("SqlArr중에서 쿼리문 select가 안된게 있음");
 			}
-			System.out.println("rsArr[0] : " + rsArr[0].getString("BOARD_SUBJECT"));
-
-		
+			// System.out.println("쿼리문 하나 확인 : " + rsArr[0].getString("BOARD_SUBJECT"));
 			
 			return resultText;
 

@@ -5,6 +5,7 @@ html,body{height: 100%;}
 .logo_h1 img{width: 69px;}
 li{list-style:none;}
 p {margin: 0 0 6px;}
+string{font-weight: bold;}
 .cf:after{display:block; content:''; clear:both;}
 .ellipsis{display: inline-block; width:100%; white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 

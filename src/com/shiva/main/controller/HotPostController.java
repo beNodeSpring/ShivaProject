@@ -16,7 +16,7 @@ public class HotPostController implements Controller {
 		
 		MemberService service = MemberService.getInstance();
 		String[] result = service.viewHotPost();	
-		System.out.println("핫게시물 갯수 : "+result.length);
+		//System.out.println("핫게시물 갯수 : "+result.length);
 		// 구분자가 &기 때문에 게시물 제목에 &가 있으면 안됨
 		for (int i = 0; i < result.length; i++) {
 			if(i==result.length-1) {
