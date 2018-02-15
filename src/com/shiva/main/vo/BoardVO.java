@@ -3,7 +3,7 @@ package com.shiva.main.vo;
 import java.sql.Date;
 
 // 메인 공지사항 게시판
-public class MainNoticeVO {
+public class BoardVO {
 	private int bdNum;
 	private String bdId;
 	private String bdSubject;

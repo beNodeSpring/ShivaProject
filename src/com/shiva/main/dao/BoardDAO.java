@@ -15,21 +15,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
-import com.shiva.main.vo.MainNoticeVO;
+import com.shiva.main.vo.BoardVO;
 import com.shiva.main.vo.MemberVO;
 
 // 회원에 관한 모든 데이터베이스 처리 기능 담당 (싱글톤 패턴으로 생성)
-public class MainNoticeDAO {
+public class BoardDAO {
 	DataSource ds;           // context.xml에서 주소를 찾기위한 데이터타입
 	PreparedStatement pstmt; // ? 사용위해 필요
 	ResultSet rs;            // 쿼리문 결과를 담음	
 	Connection conn;
 	
-	private static MainNoticeDAO dao = new MainNoticeDAO();
-	private MainNoticeDAO() { }
-	public static MainNoticeDAO getInstance() {
+	private static BoardDAO dao = new BoardDAO();
+	private BoardDAO() { }
+	public static BoardDAO getInstance() {
 		if(dao==null) {
-			dao= new MainNoticeDAO();
+			dao= new BoardDAO();
 		}
 		return dao;
 	}
@@ -82,9 +82,9 @@ public class MainNoticeDAO {
 	}
 	
 	// [select] 게시물 보기
-	public List<MainNoticeVO> selectAllBoard() {
+	public List<BoardVO> selectAllBoard() {
 		String sql = "select * from MainNotice order by bdNum desc";
-		List<MainNoticeVO> list = new ArrayList<MainNoticeVO>();
+		List<BoardVO> list = new ArrayList<BoardVO>();
 		Connection conn = null;
 		ResultSet rs = null;
 		PreparedStatement pstmt = null; 
@@ -96,16 +96,16 @@ public class MainNoticeDAO {
 			
 			//
 			while (rs.next()) {
-				MainNoticeVO noticeVO = new MainNoticeVO();
-				noticeVO.setBdNum(rs.getInt("bdNum"));
-				noticeVO.setBdId(rs.getString("bdId"));
-				noticeVO.setBdSubject(rs.getString("bdSubject"));
-				noticeVO.setBdContent(rs.getString("bdContent"));
-				noticeVO.setBdFile(rs.getString("bdFile"));
-				noticeVO.setBdHits(rs.getString("bdHits"));
-				noticeVO.setBdDate(rs.getDate("bdDate"));
+				BoardVO boardVO = new BoardVO();
+				boardVO.setBdNum(rs.getInt("bdNum"));
+				boardVO.setBdId(rs.getString("bdId"));
+				boardVO.setBdSubject(rs.getString("bdSubject"));
+				boardVO.setBdContent(rs.getString("bdContent"));
+				boardVO.setBdFile(rs.getString("bdFile"));
+				boardVO.setBdHits(rs.getString("bdHits"));
+				boardVO.setBdDate(rs.getDate("bdDate"));
 				
-				list.add(noticeVO);
+				list.add(boardVO);
 			}
 			close(conn, pstmt, rs);
 		} catch (Exception ex) {
