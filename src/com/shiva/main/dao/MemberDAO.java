@@ -78,6 +78,34 @@ public class MemberDAO {
 			}
 		}
 	}
+
+	private void close(Connection conn, PreparedStatement[] psArr, ResultSet[] rsArr) {
+		if (rsArr != null) {
+			try {
+				for (int i = 0; i < rsArr.length; i++) {
+					rsArr[i].close();					
+				}
+			} catch(Exception e) {
+				System.out.println("rsArr.close() 오류 발생 : " + e);
+			}
+		}		
+		if (psArr != null) {
+			try {
+				for (int i = 0; i < psArr.length; i++) {
+					psArr[i].close();					
+				}
+			} catch(Exception e) {
+				System.out.println("psArr.close() 오류 발생 : " + e);
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch(Exception e) {
+				System.out.println("conn.close() 오류 발생 : " + e);
+			}
+		}
+	}		
 	
 	// [삽입] 회원정보 추가
 	public void memberInsert(MemberVO member) {
@@ -290,6 +318,69 @@ public class MemberDAO {
 			close(conn, pstmt, rs);
 		}		
 		return null;
-	}	
+	}
+	
+	public String[] viewHotPost() {
+		Connection conn = null;
+		int postLen = 6;
+		PreparedStatement[] pstmtArr = new PreparedStatement[postLen];
+		ResultSet[] rsArr = new ResultSet[postLen];
+		String[] resultText = new String[postLen];
+		String SqlArr[] = new String[postLen];
+		
+		SqlArr[0] = " select BOARD_SUBJECT from (select rownum rnum, BOARD_SUBJECT "
+				+ "from (SELECT * FROM IT_NOTICE_BOARD ORDER BY BOARD_COUNT DESC)) "
+				+ "where rnum = 1";
+		SqlArr[1] = " select BOARD_SUBJECT from (select rownum rnum, BOARD_SUBJECT "
+				+ "from (SELECT * FROM IT_NOTICE_BOARD ORDER BY BOARD_COUNT DESC)) "
+				+ "where rnum = 2";
+		SqlArr[2] = " select RESUME_ID from (select rownum rnum, RESUME_ID "
+				+ "from (SELECT * FROM resume ORDER BY RESUME_DATE DESC)) "
+				+ "where rnum = 1";
+		SqlArr[3] = " select RESUME_ID from (select rownum rnum, RESUME_ID "
+				+ "from (SELECT * FROM resume ORDER BY RESUME_DATE DESC)) "
+				+ "where rnum = 2";
+		SqlArr[4] = " select SUBJECT_S from (select rownum rnum,NUM_S,NAME_S,SUBJECT_S "
+				+ "from (SELECT * FROM USED_SALE ORDER BY READCOUNT_S DESC)) "
+				+ "where rnum = 1";
+		SqlArr[5] = " select SUBJECT_S from (select rownum rnum,NUM_S,NAME_S,SUBJECT_S "
+				+ "from (SELECT * FROM USED_SALE ORDER BY READCOUNT_S DESC)) "
+				+ "where rnum = 2";
+		
+		try {
+			
+			conn = connect();
+			for (int i = 0; i < postLen; i++) {
+				pstmtArr[i] = conn.prepareStatement(SqlArr[i]);
+			}
+			for (int i = 0; i < postLen; i++) {
+				rsArr[i] = pstmtArr[i].executeQuery();
+			}
+
+			System.out.println("aaaa");
+
+			if(rsArr[0].next()&&rsArr[1].next()&&rsArr[2].next()&&rsArr[3].next()&&rsArr[4].next()&&rsArr[5].next()){
+				resultText[0] = rsArr[0].getString("BOARD_SUBJECT");
+				resultText[1] = rsArr[1].getString("BOARD_SUBJECT");
+				resultText[2] = rsArr[2].getString("RESUME_ID");
+				resultText[3] = rsArr[3].getString("RESUME_ID");
+				resultText[4] = rsArr[4].getString("SUBJECT_S");				
+				resultText[5] = rsArr[5].getString("SUBJECT_S");						
+			} else {
+				System.out.println("쿼리문 없는게 있음");
+			}
+			System.out.println("rsArr[0] : " + rsArr[0].getString("BOARD_SUBJECT"));
+
+		
+			
+			return resultText;
+
+		} catch (SQLException e) {
+			System.out.println("viewHotPost() 오류발생" + e);
+		} finally {
+			close(conn, pstmtArr, rsArr);
+		}		
+		return null;
+	}
 	
 }

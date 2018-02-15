@@ -55,7 +55,7 @@ var hasUserId = {
 
 
 /** Controller : recentPost.shiva **/
-// asyncValidator : 비동기로 게시판의 최신 게시물 불러오기 (by jQuery)
+// 최신 게시물 불러오기 (by jQuery)
 var recentPostView = {
 	excute : function() {
 		
@@ -82,6 +82,35 @@ var recentPostView = {
 	} // excute()
 };
 recentPostView.excute();
+
+
+/** Controller : recentPost.shiva **/
+// 인기 게시물 불러오기 (by jQuery)
+var hotPostView = {
+	excute : function() {
+		
+		$.ajax({
+			type: 'POST',
+			url: './hotPost.shiva',
+			data: {},
+			success: function(data) {
+				//console.log("돌아온 데이터 : "+data);
+				var textArr = data.split('&');
+				for (var i = 0; i < textArr.length; i++) {
+					if(i==2 || i==3){
+						$('.hot_post'+(i+1)).text(textArr[i]+'님의 이력서');												
+					}else{
+						$('.hot_post'+(i+1)).text(textArr[i]);						
+					}
+				}
+
+			}
+		});	// ajax	
+		
+	} // excute()
+};
+hotPostView.excute();
+
 
 // 로그인 유효성 검사
 var modalValidator = {

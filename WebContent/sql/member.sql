@@ -48,12 +48,15 @@ create table IT_NOTICE_BOARD
    PRIMARY KEY(BOARD_NUM)
 );
 
-insert into IT_NOTICE_BOARD values(1,'관리자','게시물제목1','게시물내용1입니다',0,sysdate);
-insert into IT_NOTICE_BOARD values(2,'관리자','게시물제목2','게시물내용2입니다',0,sysdate);
-insert into IT_NOTICE_BOARD values(3,'관리자','게시물제목3','게시물내용3입니다',0,sysdate);
-insert into IT_NOTICE_BOARD values(4,'관리자','일부로 글 제목 길게 쓰는중 쩜쩜쩜으로 제대로 나오나 확인하려고 그러는 거니깐 신경쓰지 말것!!! 이정도면 어느정도 길이지??','게시물내용3입니다',0,sysdate);
+insert into IT_NOTICE_BOARD values(1,'관리자','게시물제목1','게시물내용1입니다',1,sysdate);
+insert into IT_NOTICE_BOARD values(2,'관리자','게시물제목2','게시물내용2입니다',2,sysdate);
+insert into IT_NOTICE_BOARD values(3,'관리자','게시물제목3','게시물내용3입니다',3,sysdate);
+insert into IT_NOTICE_BOARD values(4,'관리자','일부로 글 제목 길게 쓰는중 쩜쩜쩜으로 제대로 나오나 확인하려고 그러는 거니깐 신경쓰지 말것!!! 이정도면 어느정도 길이지??','게시물내용4입니다',4,sysdate);
 
 select * from IT_NOTICE_BOARD;
+select BOARD_SUBJECT from (select rownum rnum, BOARD_SUBJECT 
+				from (SELECT * FROM IT_NOTICE_BOARD ORDER BY BOARD_COUNT DESC)) 
+				where rnum = 1;
 
 -- 중고판매
 drop table used_sale;
@@ -74,7 +77,7 @@ insert into USED_SALE values(2,'kjm','중고 아이폰 판매합니다','중고�
 insert into USED_SALE values(3,'kyr','중고 아이패드 판매합니다','중고노트북 판매 본문','',0,sysdate);
 insert into USED_SALE values(4,'kcy','중고 마우스 판매합니다','중고노트북 판매 본문','',0,sysdate);
 insert into USED_SALE values(5,'kjk','중고 노트북 판매합니다','중고노트북 판매 본문','',0,sysdate);
-
+select * from USED_SALE;
 
 --영렬이 게시판
 drop table resume;
@@ -138,7 +141,7 @@ PROJECT4, PROJECT5, PROJECT6, PROJECT7, PROJECT8, PROJECT9, DURATION1, DURATION2
 DURATION4, DURATION5, DURATION6, DURATION7, DURATION8, DURATION9, TEXT1, TEXT2, TEXT3, TEXT4, 
 TEXT5, TEXT6, TEXT7, TEXT8, TEXT9, JAVAVAL, PYTHONVAL, CVAL, RUBYVAL, JAVASCRIPTVAL, CSHAPVAL, 
 PHPVAL, OBJECTIVECVAL, SQLVAL, CPLUSVAL)
-values('kjm2',sysdate, '저는 유능한 웹 개발자입니다.', '미니프로젝트', '세미프로젝트', '파이널프로젝트', '파이썬프로젝트', '', '', '', '', '', '171023-171102', '171102-171130', 
+values('kjm2',sysdate, '아키텍쳐 + 디자인 + 프런트엔드 다 할 수 있습니다.', '미니프로젝트', '세미프로젝트', '파이널프로젝트', '파이썬프로젝트', '', '', '', '', '', '171023-171102', '171102-171130', 
 '171201-171231', '180101-180131', '', '', '', '', '', '엄청 열시미했어요', '대충한 프로젝트 입니다.', '이거하느라 힘들었습니다', '파이썬은 좋은 언어입니다.', '', '',
 '', '', '', 'true', 'true', 'true', 'false', 'true', 'false', 'false', 'false', 'false', 'false');
 

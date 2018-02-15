@@ -244,14 +244,15 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                 <!-- <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4"> -->
                                    <div class="box bottom-main info-nav-container">
                                         <ul class="info info-ul">
-                                            <li><a href="#" class="about_proin current">인기 게시물</a></li>
-                                            <li><a href="#" class="about_proin">개발 잘하는 법</a></li>
-                                            <li><a href="#" class="about_proin">많이 하면 됨</a></li>
-                                            <li><a href="#" class="about_proin">디자인 잘하는 법</a></li>
-                                            <li><a href="#" class="about_proin">타고 나야 됨</a></li>
-                                            <li><a href="#" class="about_proin">기획 잘하는 법</a></li> 
-                                            <li><a href="#" class="about_proin">디자인+개발 할줄 알면 됨</a></li>
-                                            <li><a href="#" class="about_proin">이런게 추천글이라니..</a></li>
+                                            <li><a href="#" class="about_proin current">IT 자격증 인기 게시물</a></li>
+                                            <li><a href="#" class="about_proin hot_post1 ellipsis">1</a></li>
+                                            <li><a href="#" class="about_proin hot_post2 ellipsis">2</a></li>
+                                            <li><a href="#" class="about_proin current">IT 이력서 인기 게시물</a></li>
+                                            <li><a href="#" class="about_proin hot_post3 ellipsis">3</a></li>
+                                            <li><a href="#" class="about_proin hot_post4 ellipsis">4</a></li> 
+                                            <li><a href="#" class="about_proin current">IT 중고 인기 게시물</a></li>
+                                            <li><a href="#" class="about_proin hot_post5 ellipsis">5</a></li>
+                                            <li><a href="#" class="about_proin hot_post6 ellipsis">6</a></li>
                                         </ul>
                                     </div>
                                 <!-- </div> -->    

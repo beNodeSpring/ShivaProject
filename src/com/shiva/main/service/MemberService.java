@@ -48,5 +48,10 @@ public class MemberService {
 		return dao.viewRecentPost();
 	}
 	
+	// 8. 인기 게시물 비동기로 불러오기
+	public String[] viewHotPost() {
+		return dao.viewHotPost();
+	}
+	
 
 }
