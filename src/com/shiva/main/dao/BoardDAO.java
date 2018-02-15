@@ -41,10 +41,6 @@ public class BoardDAO {
 			Context initCon = new InitialContext();
 			ds=	(DataSource) initCon.lookup("java:comp/env/jdbc/OracleDB");
 			conn = ds.getConnection();
-			
-			// connection 가져오는 예전 방식
-//			Class.forName("oracle.jdbc.driver.OracleDriver");
-//			conn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "SCOTT", "TIGER");
 		} catch(Exception ex) {
 			System.out.println("connect() 오류 발생 => DB 연결 실패 : " + ex);
 		}

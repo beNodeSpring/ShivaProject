@@ -15,7 +15,9 @@
 
 # 할일
 **게시판 만들기**
-
+- 테이블 다시 만듬
+- BoardService 인터페이스 만들고 Board업무명ServiceImpl 만들기
+- 각 뷰페이지(jsp) 만들기
 **팀원들 DB합쳐서 Reset DB 만들기**
 
 
