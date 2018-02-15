@@ -10,9 +10,9 @@ CREATE TABLE MEMBER(
 	PRIMARY KEY(ID)
 );
 --삽입
-INSERT INTO member values('kjk', '123', '김재겸', '남자', 'kjk', 'naver.com', '01012341234');
-INSERT INTO member values('kjm', '123', '김종민', '남자', 'kjm', 'google.com', '01012341234');
-INSERT INTO member values('admin', '123', '김종민', '남자', 'admin', 'nate.com', '01098765432');
+INSERT INTO member values('kjk', '123', '김재겸', '남', 'kjk', 'naver.com', '01012341234');
+INSERT INTO member values('kjm', '123', '김종민', '남', 'kjm', 'google.com', '01012341234');
+INSERT INTO member values('admin', '123', '서현숙', '여', 'admin', 'nate.com', '01098765432');
 
 --선택
 SELECT * FROM member;
@@ -51,6 +51,7 @@ create table IT_NOTICE_BOARD
 insert into IT_NOTICE_BOARD values(1,'관리자','게시물제목1','게시물내용1입니다',0,sysdate);
 insert into IT_NOTICE_BOARD values(2,'관리자','게시물제목2','게시물내용2입니다',0,sysdate);
 insert into IT_NOTICE_BOARD values(3,'관리자','게시물제목3','게시물내용3입니다',0,sysdate);
+insert into IT_NOTICE_BOARD values(4,'관리자','일부로 글 제목 길게 쓰는중 쩜쩜쩜으로 제대로 나오나 확인하려고 그러는 거니깐 신경쓰지 말것!!! 이정도면 어느정도 길이지??','게시물내용3입니다',0,sysdate);
 
 select * from IT_NOTICE_BOARD;
 

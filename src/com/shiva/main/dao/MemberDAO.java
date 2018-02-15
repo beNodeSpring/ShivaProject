@@ -139,6 +139,7 @@ public class MemberDAO {
 		String sessionId = (String) session.getAttribute("id");
 		String sql = "SELECT * FROM member WHERE id='"+ sessionId +"'";
 		
+		System.out.println("세션아이디 : "+sessionId);
 		try {
 			conn = connect();
 			pstmt = conn.prepareStatement(sql);
@@ -271,9 +272,9 @@ public class MemberDAO {
 			rs2 = pstmt2.executeQuery(); // executeQuery() : select 실행
 			rs3 = pstmt3.executeQuery(); // executeQuery() : select 실행
 			if (rs1.next() && rs2.next() && rs3.next()) {
-				System.out.println("IT 자격증 최근글 : "+rs1.getString("BOARD_SUBJECT"));
-				System.out.println("IT 이력서 최근글 : "+rs2.getString("RESUME_ID"));
-				System.out.println("IT 중고 최근글 : "+rs3.getString("SUBJECT_S"));
+				//System.out.println("IT 자격증 최근글 : "+rs1.getString("BOARD_SUBJECT"));
+				//System.out.println("IT 이력서 최근글 : "+rs2.getString("RESUME_ID"));
+				//System.out.println("IT 중고 최근글 : "+rs3.getString("SUBJECT_S"));
 				resultText[0] = rs1.getString("BOARD_SUBJECT");
 				resultText[1] = rs2.getString("RESUME_ID");
 				resultText[2] = rs3.getString("SUBJECT_S");

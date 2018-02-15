@@ -27,19 +27,26 @@ public class MemberService {
 	public boolean memberIdCheck(String desiredId) {
 		return dao.memberIdCheck(desiredId);
 	}
+
+	// 4. 회원 검색
+	public MemberVO memberSearch(HttpServletRequest request) {
+		return dao.memberSearch(request);
+	}	
 	
-	// 3. 회원정보 수정
+	// 5. 회원정보 수정
 	public boolean memberUpdate(MemberVO member, HttpServletRequest request) {
 		return dao.memberUpdate(member, request);
 	}
 		
-	// 4. 회원정보 삭제(회원 탈퇴)
+	// 6. 회원정보 삭제(회원 탈퇴)
 	public boolean memberDelete(MemberVO member, HttpServletRequest request) {
 		return dao.memberDelete(member, request);
 	}
 	
-	// 5. 최근 게시물 비동기로 불러오기
+	// 7. 최근 게시물 비동기로 불러오기
 	public String[] viewRecentPost() {
 		return dao.viewRecentPost();
-	}	
+	}
+	
+
 }

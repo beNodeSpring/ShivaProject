@@ -4,7 +4,10 @@ html,body{height: 100%;}
 .logo_h1{margin: 0 0 0 0px; position: absolute; top: 20px; left: 0%; width: 100%; color: #fff; font-size: 28px; text-align: center;	font-family: consolas; letter-spacing: -0.03em;}
 .logo_h1 img{width: 69px;}
 li{list-style:none;}
+p {margin: 0 0 6px;}
 .cf:after{display:block; content:''; clear:both;}
+.ellipsis{display: inline-block; width:100%; white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
 .menu-container:nth-of-type(2) i{margin-bottom: 20px;}
 .menu-container:nth-of-type(2) a{font-weight: bold;}
 .menu-container .fa-4x{font-size: 3.7em;}

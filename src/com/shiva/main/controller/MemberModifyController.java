@@ -14,9 +14,10 @@ public class MemberModifyController implements Controller {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		MemberVO memberVO = new MemberVO();
-		MemberDAO memberDAO = MemberDAO.getInstance();
-		memberVO = memberDAO.memberSearch(request);
+		MemberService service = MemberService.getInstance();
+		memberVO = service.memberSearch(request); // 회원정보를 수정하려면 먼저 아이디 검색이 필요
 		request.setAttribute("memberVO", memberVO);
 		
 		HttpUtil.forward(request, response, "/main/memberModify.jsp");

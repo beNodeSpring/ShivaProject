@@ -181,7 +181,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                         <div class="info">
                                             <div class="about_box_title">
                                                 <h3>IT 자격증</h3>
-                                                <h4 id="usedPostCon1"></h4>
+                                                <h4 id="usedPostCon1" class="ellipsis"></h4>
                                             </div>
                                         </div> <!-- .info -->
                                         <div class="line"></div>
@@ -198,7 +198,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                         <div class="info">
                                             <div class="about_box_title">
                                                 <h3>IT 이력서</h3>
-                                                <h4 id="usedPostCon2"></h4>
+                                                <h4 id="usedPostCon2" class="ellipsis"></h4>
                                             </div>
                                         </div>
                                         <div class="line"></div>
@@ -215,7 +215,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                         <div class="info">
                                             <div class="about_box_title">
                                                 <h3>IT 중고</h3>
-                                                <h4 id="usedPostCon3"></h4>
+                                                <h4 id="usedPostCon3" class="ellipsis"></h4>
                                             </div>
                                         </div>
                                         <div class="line"></div>
