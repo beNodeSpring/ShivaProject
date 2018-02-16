@@ -145,8 +145,7 @@ public class BoardDAO {
 			if(rs.next()) {
 				num = rs.getInt("num");
 			}
-			
-			
+
 			// writedate : 현재 날짜를 구하는 sysdate를 사용해서 지정
 			// ref : 현재 작성된 글이 새글이므로 먼저 구했던 글 번호 num으로 지정
 			// step, lev, read_cnt, child-cnt : 새글 작성의 경우 0으로 지정			
@@ -214,4 +213,65 @@ public class BoardDAO {
 		return writing;
 	}
 	
+	// [update] 게시글 수정 기능 수행
+	public void boardUpdate(String pSubject, String pCkVal, String pNum) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = ds.getConnection();
+			// 전달받은 num을 조건으로 업데이트하는 쿼리문
+			String sql = "update MainNotice set subject=?, content=? where num=?";
+			
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setString(1, pSubject);
+			pstmt.setString(2, pCkVal);
+			pstmt.setInt(3, Integer.parseInt(pNum));
+			rs = pstmt.executeQuery();
+			
+		} catch (Exception e) {
+			System.out.println("boardUpdate() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		
+	}
+	
+	// [update] 게시글 수정에 필요한 원본글 데이터 조회 기능 수행
+	public BoardVO boardUpdateForm(String pNum) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		BoardVO writing = new BoardVO();
+		
+		try {
+			conn = ds.getConnection();
+			// 전달받은 num을 조건으로 업데이트하는 쿼리문
+			String sql = "select * from MainNotice where num=?";
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(pNum));
+			rs = pstmt.executeQuery();
+		
+			if(rs.next()) {
+				writing.setNum(rs.getInt("num"));
+				writing.setId(rs.getString("id"));
+				writing.setSubject(rs.getString("subject"));
+				writing.setContent(rs.getString("content"));
+				writing.setWriteDate(rs.getDate("writeDate"));
+				writing.setRef(rs.getInt("ref"));
+				writing.setStep(rs.getInt("step"));
+				writing.setLev(rs.getInt("lev"));
+				writing.setReadCnt(rs.getInt("readCnt"));
+				writing.setChildCnt(rs.getInt("childCnt"));			
+			}
+		} catch (Exception e) {
+			System.out.println("boardUpdateForm() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		} 
+		
+		return writing;
+	}	
 }

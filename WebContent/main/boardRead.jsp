@@ -57,8 +57,8 @@
 		<div class="text-right btn_wrap">
 			<a href="./boardList.bbs" class="btn btn-primary">목록</a>
 			<a href="./boardUpdate.bbs?num=${boardRead.num}" class="btn btn-info">답글</a>
-			<a href="./boardUpdate.bbs?num=${boardRead.num}" class="btn btn-warning">수정</a>
-			<a href="./boardDelete.bbs?num=${boardRead.num}" class="btn btn-danger">삭제</a>
+			<a href="./boardUpdateForm.bbs?num=${boardRead.num}" class="btn btn-warning">수정</a>
+			<a href="./boardDeleteForm.bbs?num=${boardRead.num}" class="btn btn-danger">삭제</a>
 		</div>
 
 	</div>
