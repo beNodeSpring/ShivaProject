@@ -35,6 +35,14 @@ a:hover {
 }
 .margin-b-30 { margin-bottom: 30px !important; }
 
+/* 공지사항 게시판 */
+.table-responsive{}
+.table-responsive th{text-align: center;}
+.read_table{}
+.read_table .read_con{width: 100%; height: 300px; background-color:#fff; border: none;}
+.btn_wrap{}
+.btn_wrap *{margin-left: 12px;}
+
 /*
  * 
  */

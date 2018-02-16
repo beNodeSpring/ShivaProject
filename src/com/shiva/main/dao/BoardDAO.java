@@ -69,7 +69,7 @@ public class BoardDAO {
 				
 		try {
 			conn = ds.getConnection();
-			String sql = "select * from MainNotice order by ref desc, step asc";
+			String sql = "select * from MainNotice order by num";
 			pstmt = conn.prepareStatement(sql); 
 			rs = pstmt.executeQuery();
 
@@ -125,7 +125,7 @@ public class BoardDAO {
 	}
 	
 	// [insert] 게시글 등록 기능 수행
-	public void boardWrite(String id, String subject, String content) {
+	public void boardWrite(String id, String subject, String ckVal) {
 		Connection conn = null;
 		PreparedStatement pstmt = null; 
 		ResultSet rs = null;
@@ -157,7 +157,7 @@ public class BoardDAO {
 			pstmt.setInt(1, num);
 			pstmt.setString(2,id);
 			pstmt.setString(3, subject);
-			pstmt.setString(4, content);
+			pstmt.setString(4, ckVal);
 			pstmt.setInt(5, num);
 			
 			pstmt.executeUpdate();
@@ -168,6 +168,50 @@ public class BoardDAO {
 			close(conn, pstmt, rs);
 		}		
 		
+	}
+	
+	// [select] 게시물 열람 기능
+	public BoardVO boardRead(String inputNum) {
+		Connection conn = null;
+		PreparedStatement pstmt = null; 
+		ResultSet rs = null;		
+		
+		BoardVO writing = new BoardVO();
+		
+		try {
+			conn = ds.getConnection();
+			// 조회수 증가시키는 쿼리문
+			String sql = "update MainNotice set readCnt=readCnt+1 where num=?";
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(inputNum));
+			pstmt.executeUpdate();
+			
+			// 전달받은 num을 조건으로 조회하는 쿼리문
+			sql = "select * from MainNotice where num=?";
+			pstmt =conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(inputNum));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				writing.setNum(rs.getInt("num"));
+				writing.setId(rs.getString("id"));
+				writing.setSubject(rs.getString("subject"));
+				writing.setContent(rs.getString("content"));
+				writing.setWriteDate(rs.getDate("writeDate"));
+				writing.setRef(rs.getInt("ref"));
+				writing.setStep(rs.getInt("step"));
+				writing.setLev(rs.getInt("lev"));
+				writing.setReadCnt(rs.getInt("readCnt"));
+				writing.setChildCnt(rs.getInt("childCnt"));			
+			}
+			
+		} catch (Exception e) {
+			System.out.println("boardRead() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		
+		return writing;
 	}
 	
 }

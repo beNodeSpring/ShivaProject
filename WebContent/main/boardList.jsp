@@ -85,7 +85,7 @@
 	</div>
 	<!--/ 페이징 -->
 	
-	<div class="text-right">
+	<div class="text-right btn_wrap">
 		<a href="./boardWriteForm.bbs" class="btn btn-primary">글작성</a>
 <!-- 			<input type=submit value="버튼파랑" class="btn btn-primary">
 			<input type=submit value="버튼초록" class="btn btn-success">

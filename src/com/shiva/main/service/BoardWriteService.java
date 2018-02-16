@@ -15,12 +15,13 @@ public class BoardWriteService implements BoardService {
 		
 		String id = request.getParameter("id");
 		String subject = request.getParameter("subject");
-		String content = request.getParameter("content");
+		// ck에디터로 교체 => String content = request.getParameter("content"); 
+		String ckVal = request.getParameter("ckeditorNoti");
 
 		BoardDAO dao = new BoardDAO();
 		
 		// form submit로 전달받은 id, subject, content로 boardWrite() 호출
-		dao.boardWrite(id, subject, content);
+		dao.boardWrite(id, subject, ckVal);
 		
 		PrintWriter out;
 		try {

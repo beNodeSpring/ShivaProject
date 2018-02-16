@@ -16,7 +16,7 @@
 - 팀원들 DB합쳐서 Reset DB 만들기
 - drop > create > insert(테스트 data 5개씩) 까지 전부다 원큐에 실행되게끔!
 
-
+오라클 : nvl() => mysql : ifnull()
 
 
 
