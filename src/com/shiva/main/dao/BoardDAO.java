@@ -1,14 +1,14 @@
 package com.shiva.main.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.io.PrintWriter;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
 
 import com.shiva.main.vo.BoardVO;
@@ -61,10 +61,11 @@ public class BoardDAO {
 	
 	// [select] 게시물 목록 조회
 	public List<BoardVO> boardList(String curPage) {
-		List<BoardVO> list = new ArrayList<BoardVO>();
 		Connection conn = null;
 		PreparedStatement pstmt = null; 
 		ResultSet rs = null;
+		
+		List<BoardVO> list = new ArrayList<BoardVO>();
 				
 		try {
 			conn = ds.getConnection();
@@ -97,12 +98,13 @@ public class BoardDAO {
 		return list;
 	}
 	
-	// 게시판의 페이징 처리를 위한 기능 수행
+	// [select] 게시판의 페이징 처리를 위한 기능 수행
 	public int boardPageCnt() {
-		int pageCnt = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null; 
 		ResultSet rs = null;
+		
+		int pageCnt = 0;
 		
 		try {
 			conn = ds.getConnection();
@@ -121,4 +123,51 @@ public class BoardDAO {
 		
 		return pageCnt;
 	}
+	
+	// [insert] 게시글 등록 기능 수행
+	public void boardWrite(String id, String subject, String content) {
+		Connection conn = null;
+		PreparedStatement pstmt = null; 
+		ResultSet rs = null;
+		
+		int num = 1;
+		
+		// 등록된 글의 번호를 구한후 테이블에 insert
+		try {
+			conn = ds.getConnection();
+			
+			// 게시판의 가장 높은 글 번호를 max()를 이용해서 찾은 뒤 1을 더해준다 
+			// 만약 최초의 게시글일 경우 글 번호 최대값이 null이므로 null벨류를 체크하는  nvl()을 이용하여  0으로 변환하여 글 번호를 1로 만듬
+			String sql = "select nvl(max(num),0)+1 as num from MainNotice"; // 
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				num = rs.getInt("num");
+			}
+			
+			
+			// writedate : 현재 날짜를 구하는 sysdate를 사용해서 지정
+			// ref : 현재 작성된 글이 새글이므로 먼저 구했던 글 번호 num으로 지정
+			// step, lev, read_cnt, child-cnt : 새글 작성의 경우 0으로 지정			
+			sql = "insert into MainNotice values (?,?,?,?,sysdate,?,0,0,0,0)";
+			//     insert into MainNotice values (번호,아이디,글제목,sysdate,번호,0,0,0,0);
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, num);
+			pstmt.setString(2,id);
+			pstmt.setString(3, subject);
+			pstmt.setString(4, content);
+			pstmt.setInt(5, num);
+			
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("boardWrite() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}		
+		
+	}
+	
 }

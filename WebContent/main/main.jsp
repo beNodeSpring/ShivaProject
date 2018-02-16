@@ -161,12 +161,10 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                             </div>
                         </div> <!-- main-menu -->
                     </aside> <!-- main-navigation -->
-                    
-                    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 
                     <div class="content-main">
  
-                                               <div class="row about-box-main">
+                    	<div class="row about-box-main">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                                 <div class="cards">
@@ -264,7 +262,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                                 <h4></h4>
                                             </div>                                       
                                             <img src="/ShivaProject/images/about-img-5.png" alt="Image" class="img-responsive">
-                                            <p class="proin-right-text">만들어야 될꺼 같은데 시간이 부족해서 만들수 있을려나 모르겠습니다. 시바!</p>
+                                            <p class="proin-right-text"><a href="./boardList.bbs">여기에 ajax로 공지사항 글 불러오기</a></p>
                                         </div> <!-- .info -->
                                     </div>
                                 <!-- </div> -->

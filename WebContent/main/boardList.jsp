@@ -18,7 +18,9 @@
 </head>
 <body>
 <div class="container">
-	<h3>게시판 목록 조회</h3>
+	<h3>공지사항</h3>
+	
+	<!-- 게시물 검색 -->
 	<form class="form-inline" action="" method="get" >
 		<div class="text-right mb30">
 			<select name="searchOpt" id="">
@@ -31,6 +33,9 @@
 			<input type="submit" class="btn btn-info" name="" id="" value="검색">
 		</div>
 	</form>
+	<!--/ 게시물 검색 -->
+	
+	<!-- 게시판 내용 -->
 	<table class="table table-responsive mb50" summary="게시판 설명">
 		<caption class="sr-only">게시판 제목</caption>
 		<colgroup>
@@ -69,14 +74,19 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<!--/ 게시판 내용 -->
+	
+	<!-- 페이징 -->
 	<div class="paging">
-		<a href="./ShivaProject/boardList.bbs">첫페이지로</a>
+		<a href="./boardList.bbs">첫페이지로</a>
 		<c:forEach var="i" begin="1" end="${pageCnt}">			        
 			<a href="./ShivaProject/boardList.bbs?curPage=${i}">[${i}]</a>
 		</c:forEach>			
 	</div>
+	<!--/ 페이징 -->
+	
 	<div class="text-right">
-		<a href="boardWrite.bbs" class="btn btn-primary">글작성</a>
+		<a href="./boardWriteForm.bbs" class="btn btn-primary">글작성</a>
 <!-- 			<input type=submit value="버튼파랑" class="btn btn-primary">
 			<input type=submit value="버튼초록" class="btn btn-success">
 			<input type=submit value="버튼하늘" class="btn btn btn-info">

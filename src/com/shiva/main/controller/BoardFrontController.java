@@ -4,11 +4,10 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-
-import com.shiva.main.service.BoardListService;
-import com.shiva.main.service.BoardService;
-
 import java.util.*;
+
+import com.shiva.main.service.*;
+
 
 // web.xml에 등록 안하고 @WebServlet으로도 RequestMapping 가능
 @WebServlet("*.bbs")
@@ -25,6 +24,8 @@ public class BoardFrontController extends HttpServlet {
 		// 클라이언트 요청에 대하여 실제로 처리하는 서브 컨트롤러를 실행
 		list = new HashMap<String, BoardService>();
 		list.put("/boardList.bbs", new BoardListService());
+		list.put("/boardWriteForm.bbs", new BoardWriteFormService());
+		list.put("/boardWrite.bbs", new BoardWriteService());
 
 	}
 	
@@ -38,9 +39,9 @@ public class BoardFrontController extends HttpServlet {
 		String contextPath = request.getContextPath();     //  /ShivaProject
 		String path = url.substring(contextPath.length()); //  /업무.shiva
 		
-		BoardService boardService = list.get(path);         //  해당 업무의 컨트롤러의 주소값을 가져와 저장
+		BoardService boardService = list.get(path);         //  해당 서비스의 경로를 가져와 저장
 		boardService.execute(request, response);            //  boardService를 구현하는 클래스의 execute() 실행
-		System.out.println("현재 실행된 서비스명"+list.get(path));
+
 	}
 
 }

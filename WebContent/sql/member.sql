@@ -42,8 +42,9 @@ insert into MainNotice values(3,'kyy','[공지사항]안녕하세요','팀시바
 insert into MainNotice values(4,'kjk','[공지사항]안녕하세요','팀시바의 IT이력서 part를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
 select * from MainNotice;
 
-select * from MainNotice order by ref desc, step asc;
-select count(*) as num from MainNotice;
+select * from MainNotice order by ref desc, step asc; -- 리스트 불러오기 쿼리문 : 다시 짜기
+select count(*) as num from MainNotice; -- 현재 글 갯수
+select nvl(max(num),0)+1 as num from MainNotice; -- 작성할 차례의 글번호 구하기
 
 --용준 공지사항
 drop table IT_NOTICE_BOARD;

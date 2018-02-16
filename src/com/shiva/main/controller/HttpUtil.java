@@ -20,7 +20,7 @@ public class HttpUtil {
 	// redirect : DB,session 등 변화가 필요한 이동
 	public static void redirect(HttpServletResponse response, String path) {
 		try {
-			// path에 지정된 페이지의 경로를 가지는 RequestDispatcher 객체 생성
+			// path에 지정된 페이지의 경로로 이동
 			response.sendRedirect(path);
 		} catch (Exception e) {
 			System.out.println("HttpUtil.redirect() 오류 "+e);
