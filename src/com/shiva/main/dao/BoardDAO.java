@@ -1,52 +1,34 @@
 package com.shiva.main.dao;
 
-import java.lang.reflect.Executable;
 import java.sql.Connection;
-import java.sql.DriverManager;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import com.shiva.main.vo.BoardVO;
-import com.shiva.main.vo.MemberVO;
 
 // 회원에 관한 모든 데이터베이스 처리 기능 담당 (싱글톤 패턴으로 생성)
 public class BoardDAO {
 	DataSource ds;           // context.xml에서 주소를 찾기위한 데이터타입
-	PreparedStatement pstmt; // ? 사용위해 필요
-	ResultSet rs;            // 쿼리문 결과를 담음	
-	Connection conn;
+	public static final int WRITING_PER_PAGE = 10;
 	
-	private static BoardDAO dao = new BoardDAO();
-	private BoardDAO() { }
-	public static BoardDAO getInstance() {
-		if(dao==null) {
-			dao= new BoardDAO();
-		}
-		return dao;
-	}
-	
-	// DB에 접속해서 Connection객체를 얻어옴
-	public Connection connect() {
+	// 생성자에서 DB에 접속해서 Connection객체를 얻어옴
+	public BoardDAO() {
 		try {
 			// DB접속정보는 XML처리(META-INF/context.xml)
 			Context initCon = new InitialContext();
 			ds=	(DataSource) initCon.lookup("java:comp/env/jdbc/OracleDB");
-			conn = ds.getConnection();
 		} catch(Exception ex) {
-			System.out.println("connect() 오류 발생 => DB 연결 실패 : " + ex);
-		}
-		return conn;
+			System.out.println("BoardDAO() 오류 발생 => DB 연결 실패 : " + ex);
+		}		
 	}
-	
+
 	// 자원 해제 : Connection, PreparedStatement, ResultSet 
 	public void close(Connection conn, PreparedStatement ps, ResultSet rs) {
 		if (rs != null) {
@@ -77,38 +59,66 @@ public class BoardDAO {
 		}
 	}
 	
-	// [select] 게시물 보기
-	public List<BoardVO> selectAllBoard() {
-		String sql = "select * from MainNotice order by bdNum desc";
+	// [select] 게시물 목록 조회
+	public List<BoardVO> boardList(String curPage) {
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		Connection conn = null;
-		ResultSet rs = null;
 		PreparedStatement pstmt = null; 
-		
+		ResultSet rs = null;
+				
 		try {
-			conn = connect();
+			conn = ds.getConnection();
+			String sql = "select * from MainNotice order by ref desc, step asc";
 			pstmt = conn.prepareStatement(sql); 
 			rs = pstmt.executeQuery();
-			
-			//
+
 			while (rs.next()) {
 				BoardVO boardVO = new BoardVO();
-				boardVO.setBdNum(rs.getInt("bdNum"));
-				boardVO.setBdId(rs.getString("bdId"));
-				boardVO.setBdSubject(rs.getString("bdSubject"));
-				boardVO.setBdContent(rs.getString("bdContent"));
-				boardVO.setBdFile(rs.getString("bdFile"));
-				boardVO.setBdHits(rs.getString("bdHits"));
-				boardVO.setBdDate(rs.getDate("bdDate"));
 				
+				boardVO.setNum(rs.getInt("num"));
+				boardVO.setId(rs.getString("id"));
+				boardVO.setSubject(rs.getString("subject"));
+				boardVO.setContent(rs.getString("content"));
+				boardVO.setWriteDate(rs.getDate("writeDate"));
+				boardVO.setRef(rs.getInt("ref"));
+				boardVO.setStep(rs.getInt("step"));
+				boardVO.setLev(rs.getInt("lev"));
+				boardVO.setReadCnt(rs.getInt("readCnt"));
+				boardVO.setChildCnt(rs.getInt("childCnt"));
+
 				list.add(boardVO);
 			}
-			close(conn, pstmt, rs);
-		} catch (Exception ex) {
-			System.out.println("selectAllBoard() 오류 발생 => DB 연결 실패 : " + ex);
+		} catch (Exception e) {
+			System.out.println("boardList() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);			
 		}
 		
 		return list;
 	}
-	//
+	
+	// 게시판의 페이징 처리를 위한 기능 수행
+	public int boardPageCnt() {
+		int pageCnt = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null; 
+		ResultSet rs = null;
+		
+		try {
+			conn = ds.getConnection();
+			String sql = "select count(*) as num from MainNotice"; // 게시판에 등록 된 글의 갯수
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pageCnt = rs.getInt("num") / WRITING_PER_PAGE + 1; // 제작되어야 할 페이지의 수
+			}
+		} catch (Exception e) {
+			System.out.println("boardPageCnt() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}
+		
+		return pageCnt;
+	}
 }

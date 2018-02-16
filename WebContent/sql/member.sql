@@ -28,12 +28,12 @@ create table MainNotice(
    ID          VARCHAR2(30),   -- 아이디
    SUBJECT     VARCHAR2(300),  -- 제목
    CONTENT     VARCHAR2(4000), -- 본문내용
-   WRITE_DATE  DATE,           -- 작성일자
+   WRITEDATE  DATE,           -- 작성일자
    REF         NUMBER,         -- 답변 글의 참조 원문 글 번호
    STEP        NUMBER,         -- 답변 글의 출력 순서
    LEV         NUMBER,         -- 답변글의 들여쓰기 레벨
-   READ_CNT    NUMBER,         -- 글 조회수
-   CHILD_CNT   NUMBER,         -- 글의 답변 글 수
+   READCNT    NUMBER,         -- 글 조회수
+   CHILDCNT   NUMBER,         -- 글의 답변 글 수
    PRIMARY KEY(NUM)
 );
 insert into MainNotice values(1,'kjm','[공지사항]안녕하세요','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
@@ -41,6 +41,9 @@ insert into MainNotice values(2,'kyj','[공지사항]안녕하세요','팀시바
 insert into MainNotice values(3,'kyy','[공지사항]안녕하세요','팀시바의 IT이력서 part를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
 insert into MainNotice values(4,'kjk','[공지사항]안녕하세요','팀시바의 IT이력서 part를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
 select * from MainNotice;
+
+select * from MainNotice order by ref desc, step asc;
+select count(*) as num from MainNotice;
 
 --용준 공지사항
 drop table IT_NOTICE_BOARD;
