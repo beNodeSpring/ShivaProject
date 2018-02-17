@@ -53,5 +53,9 @@ public class MemberService {
 		return dao.viewHotPost();
 	}
 	
-
+	// 9. 공지사항 비동기로 불러오기
+	public String viewRecentNotice() {
+		return dao.viewRecentNotice();
+	}
+	
 }

@@ -271,7 +271,7 @@ public class MemberDAO {
 		return false;
 	}// memberDelete()
 
-	// [검사] 메인 상단 최신글 불러오기 
+	// [ajax] 메인 상단 최신글 불러오기 
 	public String[] viewRecentPost() {
 		Connection conn = null;
 		PreparedStatement pstmt1;
@@ -320,30 +320,31 @@ public class MemberDAO {
 		return null;
 	}
 	
+	// [ajax] 인기 게시글 불러오기 
 	public String[] viewHotPost() {
 		Connection conn = null;
 		int postLen = 6;
 		PreparedStatement[] pstmtArr = new PreparedStatement[postLen];
 		ResultSet[] rsArr = new ResultSet[postLen];
 		String[] resultText = new String[postLen];
-		String SqlArr[] = new String[postLen];
+		String sqlArr[] = new String[postLen];
 		
-		SqlArr[0] = " select BOARD_SUBJECT from (select rownum rnum, BOARD_SUBJECT "
+		sqlArr[0] = " select BOARD_SUBJECT from (select rownum rnum, BOARD_SUBJECT "
 				+ "from (SELECT * FROM IT_NOTICE_BOARD ORDER BY BOARD_COUNT DESC)) "
 				+ "where rnum = 1";
-		SqlArr[1] = " select BOARD_SUBJECT from (select rownum rnum, BOARD_SUBJECT "
+		sqlArr[1] = " select BOARD_SUBJECT from (select rownum rnum, BOARD_SUBJECT "
 				+ "from (SELECT * FROM IT_NOTICE_BOARD ORDER BY BOARD_COUNT DESC)) "
 				+ "where rnum = 2";
-		SqlArr[2] = " select RESUME_ID from (select rownum rnum, RESUME_ID "
+		sqlArr[2] = " select RESUME_ID from (select rownum rnum, RESUME_ID "
 				+ "from (SELECT * FROM resume ORDER BY RESUME_DATE DESC)) "
 				+ "where rnum = 1";
-		SqlArr[3] = " select RESUME_ID from (select rownum rnum, RESUME_ID "
+		sqlArr[3] = " select RESUME_ID from (select rownum rnum, RESUME_ID "
 				+ "from (SELECT * FROM resume ORDER BY RESUME_DATE DESC)) "
 				+ "where rnum = 2";
-		SqlArr[4] = " select SUBJECT_S from (select rownum rnum,NUM_S,NAME_S,SUBJECT_S "
+		sqlArr[4] = " select SUBJECT_S from (select rownum rnum,NUM_S,NAME_S,SUBJECT_S "
 				+ "from (SELECT * FROM USED_SALE ORDER BY READCOUNT_S DESC)) "
 				+ "where rnum = 1";
-		SqlArr[5] = " select SUBJECT_S from (select rownum rnum,NUM_S,NAME_S,SUBJECT_S "
+		sqlArr[5] = " select SUBJECT_S from (select rownum rnum,NUM_S,NAME_S,SUBJECT_S "
 				+ "from (SELECT * FROM USED_SALE ORDER BY READCOUNT_S DESC)) "
 				+ "where rnum = 2";
 		
@@ -351,7 +352,7 @@ public class MemberDAO {
 			
 			conn = connect();
 			for (int i = 0; i < postLen; i++) {
-				pstmtArr[i] = conn.prepareStatement(SqlArr[i]);
+				pstmtArr[i] = conn.prepareStatement(sqlArr[i]);
 				rsArr[i] = pstmtArr[i].executeQuery();
 			}
 
@@ -363,7 +364,7 @@ public class MemberDAO {
 				resultText[4] = rsArr[4].getString("SUBJECT_S");				
 				resultText[5] = rsArr[5].getString("SUBJECT_S");						
 			} else {
-				System.out.println("SqlArr중에서 쿼리문 select가 안된게 있음");
+				System.out.println("sqlArr중에서 쿼리문 select가 안된게 있음");
 			}
 			// System.out.println("쿼리문 하나 확인 : " + rsArr[0].getString("BOARD_SUBJECT"));
 			
@@ -375,6 +376,37 @@ public class MemberDAO {
 			close(conn, pstmtArr, rsArr);
 		}		
 		return null;
+	}
+	
+	// [ajax] 공지사항 최신글 불러오기
+	public String viewRecentNotice() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = null;
+		String result = null;
+		try {		
+			conn = connect();
+			sql = " select SUBJECT from (select rownum rnum, SUBJECT "
+					+ "from (SELECT * FROM MainNotice ORDER BY NUM DESC)) "
+					+ "where rnum = 1";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getString("SUBJECT");				
+			} else {
+				result = "공지사항이 없습니다";
+				System.out.println("MainNotice에서 불러올 DB 내용이 없음");
+			}
+
+		} catch (SQLException e) {
+			System.out.println("viewRecentNotice() 오류발생" + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}			
+		
+		return result;
 	}
 	
 }

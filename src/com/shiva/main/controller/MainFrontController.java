@@ -28,6 +28,7 @@ public class MainFrontController extends HttpServlet {
 		list.put("/memberDelete.shiva", new MemberDeleteController());
 		list.put("/recentPost.shiva", new RecentPostController());
 		list.put("/hotPost.shiva", new HotPostController());
+		list.put("/recentNotice.shiva", new RecentNoticeController());
 
 	}
 	

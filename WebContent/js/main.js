@@ -1,7 +1,7 @@
 /**
  *  coding by    : jomin Kim of Team Shiva
  *  last update  : 18/02/13
- *  coding style : Object Oriented Programming Javascript 
+ *  coding style : Object Oriented Programming Javascript
 */
 
 /** Controller : /    =>    mainpage **/
@@ -110,6 +110,25 @@ var hotPostView = {
 	} // excute()
 };
 hotPostView.excute();
+
+
+/** Controller : recentNotice.shiva **/
+// 최근 공지사항 불러오기 (by jQuery)
+var recentNoticeView = {
+	excute : function() {
+		
+		$.ajax({
+			type: 'POST',
+			url: './recentNotice.shiva',
+			data: {},
+			success: function(data) {
+				$('#linkNoti').text(data);
+			}
+		});	// ajax	
+		
+	} // excute()
+};
+recentNoticeView.excute();
 
 
 // 로그인 유효성 검사
