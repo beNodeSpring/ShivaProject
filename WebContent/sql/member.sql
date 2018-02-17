@@ -45,6 +45,9 @@ select * from MainNotice order by num;
 select * from MainNotice order by ref desc, step asc; -- 리스트 불러오기 쿼리문 : 다시 짜기
 select count(*) as num from MainNotice; -- 현재 글 갯수
 select nvl(max(num),0)+1 as num from MainNotice; -- 작성할 차례의 글번호 구하기
+select * from MainNotice where subject like '%[공지사항]%' order by ref desc, step asc; --
+select * from MainNotice where subject like '%[공지사항]%' order by num;
+
 
 --용준 공지사항
 drop table IT_NOTICE_BOARD;

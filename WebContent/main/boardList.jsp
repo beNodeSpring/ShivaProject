@@ -21,7 +21,7 @@
 	<h3>공지사항</h3>
 	
 	<!-- 게시물 검색 -->
-	<form class="form-inline" action="" method="get" >
+	<form class="form-inline" action="./boardSearch.bbs" method="get" >
 		<div class="text-right mb30">
 			<select name="searchOpt" id="">
 				<option value="subject">제목</option>

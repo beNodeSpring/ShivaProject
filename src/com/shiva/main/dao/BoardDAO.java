@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.naming.Context;
@@ -274,8 +275,7 @@ public class BoardDAO {
 	}
 	
 	// [delete] 게시글 삭제
-	public void boardDelete(String pNum) {
-		
+	public void boardDelete(String pNum) {	
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -373,5 +373,66 @@ public class BoardDAO {
 		} finally {
 			close(conn, pstmt, rs);
 		} 		
+	}
+	
+	// 게시글 검색 기능
+	public List<BoardVO> boardSearch(String searchOpt, String searchWord) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from MainNotice ";
+
+			// 검색 옵션에 따른 쿼리문 분기처리
+			if(searchOpt.equals("both")) {
+				sql += "where subject like ? or content like ? ";
+				//sql += "order by ref desc, step asc ";
+				sql += "order by num ";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+searchWord+"%");
+				pstmt.setString(2, "%"+searchWord+"%");
+			} else {
+				sql += "where "+searchOpt+" like ? ";
+				//sql += "order by ref desc, step asc ";
+				sql += "order by num ";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, "%"+searchWord+"%");
+			}
+
+			rs = pstmt.executeQuery();
+			
+			// 쿼리문(검색결과)를 ArrayList에 추가함
+			while(rs.next()) {
+				BoardVO writing = new BoardVO();
+				
+				writing.setNum(rs.getInt("num"));
+				writing.setId(rs.getString("id"));
+				writing.setSubject(rs.getString("subject"));
+				writing.setContent(rs.getString("content"));
+				writing.setWriteDate(rs.getDate("writeDate"));
+				writing.setRef(rs.getInt("ref"));
+				writing.setStep(rs.getInt("step"));
+				writing.setLev(rs.getInt("lev"));
+				writing.setReadCnt(rs.getInt("readCnt"));
+				writing.setChildCnt(rs.getInt("childCnt"));
+				
+				list.add(writing);
+			}
+/*
+			for(BoardVO value : list){
+			    System.out.println("검색 쿼리문 결과 list에 담긴 글의 제목 :"+value.getSubject());
+			}
+*/			
+		} catch (Exception e) {
+			System.out.println("boardSearch() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		} 			
+
+		return list;
 	}
 }
