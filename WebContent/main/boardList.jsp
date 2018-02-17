@@ -27,7 +27,7 @@
 				<option value="subject">제목</option>
 				<option value="content">본문</option>
 				<option value="both">제목+본문</option>
-				<option value="name">작성자</option>
+				<option value="id">id</option>
 			</select>
 			<input type="text" class="form-control" name="searchWord" id="">
 			<input type="submit" class="btn btn-info" name="" id="" value="검색">
@@ -50,7 +50,7 @@
 			<tr class="tr_th">
 				<th scope="col">번호</th>
 				<th scope="col">제목</th>
-				<th scope="col">작성자</th>
+				<th scope="col">아이디</th>
 				<th scope="col">작성일</th>
 				<th scope="col">조회수</th>
 				<th scope="col">답글수</th>

@@ -33,7 +33,7 @@
 			</colgroup>
 			<tbody>
 				<tr>
-					<th>작성자</th>
+					<th>아이디</th>
 					<td colspan="5" class="lft">${boardRead.id}</td>
 				</tr>
 				<tr>
