@@ -435,4 +435,169 @@ public class BoardDAO {
 
 		return list;
 	}
+	
+	// [답글] 작성에 필요한 원글 데이터 조회 기능
+	public BoardVO boardReplyForm(String pNum) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		BoardVO writing = new BoardVO();
+		
+		try {
+			conn = ds.getConnection();
+			String sql = "select * from MainNotice where num=? ";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(pNum));
+			rs = pstmt.executeQuery();
+			
+			// 쿼리문(검색결과)를 ArrayList에 추가함
+			if(rs.next()) {
+				writing.setNum(rs.getInt("num"));
+				writing.setId(rs.getString("id"));
+				writing.setSubject(rs.getString("subject"));
+				writing.setContent(rs.getString("content"));
+				writing.setWriteDate(rs.getDate("writeDate"));
+				writing.setRef(rs.getInt("ref"));
+				writing.setStep(rs.getInt("step"));
+				writing.setLev(rs.getInt("lev"));
+				writing.setReadCnt(rs.getInt("readCnt"));
+				writing.setChildCnt(rs.getInt("childCnt"));
+			}
+	
+		} catch (Exception e) {
+			System.out.println("boardReplyForm() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		} 			
+
+		return writing;		
+	}
+	
+	// [답글] 등록 기능 수행
+	public void boardReply(String id, String subject, String content, String ref, String lev, String step) {
+		Connection conn = null;
+		PreparedStatement pstmt = null; 
+		ResultSet rs = null;
+		
+		int replyNum = 0;
+		int replyStep = 0;
+		String sql = null;
+		
+		// 등록된 글의 번호를 구한후 테이블에 insert
+		try {
+			conn = ds.getConnection();
+			
+			// 답글이 위치할 step 값을 가져옴
+			replyStep = boardReplySearchStep(ref, lev, step);
+
+			if(replyStep > 0) {
+				sql = "update MainNotice set step = step+1 where ref=? and step >= ? ";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(ref));
+				pstmt.setInt(2, replyStep);
+				pstmt.executeUpdate();
+			} else {
+				sql = "select max(step) from MainNotice where ref=? ";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(ref));
+				rs = pstmt.executeQuery();
+				if(rs.next()) replyStep = rs.getInt(1) + 1;
+			}
+			
+			sql = "select max(num)+1 as num from MainNotice ";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) replyNum = rs.getInt("num");
+			
+			sql = "insert into MainNotice values (?,?,?,?,sysdate,?,?,?,0,0)";
+			//     insert into MainNotice values (번호,아이디,글제목,sysdate,ref,step,lev,readCnt,childCnt);
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, replyNum);
+			pstmt.setString(2,id);
+			pstmt.setString(3, subject);
+			pstmt.setString(4, content);
+			pstmt.setInt(5, Integer.parseInt(ref));
+			pstmt.setInt(6, replyStep);
+			pstmt.setInt(7, Integer.parseInt(lev)+1);
+			pstmt.executeUpdate();
+			
+			// 답글 출력 위치 선정 기능 수행
+			boardReplyChildCntUpdate(ref, lev, replyStep);
+			
+		} catch (Exception e) {
+			System.out.println("boardReply() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}		
+		
+	}
+
+	// [답글] 출력 위치(step) 선정 기능 수행
+	private int boardReplySearchStep(String ref, String lev, String step) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int replyStep=0;
+		
+		try {
+			conn = ds.getConnection();
+			String sql="select nvl(min(step), 0) from MainNotice where ref=? and lev <= ? and step > ?";
+
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(ref));
+			pstmt.setInt(2, Integer.parseInt(lev));
+			pstmt.setInt(3, Integer.parseInt(step));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) replyStep = rs.getInt(1);
+						
+		} catch (Exception e) {
+			System.out.println("boardReplySearchStep() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}		
+		return replyStep;
+	}
+	
+	// [답글] 작성 후 원글들의 답글 갯수를 늘려주는 기능 수행
+	private void boardReplyChildCntUpdate(String ref, String lev, int replyStep) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = null;
+		
+		try {
+			conn = ds.getConnection();
+
+			for (int updateLev = Integer.parseInt(lev); updateLev >= 0; updateLev--) {
+				sql = "select max(step) from MainNotice where ref = ? and lev =? and step < ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(ref));
+				pstmt.setInt(2, updateLev);
+				pstmt.setInt(3, replyStep);
+				rs = pstmt.executeQuery();
+				
+				int maxStep = 0;
+				if(rs.next()) maxStep = rs.getInt(1);
+				
+				sql = "update MainNotice set childCnt = childCnt+1 where ref=? and lev=? and step=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, Integer.parseInt(ref));
+				pstmt.setInt(2, updateLev);
+				pstmt.setInt(3, maxStep);
+				pstmt.executeUpdate();
+			}			
+						
+		} catch (Exception e) {
+			System.out.println("boardReplySearchStep() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		}		
+	}
+
 }

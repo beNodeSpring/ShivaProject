@@ -60,12 +60,14 @@
 			<c:forEach items="${boardList}" var="dto">
 		        <tr>
 			        <td>
-						<c:forEach begin="1" end="${dto.lev}">			        
-							%npsp;<i class="fa fa-long-arrow-right"></i>
-						</c:forEach>
 			        	<strong class="bd_num">${dto.num}</strong>
 			        </td>
-			        <td class="tit"><a href="./boardRead.bbs?num=${dto.num}">${dto.subject}</a></td>
+			        <td class="tit">
+						<c:forEach begin="1" end="${dto.lev}">			        
+							&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i>
+						</c:forEach>			        
+			        	<a href="./boardRead.bbs?num=${dto.num}">${dto.subject}</a>
+			        </td>
 			        <td>${dto.id}</td> 
 			        <td>${dto.writeDate}</td>
 			        <td>${dto.readCnt}</td>
