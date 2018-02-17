@@ -28,7 +28,7 @@ create table MainNotice(
    ID          VARCHAR2(30),   -- 아이디
    SUBJECT     VARCHAR2(300),  -- 제목
    CONTENT     VARCHAR2(4000), -- 본문내용
-   WRITEDATE  DATE,           -- 작성일자
+   WRITEDATE  DATE,            -- 작성일자
    REF         NUMBER,         -- 답변 글의 참조 원문 글 번호
    STEP        NUMBER,         -- 답변 글의 출력 순서
    LEV         NUMBER,         -- 답변글의 들여쓰기 레벨

@@ -7,11 +7,15 @@
 - 최근 게시글(링크는 리스트 페이지로)
 - 인기 게시글(+링크 미구현)
 
+
+- 공지사항 게시판(list, write, modify, Delete, search)
+
 # 할일
 **게시판 만들기**
-- 테이블 다시 만듬
-- BoardService 인터페이스 만들고 Board업무명ServiceImpl 만들기
-- 각 뷰페이지(jsp) 만들기
+- 답글
+- 페이징(한 페이지에 게시글 10개씩 보이기, 페이징 링크 제대로 동작)
+**서브페이지 header/footer 만들기**
+- 공통으로 쓸 header 만들고 include 처리하기
 **shiva.sql 생성** 
 - 팀원들 DB합쳐서 Reset DB 만들기
 - drop > create > insert(테스트 data 5개씩) 까지 전부다 원큐에 실행되게끔!
