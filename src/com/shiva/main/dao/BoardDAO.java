@@ -221,7 +221,6 @@ public class BoardDAO {
 
 		try {
 			conn = ds.getConnection();
-			// 전달받은 num을 조건으로 업데이트하는 쿼리문
 			String sql = "update MainNotice set subject=?, content=? where num=?";
 			
 			pstmt =conn.prepareStatement(sql);
@@ -248,7 +247,6 @@ public class BoardDAO {
 		
 		try {
 			conn = ds.getConnection();
-			// 전달받은 num을 조건으로 업데이트하는 쿼리문
 			String sql = "select * from MainNotice where num=?";
 			pstmt =conn.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(pNum));
@@ -273,5 +271,107 @@ public class BoardDAO {
 		} 
 		
 		return writing;
-	}	
+	}
+	
+	// [delete] 게시글 삭제
+	public void boardDelete(String pNum) {
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = ds.getConnection();
+			String sql = "select ref, lev, step from MainNotice where num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(pNum));
+			rs = pstmt.executeQuery();
+		
+			// 삭제를 수행하기 전에 대상들들의 답글 칼럼(childCnt)의 값을 1줄여주기 위한 boardDeleteChildCntUpdate를 호출한다
+			if(rs.next()) {
+				int ref = rs.getInt(1);
+				int lev = rs.getInt(2);
+				int step = rs.getInt(3);
+				boardDeleteChildCntUpdate(ref, lev, step);
+			}
+			
+			// 파라미터로 받은 글번호를 조건으로 delete한다
+			sql = "delete from MainNotice where num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(pNum));
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("boardDelete() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		} 		
+		
+	}
+	
+	// [댓글 만들고 제대로 작동하나 테스트 할 것] 삭제하려는 글에 답글이 달려있는지 여부를 검사
+	public boolean boardReplyCheck(String pNum) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		boolean replyCheck = false;
+		int replyCnt = 0;
+		
+		try {
+			conn = ds.getConnection();
+			String sql = "select childCnt as reply_check from MainNotice where num=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(pNum));
+			rs = pstmt.executeQuery();
+		
+			// replyCnt에 쿼리문을 실행해서 나온 childCnt 값을 대입
+			if(rs.next()) replyCnt = rs.getInt("reply_check");
+			// replyCnt가 0이라면 댓글이 없다는거  
+			if(replyCnt==0) replyCheck = true;
+			
+		} catch (Exception e) {
+			System.out.println("boardUpdateForm() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		} 		
+				
+		return replyCheck;	
+	}
+	
+	// [댓글 만들고 제대로 작동하나 테스트 할 것] 게시글이 답글일 경우, 원글들의 답글 갯수를 줄이는 기능 수행
+	public void boardDeleteChildCntUpdate(int ref, int lev, int step) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = ds.getConnection();
+			String sql = null;
+		
+			for (int updateLev = lev-1; updateLev >= 0; updateLev--) {
+				sql = "select max(step) from MainNotice where ref = ? and lev =? and step < ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, ref);
+				pstmt.setInt(2, updateLev);
+				pstmt.setInt(3, step);
+				rs = pstmt.executeQuery();
+				
+				int maxStep = 0;
+				if(rs.next()) maxStep = rs.getInt(1);
+				
+				sql = "update MainNotice set childCnt = childCnt-1 where ref=? and lev=? and step=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, ref);
+				pstmt.setInt(2, updateLev);
+				pstmt.setInt(3, maxStep);
+				pstmt.executeUpdate();
+			}
+			
+		} catch (Exception e) {
+			System.out.println("boardDeleteChildCntUpdate() 오류 발생 : " + e);
+		} finally {
+			close(conn, pstmt, rs);
+		} 		
+	}
 }

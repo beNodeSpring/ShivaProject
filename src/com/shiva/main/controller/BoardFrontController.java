@@ -29,6 +29,7 @@ public class BoardFrontController extends HttpServlet {
 		list.put("/boardRead.bbs", new BoardReadService());
 		list.put("/boardUpdateForm.bbs", new BoardUpdateFormService());
 		list.put("/boardUpdate.bbs", new BoardUpdateService());
+		list.put("/boardDelete.bbs", new BoardDeleteService());
 
 	}
 	
