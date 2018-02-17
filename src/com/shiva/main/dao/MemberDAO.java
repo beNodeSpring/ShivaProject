@@ -136,7 +136,7 @@ public class MemberDAO {
 		ResultSet rs = null;
 		String sessionId = null;
 		String sql = "SELECT id FROM member WHERE id=? AND passwd=? ";
-		System.out.println(idPw[0] + ", " + idPw[1]);
+		//System.out.println(idPw[0] + ", " + idPw[1]);
 		
 		try {
 			conn = connect();
@@ -146,7 +146,7 @@ public class MemberDAO {
 			rs = pstmt.executeQuery(); // executeQuery() : select 실행
 			if (rs.next()) {
 				sessionId = rs.getString("id");
-				System.out.println("sessionId : " + sessionId );
+				System.out.println("returnId()에서 대입된 sessionId : " + sessionId );
 				return sessionId;
 			} else {	
 				return null;

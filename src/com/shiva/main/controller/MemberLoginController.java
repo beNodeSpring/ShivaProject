@@ -26,7 +26,7 @@ public class MemberLoginController implements Controller {
 		
 		// 아이디&비밀번호 맞나 확인
 		String idCheck = dao.returnId(idPw);
-		System.out.println(idCheck);
+		//System.out.println(idCheck);
 		if (id.equals(idCheck)) { // 아이디& 비밀번호 일치 
 			session.setAttribute("id", idCheck); // 세션 생성
 			
