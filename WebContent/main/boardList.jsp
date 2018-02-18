@@ -17,6 +17,9 @@
 <script src="/ShivaProject/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<jsp:include page="/inc/header.jsp" flush="false" />
+
 <div class = "notice_board">
 	<div class = "container">
 		<div class = "row">
@@ -91,16 +94,17 @@
 				<!--/ 페이징 -->
 				
 				<div class="text-right btn_wrap">
-					<a href="./boardWriteForm.bbs" class="btn btn-primary">글작성</a>
-			<!-- 			<input type=submit value="버튼파랑" class="btn btn-primary">
-						<input type=submit value="버튼초록" class="btn btn-success">
-						<input type=submit value="버튼하늘" class="btn btn btn-info">
-						<input type=submit value="버튼주황" class="btn btn btn-warning">
-						<input type=submit value="버튼빨강" class="btn btn btn-danger"> -->
-				</div>
+				<c:set var="userId" value="${sessionScope.id}" />
+				<c:if test="${userId == 'admin'}">
+					<a href="./boardWriteForm.bbs" class="btn btn-primary">글작성</a>				
+				</c:if>
+				</div>	
 			</div>
 
 		</div>
+		
+		<jsp:include page="/inc/footer.jsp" flush="false" />
+	
 	</div>
 </div>
 

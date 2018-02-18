@@ -17,6 +17,9 @@
 <script src="/ShivaProject/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<jsp:include page="/inc/header.jsp" flush="false" />
+
 <div class = "notice_board">
 	<div class = "container">
 		<div class = "row">
@@ -59,10 +62,13 @@
 						</tbody>
 					</table>
 					<div class="text-right btn_wrap">
-						<a href="./boardList.bbs" class="btn btn-primary">목록</a>
-						<a href="./boardReplyForm.bbs?num=${boardRead.num}" class="btn btn-info">답글</a>
-						<a href="./boardUpdateForm.bbs?num=${boardRead.num}" class="btn btn-warning">수정</a>
-						<a href="./boardDelete.bbs?num=${boardRead.num}" class="btn btn-danger">삭제</a>
+						<a href="./boardList.bbs" class="btn btn-primary">목록</a>		
+						<c:set var="userId" value="${sessionScope.id}" />
+						<c:if test="${userId == 'admin'}">
+							<a href="./boardReplyForm.bbs?num=${boardRead.num}" class="btn btn-info">답글</a>
+							<a href="./boardUpdateForm.bbs?num=${boardRead.num}" class="btn btn-warning">수정</a>
+							<a href="./boardDelete.bbs?num=${boardRead.num}" class="btn btn-danger">삭제</a>
+						</c:if>						
 					</div>
 			
 				</div>

@@ -40,6 +40,9 @@ var hasUserId = {
 		$('.about_box_line a').on('click', function(e){
 			alert("로그인 후 이용이 가능합니다");
 		});		
+		$('#linkNoti').on('click', function(e){
+			alert("로그인 후 이용이 가능합니다");
+		});		
 	},
 	excuteTrue : function() {
 		$('.license_box a').attr('href', '#');	
@@ -50,6 +53,8 @@ var hasUserId = {
 		$('#linkDetail1').attr('href', '#');
 		$('#linkDetail2').attr('href', '#');
 		$('#linkDetail3').attr('href', './ListSaleController.uo');		
+		
+		$('#linkNoti').attr('href', './boardList.bbs');		
 	}
 }
 

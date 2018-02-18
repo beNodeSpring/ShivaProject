@@ -40,6 +40,19 @@ insert into MainNotice values(1,'kjm','[공지사항]공통단UI','팀시바의 
 insert into MainNotice values(2,'kyj','[공지사항]IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,0,0,0,0,0);
 insert into MainNotice values(3,'kyy','[공지사항]IT이력서','팀시바의 IT이력서 part를 담당하고 있는 김영렬 입니다',sysdate,0,0,0,0,0);
 insert into MainNotice values(4,'kjk','[공지사항]IT거래소','팀시바의 IT거래소 part를 담당하고 있는 김재겸 입니다',sysdate,0,0,0,0,0);
+
+insert into MainNotice values(5,'kjm','[공지사항]공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(6,'kyj','[공지사항]IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(7,'kyy','[공지사항]IT이력서','팀시바의 IT이력서 part를 담당하고 있는 김영렬 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(8,'kjk','[공지사항]IT거래소','팀시바의 IT거래소 part를 담당하고 있는 김재겸 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(9,'kjm','[공지사항]공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(10,'kyj','[공지사항]IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(11,'kyy','[공지사항]IT이력서','팀시바의 IT이력서 part를 담당하고 있는 김영렬 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(12,'kjk','[공지사항]IT거래소','팀시바의 IT거래소 part를 담당하고 있는 김재겸 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(13,'kjm','[공지사항]공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(14,'kyj','[공지사항]IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,0,0,0,0,0);
+
+
 select * from MainNotice;
 select * from MainNotice order by num;
 select * from MainNotice order by ref desc, step asc; -- 리스트 불러오기 쿼리문 : 다시 짜기

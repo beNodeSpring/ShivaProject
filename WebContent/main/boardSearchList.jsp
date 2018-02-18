@@ -17,6 +17,9 @@
 <script src="/ShivaProject/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<jsp:include page="/inc/header.jsp" flush="false" />
+
 <div class = "notice_board">
 	<div class = "container">
 		<div class = "row">

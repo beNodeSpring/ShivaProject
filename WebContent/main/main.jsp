@@ -262,7 +262,7 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
                                                 <h4></h4>
                                             </div>                                       
                                             <img src="/ShivaProject/images/about-img-5.png" alt="Image" class="img-responsive">
-                                            <p class="proin-right-text"><a href="./boardList.bbs" id="linkNoti"></a></p>
+                                            <p class="proin-right-text"><a href="#" id="linkNoti"></a></p>
                                         </div> <!-- .info -->
                                     </div>
                                 <!-- </div> -->

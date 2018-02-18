@@ -18,6 +18,9 @@
 <script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 </head>
 <body>
+
+<jsp:include page="/inc/header.jsp" flush="false" />
+
 <div class = "notice_board">
 	<div class = "container">
 		<div class = "row">
