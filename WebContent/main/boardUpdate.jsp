@@ -18,63 +18,55 @@
 <script src="//cdn.ckeditor.com/4.8.0/standard/ckeditor.js"></script>
 </head>
 <body>
-<div class="container">
-	<h3>글 수정</h3>
-	<div class="row">
-		<form method="post" action="boardUpdate.bbs">
-			<table class="table table-responsive write_table">
-				<caption class="sr-only">게시판 제목</caption>
-				<colgroup>
-					<col width="30%">
-					<col width="70%">
-				</colgroup>
-				<tbody>
-					<tr>
-						<th>작성자</th>
-						<td class="lft"><input type="text" class="form-control" name="id" maxlength="20" value="admin" readonly="readonly"/></td>
-					</tr>
-					<tr>
-						<th>제목</th>
-						<td class="lft"><input type="text" class="form-control" name="subject" value="${boardUpdateForm.subject}" maxlength="50" /></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="lft">
-							<textarea name="ckeditorNoti" id="ckeditorNoti" rows="10" cols="80">
-								${boardUpdateForm.content}
-							</textarea>
-							<script>
-								CKEDITOR.replace('ckeditorNoti');
-								var data = CKEDITOR.instances.ckeditorNoti.getData();
-							</script>				
-						</td>
-					</tr>
-				</tbody>
-			</table>
-			<div class="text-right btn_wrap">
-				<input type="hidden" name="num" value="${boardUpdateForm.num}" />
-				<a href="./boardList.bbs" class="btn btn-warning">목록</a>
-				<input type="submit" id="btnWrtSubmit" class="btn btn-primary pull-right" value="수정" />
+<div class = "notice_board">
+	<div class = "container">
+		<div class = "row">
+
+			<div class="modal-content bd_padding"">
+				<h3 class="mb50">글 수정</h3>
+				<div class="row">
+					<form method="post" action="boardUpdate.bbs">
+						<table class="table table-responsive write_table">
+							<caption class="sr-only">게시판 제목</caption>
+							<colgroup>
+								<col width="30%">
+								<col width="70%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>작성자</th>
+									<td class="lft"><input type="text" class="form-control" name="id" maxlength="20" value="admin" readonly="readonly"/></td>
+								</tr>
+								<tr>
+									<th>제목</th>
+									<td class="lft"><input type="text" class="form-control" name="subject" id="wrtSubject" value="${boardUpdateForm.subject}" maxlength="50" /></td>
+								</tr>
+								<tr>
+									<td colspan="2" class="lft">
+										<textarea name="ckeditorNoti" id="ckeditorNoti" rows="10" cols="80">
+											${boardUpdateForm.content}
+										</textarea>
+										<script>
+											CKEDITOR.replace('ckeditorNoti');
+											var ckContent = CKEDITOR.instances.ckeditorNoti
+											ckContent.getData();			
+										</script>				
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="text-right btn_wrap">
+							<input type="hidden" name="num" value="${boardUpdateForm.num}" />
+							<a href="./boardList.bbs" class="btn btn-warning">목록</a>
+							<input type="submit" id="btnWrtSubmit" class="btn btn-primary pull-right" value="수정" />
+						</div>
+					</form>
+				</div>
 			</div>
-		</form>
+
+		</div>
 	</div>
 </div>
-<script>
-// 다 완성되면 main.js로 옮기기
-var writeValidator = {
-	excute : function() {
-		$('#btnWrtSubmit').on('click', function() {
-			if($('#wrtSubject').val().length<3) {
-				alert('게시물 제목을 3자 이상 입력해주세요')
-				return false;
-			} else if($('#wrtCcontent').val().length<10) {
-				alert('게시물 내용을 10자 이상 입력해주세요')
-				return false;	
-			}
-		});
-	}
-}
-writeValidator.excute();
-</script>
 <script src="/ShivaProject/js/main.js"></script>
 </body>
 </html>

@@ -127,7 +127,7 @@ body {
 .menu-container {	
 	padding-left: 0;
 	overflow: auto;
-	margin-bottom: 10px;
+	margin-bottom: 15px;
 }
 .menu-container:last-child { margin-bottom: 0; }
 

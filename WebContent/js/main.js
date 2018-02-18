@@ -312,4 +312,21 @@ var myPageClass = {
 myPageClass.modifyMember();
 myPageClass.deleteMember();
 
-/** Controller :   **/
+/** Controller :  boardWriteForm.bbs, boardUpdateForm.bbs **/
+var writeValidator = {
+	subjectLen : 3,
+	contentLen : 7,
+	excute : function() {
+		var that = this;
+ 		$('#btnWrtSubmit').on('click', function() {
+			if($('#wrtSubject').val().length<that.subjectLen) {
+				alert('게시물 제목을 '+that.subjectLen+'자 이상 입력해주세요')
+				return false;
+			} else if(ckContent.getData().length<(that.contentLen+8)) {			
+				alert('게시물 내용을 '+that.contentLen+'자 이상 입력해주세요')
+				return false;	
+			} 
+		});
+	}
+}
+writeValidator.excute();

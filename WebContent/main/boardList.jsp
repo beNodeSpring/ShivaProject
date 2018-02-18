@@ -17,85 +17,93 @@
 <script src="/ShivaProject/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-	<h3>공지사항</h3>
-	
-	<!-- 게시물 검색 -->
-	<form class="form-inline" action="./boardSearch.bbs" method="get" >
-		<div class="text-right mb30">
-			<select name="searchOpt" id="">
-				<option value="subject">제목</option>
-				<option value="content">본문</option>
-				<option value="both">제목+본문</option>
-				<option value="id">id</option>
-			</select>
-			<input type="text" class="form-control" name="searchWord" id="">
-			<input type="submit" class="btn btn-info" name="" id="" value="검색">
+<div class = "notice_board">
+	<div class = "container">
+		<div class = "row">
+			<div class="modal-content bd_padding">
+				<h3>공지사항</h3>
+				
+				<!-- 게시물 검색 -->
+				<form class="form-inline" action="./boardSearch.bbs" method="get" >
+					<div class="text-right mb30">
+						<select name="searchOpt" id="">
+							<option value="subject">제목</option>
+							<option value="content">본문</option>
+							<option value="both">제목+본문</option>
+							<option value="id">id</option>
+						</select>
+						<input type="text" class="form-control" name="searchWord" id="">
+						<input type="submit" class="btn btn-info" name="" id="" value="검색">
+					</div>
+				</form>
+				<!--/ 게시물 검색 -->
+				
+				<!-- 게시판 내용 -->
+				<table class="table table-responsive mb50" summary="게시판 설명">
+					<caption class="sr-only">게시판 제목</caption>
+					<colgroup>
+						<col width="8%">
+						<col width="50%">
+						<col width="13%">
+						<col width="13%">
+						<col width="8%">
+						<col width="8%">
+					</colgroup>
+					<thead>
+						<tr class="tr_th">
+							<th scope="col">번호</th>
+							<th scope="col">제목</th>
+							<th scope="col">아이디</th>
+							<th scope="col">작성일</th>
+							<th scope="col">조회수</th>
+							<th scope="col">답글수</th>
+						</tr>													
+					</thead>
+					<tbody>
+						<c:forEach items="${boardList}" var="dto">
+					        <tr>
+						        <td>
+						        	<strong class="bd_num">${dto.num}</strong>
+						        </td>
+						        <td class="tit">
+									<c:forEach begin="1" end="${dto.lev}">			        
+										&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i>
+									</c:forEach>			        
+						        	<a href="./boardRead.bbs?num=${dto.num}">${dto.subject}</a>
+						        </td>
+						        <td>${dto.id}</td> 
+						        <td>${dto.writeDate}</td>
+						        <td>${dto.readCnt}</td>
+						        <td>${dto.childCnt}</td>
+					        </tr>
+						</c:forEach>
+					</tbody>
+				</table>
+				<!--/ 게시판 내용 -->
+				
+				<!-- 페이징 -->
+				<div class="paging">
+					<a href="./boardList.bbs">첫페이지로</a>
+					<c:forEach var="i" begin="1" end="${pageCnt}">			        
+						<a href="./ShivaProject/boardList.bbs?curPage=${i}">[${i}]</a>
+					</c:forEach>			
+				</div>
+				<!--/ 페이징 -->
+				
+				<div class="text-right btn_wrap">
+					<a href="./boardWriteForm.bbs" class="btn btn-primary">글작성</a>
+			<!-- 			<input type=submit value="버튼파랑" class="btn btn-primary">
+						<input type=submit value="버튼초록" class="btn btn-success">
+						<input type=submit value="버튼하늘" class="btn btn btn-info">
+						<input type=submit value="버튼주황" class="btn btn btn-warning">
+						<input type=submit value="버튼빨강" class="btn btn btn-danger"> -->
+				</div>
+			</div>
+
 		</div>
-	</form>
-	<!--/ 게시물 검색 -->
-	
-	<!-- 게시판 내용 -->
-	<table class="table table-responsive mb50" summary="게시판 설명">
-		<caption class="sr-only">게시판 제목</caption>
-		<colgroup>
-			<col width="8%">
-			<col width="50%">
-			<col width="13%">
-			<col width="13%">
-			<col width="8%">
-			<col width="8%">
-		</colgroup>
-		<thead>
-			<tr class="tr_th">
-				<th scope="col">번호</th>
-				<th scope="col">제목</th>
-				<th scope="col">아이디</th>
-				<th scope="col">작성일</th>
-				<th scope="col">조회수</th>
-				<th scope="col">답글수</th>
-			</tr>													
-		</thead>
-		<tbody>
-			<c:forEach items="${boardList}" var="dto">
-		        <tr>
-			        <td>
-			        	<strong class="bd_num">${dto.num}</strong>
-			        </td>
-			        <td class="tit">
-						<c:forEach begin="1" end="${dto.lev}">			        
-							&nbsp;&nbsp;<i class="fa fa-long-arrow-right"></i>
-						</c:forEach>			        
-			        	<a href="./boardRead.bbs?num=${dto.num}">${dto.subject}</a>
-			        </td>
-			        <td>${dto.id}</td> 
-			        <td>${dto.writeDate}</td>
-			        <td>${dto.readCnt}</td>
-			        <td>${dto.childCnt}</td>
-		        </tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	<!--/ 게시판 내용 -->
-	
-	<!-- 페이징 -->
-	<div class="paging">
-		<a href="./boardList.bbs">첫페이지로</a>
-		<c:forEach var="i" begin="1" end="${pageCnt}">			        
-			<a href="./ShivaProject/boardList.bbs?curPage=${i}">[${i}]</a>
-		</c:forEach>			
-	</div>
-	<!--/ 페이징 -->
-	
-	<div class="text-right btn_wrap">
-		<a href="./boardWriteForm.bbs" class="btn btn-primary">글작성</a>
-<!-- 			<input type=submit value="버튼파랑" class="btn btn-primary">
-			<input type=submit value="버튼초록" class="btn btn-success">
-			<input type=submit value="버튼하늘" class="btn btn btn-info">
-			<input type=submit value="버튼주황" class="btn btn btn-warning">
-			<input type=submit value="버튼빨강" class="btn btn btn-danger"> -->
 	</div>
 </div>
+
 <script src="/ShivaProject/js/main.js"></script>
 </body>
 </html>
