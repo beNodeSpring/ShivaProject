@@ -55,12 +55,12 @@ var hasUserId = {
 	},
 	excuteTrue : function() {
 		$('.license_box a').attr('href', './main.lo');	
-		$('.resume_box a').attr('href', '#');	
+		$('.resume_box a').attr('href', './myResume.ro');	
 		$('.used_box a').attr('href', './ListSaleController.uo');	
 		$('.car_box a').attr('href', '#');
 		
 		$('#linkDetail1').attr('href', './main.lo');
-		$('#linkDetail2').attr('href', '#');
+		$('#linkDetail2').attr('href', './myResume.ro');
 		$('#linkDetail3').attr('href', './ListSaleController.uo');		
 		
 		$('#linkNoti').attr('href', './boardList.bbs');		

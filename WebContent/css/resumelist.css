@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body {background-image: url("background.jpg");background-repeat:no-repeat;background-size:cover;}
+#resumecontainer{width : 80%; margin:65px auto; position : relative; height : 560px; padding:10px; background : linear-gradient(to right, #014051 0%, #014051 100%); border-radius:10px;}
+#resumetable{width:100%;}
+#resumetable th {color:white; background:linear-gradient(to right, #0099ab 0%, #259daa 100%);}
+#resumetable td {color:black; background-color:orange}
+
+
+
