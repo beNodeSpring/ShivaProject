@@ -58,6 +58,7 @@ public class LicenseFrontController
     		action = new BoardListService();
     		
     		try {
+    			
     			request.setAttribute("board", "IT_NOTICE_BOARD");
     			forward = action.execute(request, response);
     			

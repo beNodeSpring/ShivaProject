@@ -22,6 +22,7 @@ public class BoardListService implements Action {
 		String boardname=(String)request.getAttribute("board");
 		System.out.println("board = "+boardname);
 		
+		
 		if(request.getParameter("page")!=null)
 		{
 			page=Integer.parseInt(request.getParameter("page"));
@@ -53,7 +54,15 @@ public class BoardListService implements Action {
 		
 		ActionForward forward = new ActionForward();
 		forward.setRedirect(false);
-		forward.setPath("./license/mainpage2.jsp?board_type="+request.getParameter("board_type")+"&action=list");
+		if(request.getParameter("board_type")!=null)
+		{
+			forward.setPath("./license/mainpage2.jsp?board_type="+request.getParameter("board_type")+"&action=list");
+		}
+		else
+		{
+			forward.setPath("./license/mainpage2.jsp?board_type=notice"+"&action=list");
+		}
+		
 		
 		return forward;
 	}

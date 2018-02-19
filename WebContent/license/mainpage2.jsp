@@ -5,7 +5,9 @@
 <%
   
 	String id = (String) session.getAttribute("id");
+	
 	String board_type = request.getParameter("board_type");
+	
 	String action = request.getParameter("action");
 	int listcount=0;
     int nowpage=0;
