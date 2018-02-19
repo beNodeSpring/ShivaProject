@@ -88,7 +88,7 @@
 				<div class="paging">
 					<a href="./boardList.bbs">첫페이지로</a>
 					<c:forEach var="i" begin="1" end="${pageCnt}">			        
-						<a href="./ShivaProject/boardList.bbs?curPage=${i}">[${i}]</a>
+						<a href="./boardList.bbs?curPage=${i}">[${i}]</a>
 					</c:forEach>			
 				</div>
 				<!--/ 페이징 -->
