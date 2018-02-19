@@ -12,7 +12,7 @@
 <script src="/ShivaProject/js/resume.js"></script>
 </head>
 <body>
-<jsp:include page="/resume/header.jsp"/> 
+<jsp:include page="/inc/header.jsp"></jsp:include>
 
 <div class = "resume_wrap">
 	<div class = "container">
@@ -197,8 +197,7 @@
 
 			</div>
 		</div>
-		
-		<jsp:include page="/resume/footer.jsp"/> 
+		<jsp:include page="/inc/footer.jsp"></jsp:include>
 	</div>
 </div>
 </body>
