@@ -9,6 +9,7 @@
 				<li><a href="./main.lo">IT자격증</a></li>
 				<li><a href="./myResume.ro">IT이력서</a></li>
 				<li><a href="./ListSaleController.uo">IT물품거래</a></li>
+				<li><a href="./main.co">IT렌트카</a></li>
 			</ul>
 			<div class="login_id_sec">
 				<span class="id_txt"><c:out value='${sessionScope.id}'/></span><a href="./memberLogout.shiva">Logout</a>				

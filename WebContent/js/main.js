@@ -57,7 +57,7 @@ var hasUserId = {
 		$('.license_box a').attr('href', './main.lo');	
 		$('.resume_box a').attr('href', './myResume.ro');	
 		$('.used_box a').attr('href', './ListSaleController.uo');	
-		$('.car_box a').attr('href', '#');
+		$('.car_box a').attr('href', './main.co');
 		
 		$('#linkDetail1').attr('href', './main.lo');
 		$('#linkDetail2').attr('href', './myResume.ro');
