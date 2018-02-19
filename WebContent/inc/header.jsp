@@ -6,7 +6,7 @@
 		<nav class="cf" id="nav">
 			<c:set var="userId" value="${sessionScope.id}" />
 			<ul class="cf">
-				<li><a href="#">IT자격증</a></li>
+				<li><a href="./main.lo">IT자격증</a></li>
 				<li><a href="#">IT이력서</a></li>
 				<li><a href="./ListSaleController.uo">IT물품거래</a></li>
 			</ul>

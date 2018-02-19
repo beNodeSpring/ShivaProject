@@ -45,12 +45,12 @@ var hasUserId = {
 		});		
 	},
 	excuteTrue : function() {
-		$('.license_box a').attr('href', '#');	
+		$('.license_box a').attr('href', './main.lo');	
 		$('.resume_box a').attr('href', '#');	
 		$('.used_box a').attr('href', './ListSaleController.uo');	
 		$('.car_box a').attr('href', '#');
 		
-		$('#linkDetail1').attr('href', '#');
+		$('#linkDetail1').attr('href', './main.lo');
 		$('#linkDetail2').attr('href', '#');
 		$('#linkDetail3').attr('href', './ListSaleController.uo');		
 		
