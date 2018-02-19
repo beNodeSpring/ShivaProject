@@ -8,3 +8,4 @@ create table used_sale_reply(
 	DATE_S	DATE
 );
 
+select * from used_sale_reply;

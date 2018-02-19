@@ -6,16 +6,16 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shiva.used.VO.used_saleVO;
+import com.shiva.used.VO.used_buyVO;
 import com.shiva.used.dao.usedDAO;
 import com.shiva.used.service.Service;
 import com.shiva.used.service.ServiceForward;
 
-public class ListSaleController implements Service {
+public class ListBuyController implements Service {
 
 	public ServiceForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		usedDAO boarddao = new usedDAO();
-		List<used_saleVO> boardlist = new ArrayList<used_saleVO>();
+		List<used_buyVO> boardlist = new ArrayList<used_buyVO>();
 		
 		
 		
@@ -40,7 +40,7 @@ public class ListSaleController implements Service {
 		
 		if(endpage<maxpage) endpage = maxpage;
 		
-		boardlist = boarddao.getBoardList(page,limit);
+		boardlist = boarddao.getBuyBoardList(page,limit);
 		
 		request.setAttribute("page", page);
 		request.setAttribute("maxpage", maxpage);
@@ -53,7 +53,7 @@ public class ListSaleController implements Service {
 		
 		ServiceForward forward = new ServiceForward();
 		forward.setRedirect(false);
-		forward.setPath("/used/sale/sale_board_list.jsp");
+		forward.setPath("/used/buy/buy_board_list.jsp");
 		
 		return forward;
 		

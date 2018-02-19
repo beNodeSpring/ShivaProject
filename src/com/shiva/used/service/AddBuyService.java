@@ -6,17 +6,17 @@ import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.shiva.used.VO.used_saleVO;
+import com.shiva.used.VO.used_buyVO;
 import com.shiva.used.dao.usedDAO;
 import com.shiva.used.service.Service;
 import com.shiva.used.service.ServiceForward;
 
-public class AddSaleService implements Service {
+public class AddBuyService implements Service {
 
 	@Override
 	public ServiceForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		usedDAO useddao = new usedDAO();
-		used_saleVO VO = new used_saleVO();
+		used_buyVO VO = new used_buyVO();
 		ServiceForward forward = new ServiceForward();
 		HttpSession session = request.getSession();
 		
@@ -26,7 +26,7 @@ public class AddSaleService implements Service {
 		String ID = "";
 		ID = (String)session.getAttribute("id");//세션의 id값을 불러오는부분
 		
-		String saveFolder = "sale_picture";
+		String saveFolder = "buy_picture";
 	
 		int fileSize = 5*1024*1024;
 		
@@ -39,19 +39,18 @@ public class AddSaleService implements Service {
 			MultipartRequest multi = null;
 			multi = new MultipartRequest(request, realFolder,fileSize,"UTF-8",new DefaultFileRenamePolicy());
 			
-			VO.setNAME_S(ID);
-			VO.setSUBJECT_S(multi.getParameter("SUBJECT_S"));
-			VO.setCONTENT_S(multi.getParameter("CONTENT_S"));
+			VO.setNAME_B(ID);
+			VO.setSUBJECT_B(multi.getParameter("SUBJECT_B"));
+			VO.setCONTENT_B(multi.getParameter("CONTENT_B"));
 			
-			VO.setFILE_S(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
-			System.out.println("multi.getFilesystemName((String)multi.getFileNames().nextElement()) : " + multi.getFilesystemName((String)multi.getFileNames().nextElement()));
-			result = useddao.boardInsert(VO);
+			VO.setFILE_B(multi.getFilesystemName((String)multi.getFileNames().nextElement()));
+			result = useddao.buyBoardInsert(VO);
 			
 			if(result == false) {
 				return null;
 			}
 			forward.setRedirect(true);
-			forward.setPath("./ListSaleController.uo");
+			forward.setPath("./ListBuyController.uo");
 			return forward;
 		}catch (Exception e){
 			e.printStackTrace();

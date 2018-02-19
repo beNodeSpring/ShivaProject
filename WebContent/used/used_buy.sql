@@ -8,5 +8,7 @@ create table used_buy(
 	FILE_B	VARCHAR2(50),
 	READCOUNT_B	NUMBER,
 	DATE_B	DATE,
-	PRIMARY KEY(BOARD_NUM)
+	PRIMARY KEY(NUM_B)
 );
+
+select * from used_buy;

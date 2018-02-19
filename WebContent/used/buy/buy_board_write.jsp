@@ -21,23 +21,23 @@
 	
 	.used_board{min-height:100%; background : url(/ShivaProject/images/bg_main-body3.jpg) 50% 0 no-repeat;background-size: cover;}
 	.textarea_content{width : 100% ;height:500px!important;text-align:left; resize : none;}
-	.sale_board{background : #fff; padding:60px;}
+	.buy_board{background : #fff; padding:60px;}
 	</style>
 	<title>개발의 시발점</title>
 	<script src="../../js/jquery-3.3.1.min.js"></script>
 	</head>
 	<body>
 	
-		<jsp:include page="/inc/header.jsp" flush="false" />
+		<jsp:include page="/inc/header.jsp" flush="false" />	
 	
 		<div class = "used_board">
 			<div class = "container">
 				<div class = "row">
-					<div class = "sale_board modal-content">
+					<div class = "buy_board modal-content">
 						<div class="text-right">
-							<a href="./ListSaleController.uo" class="btn btn-primary">  목록보기  </a>
+							<a href="./ListBuyController.uo" class="btn btn-primary">  목록보기  </a>
 						</div>
-						<form action="addservice_sale.uo" method="post" enctype = "multipart/form-data" name = "boardform">
+						<form action="addservice_Buy.uo" method="post" enctype = "multipart/form-data" name = "boardform">
 						<table class="table table-responsive mb50 table-bordered">
 							<caption class="sr-only">게시판 제목</caption>
 							<colgroup>
@@ -46,7 +46,7 @@
 							</colgroup>
 							<thead>
 								<tr valign="middle" class="tr_th">
-									<th colspan = "2">판매하기 게시판 작성</th>
+									<th colspan = "2">구매하기 게시판 작성</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -55,7 +55,7 @@
 										<div>제목</div>
 									</td>
 									<td class = "tit">
-										<input type = "text" maxlength = "90" name = "SUBJECT_S" class = "form-control tit" >
+										<input type = "text" maxlength = "90" name = "SUBJECT_B" class = "form-control tit" >
 									</td>
 								</tr>
 								<tr>
@@ -63,10 +63,10 @@
 										<div>내용</div>
 									</td>
 									<td class = "tit">
-										<textarea name = "CONTENT_S" maxlength = "1330" class = "textarea_content form-control">
-1. 판매 아이템 : 
+										<textarea name = "CONTENT_B" maxlength = "1330" class = "textarea_content form-control">
+1. 구매 아이템 : 
  
-2. 판매 가격 : 
+2. 구매 가격 : 
 
 3. 아이템 설명 : 
 
@@ -79,7 +79,7 @@
 										<div>사진첨부</div>
 									</td>
 									<td class = "tit">
-										<input name = "FILE_S" maxlength = "18" type = "file" ></input>
+										<input name = "FILE_B" maxlength = "18" type = "file" ></input>
 									</td>
 								</tr>
 								
