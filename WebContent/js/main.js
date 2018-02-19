@@ -14,10 +14,19 @@ if (mainPath === "/ShivaProject/"){
 			var data = JSON.parse(json.response);
 			var li;
 
-			li = "<li>"+data.DailyWeatherStation.row[0].STN_NM + "</li>" +
+			if(data.DailyWeatherStation){
+				li = "<li>"+data.DailyWeatherStation.row[0].STN_NM + "</li>" +
 				 "<li>"+data.DailyWeatherStation.row[0].SAWS_OBS_TM + "</li>" +
 				 "<li>"+data.DailyWeatherStation.row[0].SAWS_TA_MAX + "˚/" + data.DailyWeatherStation.row[0].SAWS_TA_MIN + "˚</li>";
-			document.getElementById("ulWeather").innerHTML = li;
+				document.getElementById("ulWeather").innerHTML = li;			
+			} else{				
+				li = "<li>강남</li>" +
+				"<li>"+data.RESULT.CODE+"</li>" +
+				"<li style='font-size:14px'>"+data.RESULT.MESSAGE+"</li>";
+				document.getElementById("ulWeather").innerHTML = li;			
+			}
+			
+
 		}
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
