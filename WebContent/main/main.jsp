@@ -117,12 +117,12 @@ response.setHeader("Access-Control-Allow-Headers", "origin, x-requested-with, co
 
                             <div class="menu-container">
                                 <div class="block-keep-ratio block-keep-ratio-1-1 block-keep-ratio-md-2-1 block-width-full weather_bax">                                    
-                                    <a href="gallery.html" class="main-menu-link  block-keep-ratio__content">
+                                    <a href="http://data.seoul.go.kr/" class="main-menu-link  block-keep-ratio__content">
                                         <span class="main-menu-link-text">
                                             Weather  
                                         </span>
                                         <ul id="ulWeather" class="ul_weather">
-                                        </ul>                                        
+                                        </ul>                                    
                                     </a>                                    
                                 </div>                                
                             </div>
