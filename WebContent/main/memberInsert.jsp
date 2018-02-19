@@ -25,7 +25,7 @@ ${ error } <!-- request.getAttribute("error") -->
 				<form action="./memberInsert.shiva" method="post" id="frmMemberJoin" name="frmMemberJoin">
 					<div class="form-group">
 						<label for="id">아이디</label>
-						<input type="text" class="form-control" maxlength="15" name="id" id="id">
+						<input type="text" class="form-control" maxlength="10" name="id" id="id">
 						<p id="msgCheckId" class="check_txt_check">아이디를 입력 해주세요</p>
 <!-- 						<div class="input-group">
 						    <input type="text" class="form-control" maxlength="15" name="id" id="id">
@@ -38,16 +38,16 @@ ${ error } <!-- request.getAttribute("error") -->
 					</div>
 					<div class="form-group">
 					    <label for="pass">비밀번호</label>
-					    <input type="password" class="form-control" maxlength="15" name="passwd" id="passwd">
+					    <input type="password" class="form-control" maxlength="10" name="passwd" id="passwd">
 					</div>
 					<div class="form-group">
 					    <label for="pass">비밀번호 확인</label>
-					    <input type="password" class="form-control" maxlength="15" name="passwdChk" id="passwdChk">
+					    <input type="password" class="form-control" maxlength="10" name="passwdChk" id="passwdChk">
 						<p id="msgCheckPw" class="check_txt_check">비밀번호를 입력해주세요</p>
 					</div>
 					<div class="form-group">
 					    <label for="id">이름</label>
-					    <input type="text" class="form-control" maxlength="15" name="name" id="name">
+					    <input type="text" class="form-control" maxlength="10" name="name" id="name">
 					</div>
 					<div class="form-group">
 					    <label for="id">성별</label>
@@ -59,9 +59,9 @@ ${ error } <!-- request.getAttribute("error") -->
 					<div class="form-group">
 					    <label for="id">이메일</label>
 					    <ul class="li_mail cf">
-					    	<li><input type="text" class="form-control" maxlength="30" name="mail" id="mail"></li>
+					    	<li><input type="text" class="form-control" maxlength="10" name="mail" id="mail"></li>
 					    	<li>@</li>
-					    	<li><input type="text" class="form-control" maxlength="30" name="mailDomain" id="mailDomain"></li>
+					    	<li><input type="text" class="form-control" maxlength="10" name="mailDomain" id="mailDomain"></li>
 					    	<li>
 							    <select name="selectMail" id="selectMail" class="select_mail">
 							    	<option value="">선택</option>
@@ -75,7 +75,7 @@ ${ error } <!-- request.getAttribute("error") -->
 					</div>
 					<div class="form-group">
 					    <label for="id">전화번호</label>
-					    <input type="text" class="form-control" maxlength="15" name="phone" id="phone" placeholder="-없이 입력해주세요">
+					    <input type="text" class="form-control" maxlength="11" name="phone" id="phone" placeholder="-없이 입력해주세요">
 					</div>
 					<div class="text-right">
 						<button type=button id="btnJoin" class="btn btn-primary">회원가입</button>
