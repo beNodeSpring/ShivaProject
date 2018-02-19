@@ -36,21 +36,17 @@ create table MainNotice(
    CHILDCNT   NUMBER,         -- 글의 답변 글 수
    PRIMARY KEY(NUM)
 );
-insert into MainNotice values(1,'kjm','[공지사항]공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(2,'kyj','[공지사항]IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(3,'kyy','[공지사항]IT이력서','팀시바의 IT이력서 part를 담당하고 있는 김영렬 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(4,'kjk','[공지사항]IT거래소','팀시바의 IT거래소 part를 담당하고 있는 김재겸 입니다',sysdate,0,0,0,0,0);
-
-insert into MainNotice values(5,'kjm','[공지사항]공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(6,'kyj','[공지사항]IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(7,'kyy','[공지사항]IT이력서','팀시바의 IT이력서 part를 담당하고 있는 김영렬 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(8,'kjk','[공지사항]IT거래소','팀시바의 IT거래소 part를 담당하고 있는 김재겸 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(9,'kjm','[공지사항]공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(10,'kyj','[공지사항]IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(11,'kyy','[공지사항]IT이력서','팀시바의 IT이력서 part를 담당하고 있는 김영렬 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(12,'kjk','[공지사항]IT거래소','팀시바의 IT거래소 part를 담당하고 있는 김재겸 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(13,'kjm','[공지사항]공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,0,0,0,0,0);
-insert into MainNotice values(14,'kyj','[공지사항]IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,0,0,0,0,0);
+insert into MainNotice values(1,'kjm','공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,1,0,0,0,0);
+insert into MainNotice values(2,'kyj','IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,2,0,0,0,0);
+insert into MainNotice values(3,'kyy','IT이력서','팀시바의 IT이력서 part를 담당하고 있는 김영렬 입니다',sysdate,3,0,0,0,0);
+insert into MainNotice values(4,'kjk','IT거래소','팀시바의 IT거래소 part를 담당하고 있는 김재겸 입니다',sysdate,4,0,0,0,0);
+insert into MainNotice values(5,'kjm','공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,5,0,0,0,0);
+insert into MainNotice values(6,'kyj','IT자격증','팀시바의 IT자격증 part를 담당하고 있는 김용준 입니다',sysdate,6,0,0,0,0);
+insert into MainNotice values(7,'kyy','IT이력서','팀시바의 IT이력서 part를 담당하고 있는 김영렬 입니다',sysdate,7,0,0,0,0);
+insert into MainNotice values(8,'kjk','IT거래소','팀시바의 IT거래소 part를 담당하고 있는 김재겸 입니다',sysdate,8,0,0,0,0);
+insert into MainNotice values(9,'kjm','공통단UI','팀시바의 architecture & UI를 담당하고 있는 김종민 입니다',sysdate,9,0,0,0,0);
+insert into MainNotice values(10,'kyj','10번째 공지사항',sysdate,10,0,0,0,0);
+insert into MainNotice values(11,'kyy','11번째 공지사항',sysdate,11,0,0,0,0);
 
 
 select * from MainNotice;

@@ -67,12 +67,20 @@ public class BoardDAO {
 		ResultSet rs = null;
 		
 		List<BoardVO> list = new ArrayList<BoardVO>();
-				
+
 		try {
 			conn = ds.getConnection();
-			String sql = "select * from MainNotice order by num";
+
+			String sql = "select * from "
+            + "(select rownum rnum, NUM, ID, SUBJECT, CONTENT, WRITEDATE, REF, STEP, LEV, READCNT, CHILDCNT "
+            + "from (select * from MainNotice order by REF DESC, STEP asc)) "
+            + "where rnum >= ? and rnum <= ? ";		
+			
 			pstmt = conn.prepareStatement(sql); 
+			pstmt.setInt(1, WRITING_PER_PAGE *(Integer.parseInt(curPage)-1));  // 시작점
+			pstmt.setInt(2, WRITING_PER_PAGE); // 가져오는 갯수
 			rs = pstmt.executeQuery();
+			 				
 
 			while (rs.next()) {
 				BoardVO boardVO = new BoardVO();
