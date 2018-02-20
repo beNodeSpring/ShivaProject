@@ -85,6 +85,8 @@ public class ResumeDAO {
 				resume.setSQLVAL(rs.getString("SQLVAL"));
 				resume.setCPLUSVAL(rs.getString("CPLUSVAL"));
 				resume.setPIC(rs.getString("PIC"));
+				resume.setVISITORPIC(rs.getString("VISITORPIC"));
+				resume.setVISITOR_ID(rs.getString("VISITOR_ID"));
 				return resume;
 			} else {
 				ResumeBean resume = new ResumeBean();
@@ -129,6 +131,8 @@ public class ResumeDAO {
 				resume.setSQLVAL("false");
 				resume.setCPLUSVAL("false");
 				resume.setPIC("");
+				resume.setVISITORPIC("");
+				resume.setVISITOR_ID("방문자가없습니다");
 				return resume;
 			}
 		} catch (Exception ex) {
@@ -346,5 +350,55 @@ public class ResumeDAO {
 			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {}
 			if(con!=null)try {con.close();}catch(SQLException ex) {}
 		}
-	}			
+	}		
+	
+	//프로필 사진 가져오기
+	public String getPic(String id) {
+		System.out.println("getPic 시작합니다.");
+		String sql = "";
+		
+		try {
+			String pic = "";
+			con = ds.getConnection();
+			sql = "select PIC from resume where RESUME_ID = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				pic = rs.getString(1);
+			}
+			return pic;
+		} catch (SQLException ex) {
+			System.out.println("ResumeDAO -> getPic 에러 : " + ex);
+		} finally {
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {}
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {}
+			if(con!=null)try {con.close();}catch(SQLException ex) {}
+		}
+		return null;
+	}
+	
+	//방문기록
+	public void visitResume(String visitorid, String visitorpic, String want) {
+		System.out.println("visitResume 시작합니다.");
+		String sql = "";
+		
+		try {
+			con = ds.getConnection();
+			sql = "update resume set VISITORPIC = ?, VISITOR_ID = ? where RESUME_ID = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, visitorpic);
+			pstmt.setString(2, visitorid);
+			pstmt.setString(3, want);
+			pstmt.executeUpdate();
+		} catch (SQLException ex) {
+			System.out.println("ResumeDAO -> visitResume 에러 : " + ex);
+		} finally {
+			if(rs!=null)try {rs.close();}catch(SQLException ex) {}
+			if(pstmt!=null)try {pstmt.close();}catch(SQLException ex) {}
+			if(con!=null)try {con.close();}catch(SQLException ex) {}
+		}
+	}
 }

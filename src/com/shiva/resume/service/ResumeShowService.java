@@ -63,6 +63,8 @@ public class ResumeShowService implements Service{
 		request.setAttribute("SQLVAL", resume.getSQLVAL());
 		request.setAttribute("CPLUSVAL", resume.getCPLUSVAL());
 		request.setAttribute("PIC", resume.getPIC());
+		request.setAttribute("VISITORPIC", resume.getVISITORPIC());
+		request.setAttribute("VISITOR_ID", resume.getVISITOR_ID());
 		forward.setRedirect(false);
 		forward.setPath("./resume/resume.jsp");
 		return forward;

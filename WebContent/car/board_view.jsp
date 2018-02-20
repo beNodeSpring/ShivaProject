@@ -30,9 +30,9 @@ body {
 	BoardVO boarddata = (BoardVO)request.getAttribute("boarddata");
 %>
 
-<jsp:include page="header.jsp"></jsp:include>
 <hr>
 <body>
+	<jsp:include page="/inc/header.jsp"></jsp:include>
 	<div class="car_section">
 		<div class="container">
 			<div class="row">
@@ -69,10 +69,9 @@ body {
 
 				</div>
 			</div>
+			<jsp:include page="/inc/footer.jsp"></jsp:include>
 		</div>
 	</div>
 </body>
 
-<hr>
-<jsp:include page="footer.jsp"></jsp:include>
 </html>

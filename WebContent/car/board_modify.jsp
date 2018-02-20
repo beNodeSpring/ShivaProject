@@ -56,6 +56,7 @@ body {
 }
 </style>
 <body>
+	<jsp:include page="/inc/header.jsp"></jsp:include>
 	<div class="car_section">
 		<div class="container">
 			<div class="row">
@@ -111,6 +112,8 @@ body {
 					</form>
 				</div>
 			</div>
+			
+		<jsp:include page="/inc/footer.jsp"></jsp:include>			
 		</div>
 	</div>
 

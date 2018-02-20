@@ -188,9 +188,25 @@ else if(action.equals("delfail"))
 {
 	%>
 	<script>
-	alert("삭제를 실패하셨습니다.(일치하는 이름의 기념일이 없습니다. )");
+	alert("삭제를 실패하셨습니다.(일치하는 이름의 일정이 없습니다. )");
 	</script>
 	<% 
+}
+if(action.equals("addsuecess"))
+{
+  %>
+  <script>
+  alert("캘린더 내용을 입력했습니다.");
+  </script>
+  <% 
+}
+else if(action.equals("addfail"))
+{
+  %>
+  <script>
+  alert("캘린더 내용을 입력실패했습니다.");
+  </script>
+  <% 
 }
 %>
 </head>
@@ -348,6 +364,10 @@ else if(action.equals("delfail"))
 			
 			<form name ="workday_insert" action="./CalendarConAdd.lo">
 			<h3>일정 추가 </h3>
+			<input type=hidden name=pagenum value=<%=pagenum %>>
+			<input type=hidden name=year value=<%=year %>>
+			<input type=hidden name=month value=<%=month %>>
+			<input type=hidden name=action value=<%=action %>>
 			<input type=date  id="ITC_DATE2" name=ITC_DATE min="<%=year-1 %>-01-01" max="<%=year+1 %>-12-31" class="textinput"> 
 			<input name="ITC_NAME" id="ITC_NAME2" type = text size=10 value="내용" class=textinput>  
 			<input name="ITC_LINK" id="ITC_LINK" type = text size=10 value="(링크)" class=textinput>
@@ -367,6 +387,10 @@ else if(action.equals("delfail"))
 			<form name ="workday_delete" action="./CalendarConDel.lo">
 			<h3>일정 삭제 </h3>
 			삭제하려는 일정 이름 
+			<input type=hidden name=pagenum value=<%=pagenum %>>
+			<input type=hidden name=year value=<%=year %>>
+			<input type=hidden name=month value=<%=month %>>
+			<input type=hidden name=action value=<%=action %>>
 			<input name="ITC_NAME" id="ITC_NAME4" type = text size=10 value="이름" class=textinput>  
 			&nbsp;<input type = button value="일정삭제" class="btn btn-gray" onclick="javascript:workdaydelsubmit()">
 			</form> 

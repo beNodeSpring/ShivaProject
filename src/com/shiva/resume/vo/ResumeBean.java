@@ -51,6 +51,21 @@ public class ResumeBean {
 	private String SQLVAL;
 	private String CPLUSVAL;
 	private String PIC;
+	private String VISITORPIC;
+	
+	public String getVISITORPIC() {
+		return VISITORPIC;
+	}
+	public void setVISITORPIC(String vISITORPIC) {
+		VISITORPIC = vISITORPIC;
+	}
+	public String getVISITOR_ID() {
+		return VISITOR_ID;
+	}
+	public void setVISITOR_ID(String vISITOR_ID) {
+		VISITOR_ID = vISITOR_ID;
+	}
+	private String VISITOR_ID;
 	
 	public String getRESUME_ID() {
 		return RESUME_ID;

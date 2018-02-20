@@ -21,6 +21,7 @@
 <title>Resume List</title>
 <link rel="stylesheet" type="text/css" href="/ShivaProject/css/resume.css"></link>
 <link rel="stylesheet" type="text/css" href="/ShivaProject/css/style.css"></link>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="/inc/header.jsp"></jsp:include>
@@ -28,9 +29,9 @@
 <div class = "resume_wrap">
 	<div class = "container">
 		<div class = "row">
-			<div class="modal-content" id="resumecontainer">
+			<div class="modal-content pd60" id="resumecontainer">
 			
-				<table id = "resumetable">
+				<table class="table table-striped" id="resumetable">
 				<%
 					if(resumecount > 0){ //등록된 글이 있는 경우
 				%>
@@ -59,7 +60,7 @@
 							<%=oneresume.getPROJECT1() %>
 						</td>
 						<td>
-							<a href = "./myResume.ro?want=<%=oneresume.getRESUME_ID()%>">레주메 보기 클릭!</a>
+							<a href = "./myResume.ro?want=<%=oneresume.getRESUME_ID()%>">레주메 보기</a>
 						</td>
 					</tr>
 				<%

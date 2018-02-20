@@ -12,6 +12,7 @@ public class ResumeShowService2 implements Service{
 		ResumeDAO resumedao = new ResumeDAO();
 		ResumeBean resume = new ResumeBean();
 		ServiceForward forward = new ServiceForward();
+		String visitorid = (String) request.getSession(false).getAttribute("id");
 				
 		//시작
 		System.out.println("ResumeShowService2 시작합니다.");
@@ -20,6 +21,9 @@ public class ResumeShowService2 implements Service{
 		System.out.println("가져올 레주메의 id는 : " + request.getParameter("want"));
 		resume = resumedao.getResume(request.getParameter("want"));
 		System.out.println("resume를 받아왔습니다 : " + resume);
+		String visitorpic = resumedao.getPic(visitorid);
+		resumedao.visitResume(visitorid, visitorpic, request.getParameter("want"));
+		System.out.println("resume방문기록완료");
 		
 		//받아온 resume의 정보를 request에 저장
 		request.setAttribute("RESUME_ID", resume.getRESUME_ID());
@@ -61,6 +65,9 @@ public class ResumeShowService2 implements Service{
 		request.setAttribute("OBJECTIVECVAL", resume.getOBJECTIVECVAL());
 		request.setAttribute("SQLVAL", resume.getSQLVAL());
 		request.setAttribute("CPLUSVAL", resume.getCPLUSVAL());
+		request.setAttribute("PIC", resume.getPIC());
+		request.setAttribute("VISITORPIC", resume.getVISITORPIC());
+		request.setAttribute("VISITOR_ID", resume.getVISITOR_ID());
 		forward.setRedirect(false);
 		forward.setPath("./resume/resume2.jsp");
 		return forward;

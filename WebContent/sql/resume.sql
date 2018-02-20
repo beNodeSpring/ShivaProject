@@ -46,7 +46,7 @@ create table resume(
 );			
 
 select * from resume;
-select pic from resume;
+select pic, visitorpic, visitor_id from resume;
 insert into resume (RESUME_ID, RESUME_DATE, TODAYFEELING, PROJECT1, PROJECT2, PROJECT3, 
 PROJECT4, PROJECT5, PROJECT6, PROJECT7, PROJECT8, PROJECT9, DURATION1, DURATION2, DURATION3, 
 DURATION4, DURATION5, DURATION6, DURATION7, DURATION8, DURATION9, TEXT1, TEXT2, TEXT3, TEXT4, 

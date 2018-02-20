@@ -16,7 +16,8 @@ public class CalendarConDelService implements Action {
 		ActionForward forward=new ActionForward();
 		String boardname=(String)request.getAttribute("board");
 		String itc_name=request.getParameter("ITC_NAME");
-		
+		String year=request.getParameter("year");
+		String month=request.getParameter("month");
 		boolean result=false;
 		try {
 			
@@ -30,7 +31,7 @@ public class CalendarConDelService implements Action {
 				System.out.println("일정 삭제실패");
 				forward.setRedirect(false);
 				//이동
-				forward.setPath("AdminPage.lo?action=delfail");
+				forward.setPath("AdminPage.lo?action=delfail&year="+year+"&month="+month);
 				return forward;
 			}
 			System.out.println("일정 삭제성공");
@@ -39,7 +40,7 @@ public class CalendarConDelService implements Action {
 		
 			forward.setRedirect(false);
 			//이동
-			forward.setPath("AdminPage.lo?action=calendardel");
+			forward.setPath("AdminPage.lo?action=delsuecess&year="+year+"&month="+month);
 			return forward;
 			
 		}

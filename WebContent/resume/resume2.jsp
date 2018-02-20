@@ -8,6 +8,7 @@
 <title>Resume Main Page</title>
 <link rel="stylesheet" type="text/css" href="/ShivaProject/css/resume.css"></link>
 <link rel="stylesheet" type="text/css" href="/ShivaProject/css/style.css"></link>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <script src="/ShivaProject/js/jquery-3.3.1.min.js"></script>
 <script src="/ShivaProject/js/resume2.js"></script>
 </head>
@@ -26,10 +27,11 @@
 						<div id="leftcol">
 							<!-- Profile Picture -->
 							<div id="prof">
+								<div id="profcont">
+									<img src="./profilepic/<%=request.getAttribute("PIC")%>" id="profimg">
+								</div>
 								<div>
-									<input type="text" name="tempid" value=<%=request.getParameter("want")%>></input><br>
-									<input type="text" value="거주지 : 서울 서초구"></input><br> <input
-										type="text" value="생년월일  : 930224"></input><br>
+									<input type="text" id="profid" name="tempid" value=<%=request.getAttribute("RESUME_ID") %>>가 나의 아이디입니다.</input><br>
 								</div>
 							</div>
 							<!-- Interested In -->
@@ -182,8 +184,17 @@
 						</div>
 						<!-- Right Column -->
 						<div id="rightcol">
-							<div id="interview"></div>
-							<div id="ad"></div>
+							<div id="interview">
+								<div id="interviewcont">
+									<img src="./profilepic/<%=request.getAttribute("VISITORPIC")%>" id="interviewimg">
+								</div>
+								<div>
+									<input type="text" id="interviewid" name="tempid" value=<%=request.getAttribute("VISITOR_ID") %>>가 방문했습니다.</input><br>
+								</div>
+							</div>
+							<div id="ad">
+								<img src="./images/ad.jpg" style="width:100%" alt="" />
+							</div>
 						</div>
 					</div>
 					<!-- Footer -->

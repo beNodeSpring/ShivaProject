@@ -29,6 +29,8 @@ $(document).ready(function(){
 				$("#worktable1").hide();
 				$("#work_remove").hide();
 				$("#work_add").hide();
+				$("#update_button").hide();
+				$("#board_button").hide();
 				$("#worktable2").show();
 				$("#work_return").show();
 				var length = $("#worktable1 tbody tr").length;
@@ -66,6 +68,8 @@ $(document).ready(function(){
 		$("#worktable1").show();
 		$("#work_remove").show();
 		$("#work_add").show();
+		$("#update_button").show();
+		$("#board_button").show();
 		$("#worktable2").hide();
 		$("#work_return").hide();
 		$("#worktable2 tbody tr td textarea").hide();
@@ -80,13 +84,15 @@ $(document).ready(function(){
 	})
 	
 	$("#board_button").click(function(){
-		window.location.href = "/ShivaProject/ResumeList.ro";
+		///ShivaProject/ResumeList.rolocation.href = "/ShivaProject/ResumeList.ro";
 	})
 	
 	$("#worktable1 tbody tr td").click(function(){
 		$("#worktable1").hide();
 		$("#work_remove").hide();
 		$("#work_add").hide();
+		$("#update_button").hide();
+		$("#board_button").hide();
 		$("#worktable2").show();
 		$("#work_return").show();
 		var length = $("#worktable1 tbody tr").length;

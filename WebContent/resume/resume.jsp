@@ -31,7 +31,7 @@
 								</div>
 								<input name="yourpic" type="file" id="profupload">
 								<div>
-									<input type="text" id="profid" name="tempid" value=<%=session.getAttribute("id") %>>가 나의 아이디입니다.</input><br>
+									<span class="fwb">아이디 :</span><input type="text" id="profid" name="tempid" value=<%=session.getAttribute("id") %>></input><br>
 								</div>
 							</div>
 							<!-- Interested In -->
@@ -65,18 +65,18 @@
 						<div id="midcol">
 							<!-- Today's Feeling -->
 							<div id="tf">
-								<div id="tf_title">Today's Feeling</div>
-								<div id="tf_button"></div>
+								<div id="tf_title" class="fwb">Today's Feeling</div>
+								<button id="tf_button" class="tac">update</button>
 								<input type="text" id="tf_text" name="TODAYFEELING" value=<%=request.getAttribute("TODAYFEELING") %>
-									maxlength="19" disabled>
+									maxlength="19">
 							</div>
 							<!-- Work Experience -->
 							<div id="work">
-								<div id="work_title">Work Experience</div>
-								<div id="work_remove"></div>
-								<div id="work_add"></div>
-								<div id="update_button"></div>
-								<div id="board_button"></div>
+								<div id="work_title" class="fwb">Work Experience</div>
+								<button id="work_add" class="tac">Add</button>
+								<button id="work_remove" class="tac">Delete</button>
+								<button id="update_button" class="tac">Save</button>
+								<button id="board_button" class="tac"><a href="/ShivaProject/ResumeList.ro">go List</a></button>
 								<div id="workpage1">
 									<table id="worktable1">
 										<thead>
@@ -183,14 +183,23 @@
 											</tr>
 										</tbody>
 									</table>
-									<div id="work_return"></div>
+									<button id="work_return" class="tac">back</button>
 								</div>
 							</div>
 						</div>
 						<!-- Right Column -->
 						<div id="rightcol">
-							<div id="interview"></div>
-							<div id="ad"></div>
+							<div id="interview">
+								<div id="interviewcont">
+									<img src="./profilepic/<%=request.getAttribute("VISITORPIC")%>" id="interviewimg">
+								</div>
+							</div>
+							<div>
+								<input type="text" id="interviewid" name="tempid" value='방문자 : <%=request.getAttribute("VISITOR_ID") %>'></input><br>
+							</div>
+							<div id="ad">
+								<img src="./images/ad.jpg" style="width:100%" alt="" />
+							</div>
 						</div>
 					</div>
 				</form>

@@ -1,6 +1,9 @@
 @charset "utf-8";
 
 body {background-image: url("background.jpg");background-repeat:no-repeat;background-size:cover;}
+.tac{text-align: center; color:#fff; font-weight: bold;}
+.fwb{font-weight: bold; font-size: 16px;}
+.pd60{padding: 60px;}
 .resume_wrap{margin-top: 70px;}
 .resume_wrap form{margin: 0; padding: 0;}
 .container {position:relative;}
@@ -13,20 +16,20 @@ body {background-image: url("background.jpg");background-repeat:no-repeat;backgr
 #profid{background:transparent; border:none; color:white; width:30%; margin:10px;}
 #int{width: 100%; position:relative; height:250px; margin:6px 0px; background:linear-gradient(to right, #9d00a5 0%, #9d2fa3 100%);}
 #int_title{box-sizing:border-box; position:relative; display:inline-block; float:left; margin:0; padding:5px; height:4vh; width:90%;}
-#inttable{position:relative; box-sizing:border-box; width:1}
+#inttable{position:relative; width: 100%; box-sizing:border-box;}
 #inttable tr{height : 5vh;}
-#inttable tr input{background-color:transparent; border:none; padding:5px;}
+#inttable tr input{width: 100%; background-color:transparent; border:none; padding:5px;}
 #midcol{width : 59%; display : inline-block; height:100%; float:left; background-color:none; position:relative;}
 #tf{margin : 0 6px; height : 100px; background:linear-gradient(to right, #0099ab 0%, #259daa 100%); position:relative;}
 #tf_title{box-sizing:border-box; position:relative; display:inline-block; float:left; margin:0; padding:5px; height:30%; width:90%;}
 #tf_button{box-sizing:border-box; position:relative; display:inline-block; margin:0; padding:5px; height:4vh; width:10%; background-color:green; border-radius:30px;}
-#tf_text{box-sizing:border-box; position:relative; margin:0; padding:5px; height:70%; width:100%; text-align:center; background-color:transparent; border:none; font-size:40px}
+#tf_text{box-sizing:border-box; position:relative; margin:0; padding:5px; height:70%; width:100%; text-align:center; background-color:transparent; border:none; font-size:38px}
 #work{margin : 6px 6px; height : 430px; background-color:orange; position:relative;}
 #work_title{box-sizing:border-box; position:relative; display:inline-block; float:left; margin:0; padding:5px; height:10%; width:60%;}
 #update_button{box-sizing:border-box; position:relative; display:inline-block; margin:0; padding:5px; height:4vh; width:10%; background-color:pink; border-radius:30px; float:left;}
 #board_button{box-sizing:border-box; position:relative; display:inline-block; margin:0; padding:5px; height:4vh; width:10%; background-color:gray; border-radius:30px; float:left;}
 #work_remove{box-sizing:border-box; position:relative; display:inline-block; margin:0; padding:5px; height:4vh; width:10%; background-color:red; border-radius:30px; float:left;}
-#work_add{box-sizing:border-box; position:relative; display:inline-block; margin:0; padding:5px; height:4vh; width:10%; background-color:green; border-radius:30px;}
+#work_add{box-sizing:border-box; position:relative; display:inline-block; margin:0; padding:5px; height:4vh; width:10%; background-color:green; border-radius:30px;  float:left;}
 #worktable1{width:100%; box-sizing:border-box;}
 #worktable1 thead tr{height : 5vh;}
 #worktable1 thead tr th:nth-child(1){width:65%}
@@ -41,4 +44,7 @@ body {background-image: url("background.jpg");background-repeat:no-repeat;backgr
 #work_return{box-sizing:border-box; position:relative; display:none; margin:0; padding:5px; height:4vh; width:10%; background-color:blue; border-radius:30px;}
 #rightcol{width : 15%; display : inline-block; height:100%; float:left}
 #interview{height:200px; background:linear-gradient(to right, #603cba 0%, #694bb7 100%);}
-#ad{height:330px;margin:6px 0;background-color:LightCoral}
+#interviewcont{width:80%; height:200px; margin:0 auto;}
+#interviewimg{width:100%; max-height:100%; position:relative; margin: auto;}
+#interviewid{background:transparent; border:none; color:white; width:100%; margin:5px 0 0 0;}
+#ad{height:330px;margin:6px 0;}

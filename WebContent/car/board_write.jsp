@@ -26,10 +26,8 @@ body {
 </style>
 
 </head>
+<jsp:include page="/inc/header.jsp"></jsp:include>
 
-
-<jsp:include page="header.jsp"></jsp:include>
-<hr>
 <body>
 	<div class="car_section">
 		<div class="container">
@@ -67,11 +65,10 @@ body {
 			
 				</div>
 			</div>
+			<jsp:include page="/inc/footer.jsp"></jsp:include>
 		</div>
 	</div>
 </body>
 
-<hr>
-<jsp:include page="footer.jsp"></jsp:include>
 </html> 
 
